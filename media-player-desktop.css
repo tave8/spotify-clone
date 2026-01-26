@@ -1,0 +1,36 @@
+#media-player-desktop {
+  background-color: #181818 !important;
+  border-top: 1px solid #282828;
+  z-index: 9999;
+}
+#media-player-desktop {
+  .bi,
+  .progress,
+  .img-fluid,
+  .player-control-icon {
+    cursor: pointer;
+  }
+}
+
+#media-player-desktop .player-control-icon:hover {
+  color: #1db954 !important;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+#media-player-desktop .song-info:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#media-player-desktop .progress {
+  background-color: #535353;
+  border-radius: 4px;
+}
+
+#media-player-desktop .progress-container:hover .progress {
+  background-color: #5e5e5e;
+}
+#media-player-desktop .progress-container:hover .progress-bar {
+  background-color: #1db954 !important;
+}
