@@ -19,16 +19,87 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <style>
+      #menu-mobile {
+        position: fixed;
+        /* EDIT here to modify the distance from the bottom */
+        bottom: 0px;
+
+        /* row */
+        > .row {
+          padding-block: 10px;
+        }
+
+        /* icons */
+        > .row.icons {
+          color: white;
+          z-index: 9999;
+          /* columns */
+          > .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            /* icons */
+            > span:nth-of-type(1) {
+              font-size: 1.5rem;
+            }
+            /* labels */
+            > span:nth-of-type(2) {
+              font-size: 0.8rem;
+            }
+          }
+        }
+
+        /* background layer */
+        > .background-layer {
+          position: absolute;
+          opacity: 0.8;
+          background: linear-gradient(to top, #000000 50%, #666666 100%);
+          height: 100%;
+          width: 100%;
+          z-index: -1;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="container-fluid">
+    
+    <!-- EXAMPLE: this container must NOT be used. 
+     it's just to show the transparency effect of the menu -->
+    <div class="container position-fixed bottom-0 bg-danger">
       <div class="row">
+        <div class="col">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae sint nam atque sit a fugiat. Culpa vitae nam repellendus eaque praesentium qui
+            delectus doloremque quam, ducimus velit accusantium ab. In?
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU mobile -->
+    <div class="container-fluid d-md-none" id="menu-mobile">
+      <!-- background layer -->
+      <div class="row background-layer"></div>
+      <!-- icons -->
+      <div class="row icons">
         <!-- column 1 (home) -->
-        <div class="col col-4"></div>
+        <div class="col col-4">
+          <span><i class="bi bi-house"></i></span>
+          <span>Home</span>
+        </div>
         <!-- column 2 (search) -->
-        <div class="col col-4"></div>
+        <div class="col col-4">
+          <span><i class="bi bi-search"></i></span>
+          <span>Cerca</span>
+        </div>
         <!-- column 1 (your library) -->
-        <div class="col col-4"></div>
+        <div class="col col-4">
+          <span><i class="bi bi-music-note-list"></i></span>
+          <span>La tua libreria</span>
+        </div>
       </div>
     </div>
 
