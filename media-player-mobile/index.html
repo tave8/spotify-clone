@@ -19,48 +19,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <style>
-      #media-player-mobile {
-        position: fixed;
-        /* EDIT HERE. this value pushes the media player from the bottom */
-        bottom: 50px;
-
-        /* the row */
-        > .row {
-          font-size: 2rem;
-          /* padding-block: 2px; */
-          margin-inline: 10px;
-          background-color: black;
-          color: white;
-          border-radius: 10px;
-
-          /* all columns */
-          > .col {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          /* column 1 (song title) */
-          > .col:nth-of-type(1) {
-            font-size: 1.5rem;
-            justify-content: end;
-            
-            /* song title */
-            > span {
-                /* padding-left: 10px;
-                text-wrap: nowrap; */
-            }
-
-          }
-
-          /* column 4 (play button) */
-          > .col:nth-of-type(4) {
-            font-size: 3rem;
-          }
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <!-- EDIT here to show/hide the media player -->
