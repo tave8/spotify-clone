@@ -1,7 +1,9 @@
 #media-player-mobile {
   position: fixed;
   /* EDIT HERE. this value pushes the media player from the bottom */
-  bottom: 50px;
+  bottom: 80px;
+  z-index: 9999;
+  opacity: .9;
 
   /* the row */
   > .row {
