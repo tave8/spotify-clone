@@ -13,37 +13,58 @@
     <main class="container-fluid p-0">
       <div class="row g-0">
         <!-- SIDEBAR SINISTRA -->
-        <aside class="d-none d-lg-flex flex-column col-lg-3 bg-black vh-100 overflow-y-auto py-4">
-          <nav class="navbar px-3">
-            <ul class="navbar-nav w-100">
-              <li class="nav-item">
-                <a class="nav-link active fs-4 p-2" href="#"><i class="bi bi-house-door-fill me-2 fs-3"></i>Home</a>
+        <aside class="d-none d-lg-flex flex-column col-lg-3 bg-black vh-100 overflow-y-scroll">
+          <nav class="navbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item fs-4">
+                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-door-fill me-2 fs-3"></i> Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link fs-4 p-2" href="#"><i class="bi bi-search me-2 fs-3"></i>Cerca</a>
+              <li class="nav-item fs-4">
+                <a class="nav-link" href="#"><i class="bi bi-search me-2 fs-3"></i> Cerca</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link fs-4 p-2" href="#"><i class="bi bi-music-note-list me-2 fs-3"></i>La tua Libreria</a>
+              <li class="nav-item fs-4">
+                <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2 fs-3"></i> La tua Libreria</a>
               </li>
-              <div class="mt-4">
-                <li class="nav-item">
-                  <a class="nav-link fs-4 p-2" href="#"><i class="bi bi-plus-square-fill me-2 fs-3"></i>Crea Playlist</a>
+              <div class="mt-3">
+                <li class="nav-item fs-4">
+                  <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2 fs-3"></i> Crea Playlist</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link fs-4 p-2" href="#"><i class="bi bi-house-heart me-2 fs-3"></i>Brani piaciuti</a>
+                <li class="nav-item fs-4">
+                  <a class="nav-link" href="#"><i class="bi bi-house-heart me-2 fs-3"></i> Brani che ti piacciono</a>
+                </li>
+                <li class="nav-item fs-4">
+                  <a class="nav-link" href="#"><i class="bi bi-bookmark me-2 fs-3"></i> I tuoi episodi</a>
                 </li>
               </div>
             </ul>
           </nav>
-          <hr class="mx-3" />
-          <div class="text-muted px-3 small">
-            <p class="mb-1">Late Night Drives 🌙🚗</p>
-            <p class="mb-1">Study Space 📚💻</p>
-            <p class="mb-1">Indie Vibes 🎸✨</p>
-            <p>Gym Mode 🔥🏋️</p>
+          <!-- SEPARATORE -->
+          <hr />
+
+          <!-- PLAYLIST RANDOMICHE -->
+          <div class="text-muted">
+            <p>Late Night Drives 🌙🚗</p>
+            <p>Study & Work Space 📚💻</p>
+            <p>Indie Vibes Only 🎸✨</p>
+            <p>Soft Rain & Lo-Fi 🌧️🎧</p>
+            <p>Gym Mode: ON 🔥🏋️</p>
+            <p>Sunday Morning Coffee ☕🌤️</p>
+            <p>Sad Songs Club 😶‍🌫️💔</p>
+            <p>Night Walks in the City 🌃🚶</p>
+            <p>Chill Hits 2024 😌🎶</p>
+            <p>Throwback Bangers 🔙🎉</p>
+            <p>Epic Gaming Session 🎮⚡</p>
+            <p>Deep Focus Instrumental 🎻🧠</p>
+            <p>Alt Rock Therapy 🤘🖤</p>
+            <p>Road Trip Classics 🛣️🎵</p>
+            <p>Sunset Chillwave 🌅🌊</p>
+            <p>Beats to Code To 👨‍💻🎛️</p>
+            <p>Romantic Mood 💞🕯️</p>
+            <p>Electronic Night Club 🪩🔊</p>
+            <p>Acoustic & Slow Days 🎸🍂</p>
+            <p>Best of Me (Daily Mix) ❤️🎶</p>
           </div>
         </aside>
-
         <!-- MAIN CONTENT -->
         <section class="col-lg-6 col-xl-7 min-vh-100 bg-black py-4 px-3">
           <!-- COVER ARTISTA -->
@@ -59,9 +80,10 @@
                 <p id="fansCount" class="listeners mb-4 text-white-50 fs-5 fw-normal">0 ascoltatori mensili</p>
                 <div class="buttons d-flex gap-3 align-items-center">
                   <button class="btn btn-outline-light px-4 py-2 fs-6 fw-medium">Segui</button>
-                  <div class="text-white-50 fs-6"><i class="bi bi-dotted-dotted me-1"></i>...</div>
-                  <div class="d-flex justify-content-end">
-                    <button class="btn btn-success px-4 py-2 fs-4 fw-semibold play-btn"><i class="bi bi-play-fill me-2"></i>Seguiti</button>
+                  <div class="text-white-50 fs-6"><i class="bi bi-three-dots-vertical me-1"></i></div>
+                  <div class="d-flex justify-content-end ms-auto">
+                    <button class="btn px-4 py-2 fs-4 fw-semibold play-btn"><i class="bi bi-shuffle text-success fs-3"></i></button>
+                    <button class="btn px-4 py-2 fs-4 fw-semibold play-btn"><i class="bi bi-play-circle-fill text-success fs-1"></i></button>
                   </div>
                 </div>
               </div>
@@ -78,26 +100,66 @@
         </section>
 
         <!-- SIDEBAR DESTRA -->
-        <aside class="d-none d-xl-flex flex-column col-xl-2 bg-black vh-100 overflow-y-auto py-4">
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <h5 class="text-white mb-0">Attività amici</h5>
-            <div class="text-white-50 fs-5 pe-3">
-              <i class="bi bi-person-plus me-2"></i>
+        <aside class="d-none d-lg-flex flex-column col-lg-2 bg-black vh-100 overflow-y-scroll">
+          <div class="d-flex justify-content-between align-items-baseline mt-2">
+            <h4>Attività Amici</h4>
+            <div class="fs-4 text-muted">
+              <i class="bi bi-person-add"></i>
               <i class="bi bi-x-lg"></i>
             </div>
           </div>
-          <div id="activities">
-            <div class="activity-item mb-3 p-2 rounded">
-              <div class="row align-items-center g-2">
-                <div class="col-2"><img src="https://via.placeholder.com/40" class="rounded-circle w-100" alt="" /></div>
-                <div class="col-7">
-                  <div class="fw-bold small text-white">Mario Rossi</div>
-                  <div class="small text-white-50">In camera - Yumi Zouma</div>
+
+          <section id="activities-container">
+            <div class="d-flex flex-column mt-4">
+              <!-- ACTIVITY  -->
+              <div class="row align-items-start p-1 g-1 mb-3">
+                <div class="col-2">
+                  <img src="./assets/imgs/search/image-11.jpg" alt="" class="img-fluid rounded-circle" />
                 </div>
-                <div class="col-3 text-end pe-3"><span class="text-white-50 small">2h</span></div>
+                <div class="col-8 d-flex flex-column">
+                  <p class="m-0 fw-bold">Charlie hookham</p>
+                  <p class="m-0">In camera - Yumi Zouma</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> EP III</p>
+                </div>
+                <div class="col-2">
+                  <p class="fs-6">4 ore</p>
+                </div>
               </div>
+              <!-- END ACTIVITY -->
+
+              <!-- ACTIVITY  -->
+              <div class="row align-items-start p-1 g-1 mb-3">
+                <div class="col-2">
+                  <img src="./assets/imgs/search/image-14.jpg" alt="" class="img-fluid rounded-circle" />
+                </div>
+                <div class="col-8 d-flex flex-column">
+                  <p class="m-0 fw-bold">lightdark02</p>
+                  <p class="m-0">Aimed to Kill - Jade LeMac</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> Aimed to Kill</p>
+                </div>
+                <div class="col-2">
+                  <p class="fs-6">4 ore</p>
+                </div>
+              </div>
+              <!-- END ACTIVITY -->
+
+              <!-- ACTIVITY  -->
+              <div class="row align-items-start p-1 g-1 mb-3">
+                <div class="col-2">
+                  <img src="./assets/imgs/search/image-8.jpg" alt="" class="img-fluid rounded-circle" />
+                </div>
+                <div class="col-8 d-flex flex-column">
+                  <p class="m-0 fw-bold">Valeria Traverso</p>
+                  <p class="m-0">New Kings - Sleeping Wolf</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> Twint Badass mood</p>
+                </div>
+                <div class="col-2">
+                  <p class="fs-6">4 ore</p>
+                </div>
+              </div>
+              <!-- END ACTIVITY -->
             </div>
-          </div>
+          </section>
         </aside>
       </div>
     </main>
