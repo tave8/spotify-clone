@@ -13,7 +13,7 @@
     <main class="container-fluid p-0">
       <div class="row justify-content-around">
         <!-- SIDEBAR SINISTRA -->
-        <aside class="d-none d-lg-flex flex-column col-lg-3 bg-black vh-100 overflow-y-scroll">
+        <aside class="d-none d-lg-flex flex-column col-lg-3 bg-black vh-100 overflow-y-scroll sticky-lg-top sticky-md-top">
           <nav class="navbar ps-4" ">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item ">
@@ -75,7 +75,7 @@
           </div>
 
           <!-- INFO ARTISTA (SPOTIFY STYLE) -->
-          <section class="artist-info mb-5">
+          <section class="artist-info mb-5 px-4">
             <div class="d-flex align-items-start">
               <img id="artistAvatar" src="" alt="" class="rounded-circle me-4 shadow d-none" />
               <div class="flex-grow-1 min-width-0">
@@ -93,13 +93,13 @@
           <section id="popularTracks" class="mb-5">
             <h5 class="text-white fw-semibold mb-4">Brani più popolari</h5>
             <div id="tracksContainer" class="tracklist">
-              <div class="text-white-50 py-3">Caricamento brani...</div>
+              <div class="text-white-50 p-3">Caricamento brani...</div>
             </div>
           </section>
         </section>
 
-        <!-- SIDEBAR DESTRA -->
-        <aside class="d-none d-lg-flex flex-column col-lg-2 bg-black vh-100 overflow-x-hidden px-3">
+        <!-- SIDEBAR DESTRA --> 
+        <aside class="d-none d-lg-flex flex-column col-lg-2 bg-black vh-100 overflow-x-hidden px-3 sticky-lg-top sticky-md-top">
           <div class="d-flex justify-content-between align-items-baseline mt-2">
             <h4>Attività Amici</h4>
             <div class="fs-4 text-muted">

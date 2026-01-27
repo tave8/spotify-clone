@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const div = document.createElement("div");
         div.className = "track-item";
         div.innerHTML = `
-<span class="track-number fs-4 fw-bold me-4">${i + 1}</span>
+<span class="track-number fs-6 fw-bold me-4">${i + 1}</span>
 <img class=" rounded shadow-sm img-fluid object-fit-cover " src="${track.album.cover_small}">
 <div class="track-info">
 <div class="track-title">${track.title_short || track.title}</div>
