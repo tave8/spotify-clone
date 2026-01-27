@@ -1,0 +1,19 @@
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  color: #198754 !important;
+}
+
+#categories-container > div > div,
+#playlist-container > div > div {
+  transition: 0.5s ease-in-out;
+}
+
+#categories-container > div > div:hover,
+#playlist-container > div > div:hover {
+  background-color: #198754;
+  transform: scale(1.05);
+  transform-origin: center;
+}
