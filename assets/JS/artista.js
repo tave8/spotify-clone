@@ -59,7 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("fansCount1").textContent = artist.nb_fan.toLocaleString("it-IT") + " ascoltatori mensili";
 
       // Fetch Brani
-      return fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=artist:"${encodeURIComponent(artist.name)}"&limit=25`);
+      const artistName = fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=artist:"${encodeURIComponent(artist.name)}"&limit=25`);
+
+      return artistName;
     })
     .then((r) => r.json())
     .then((data) => {
@@ -122,3 +124,5 @@ document.addEventListener("DOMContentLoaded", () => {
       container.innerHTML = `<div class="text-danger p-4">Errore: ${err.message}</div>`;
     });
 });
+
+// Salvare brani che ci piacciono in LocalStore
