@@ -2,6 +2,31 @@
  * Get artist info from page URL and populate UI.
  */
 
+
+/**
+ * The artist album should be an object simpler than
+ * the API output; this wasy it's simple to access
+ * the relevant properties while working with UI.
+ */
+const populateUIArtist = (artist) => {
+  // continue here: populate the UI with artist
+  // and its info/tracks
+  // ....
+};
+
+const populateUITopTracks = (topTracks) => {
+  // continue here: populate the top tracks UI
+  // ....
+};
+
+
+// work with html here
+
+
+
+// ****************************
+
+
 const onPageLoad = async () => {
   loadArtistAndTopTracks();
 };
@@ -13,31 +38,19 @@ const loadArtistAndTopTracks = async () => {
     // artist info only
     const artist = await getRemoteArtist(getArtistIdFromUrl());
     populateUIArtist(getSimplerArtistInfo(artist));
+    console.log("simpler artist info: ", getSimplerArtistInfo(artist))
 
     // top tracks of this artist
     const topTracksData = await getRemoteTopTracks(artist.tracklist);
     const topTracks = topTracksData.data
     populateUITopTracks(getSimplerTopTracksInfo(topTracks));
+    console.log("simpler top tracks info: ", getSimplerTopTracksInfo(topTracks))
   } catch (err) {
     console.error(err);
   }
 };
 
-/**
- * The artist album should be an object simpler than
- * the API output; this wasy it's simple to access
- * the relevant properties while working with UI.
- */
-const populateUIArtist = (artist) => {
-  // continue here: populate the UI with artist
-  // and its info/tracks
-  console.log(artist)
-};
 
-const populateUITopTracks = (topTracks) => {
-  // continue here: populate the top tracks UI
-  console.log(topTracks)
-};
 
 const getRemoteArtist = async (artistId) => {
   const url = `${vars.DEEZER_API_URL}/artist/${artistId}`;

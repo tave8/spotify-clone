@@ -15,11 +15,11 @@ const populateUIAlbum = (album) => {
     // select the album html container, etc.
 };
 
+// work with html here
 
 
 
 // ****************************
-
 
 
 const onPageLoad = async () => {
@@ -34,6 +34,7 @@ const loadAlbum = async () => {
   try {
     const album = await getRemoteAlbum(getAlbumIdFromUrl());
     populateUIAlbum(getSimplerAlbumInfo(album));
+    console.log("simpler album info: ", getSimplerAlbumInfo(album))
   } catch (err) {
     console.error(err);
   }
@@ -113,9 +114,6 @@ const getSimplerAlbumInfo = (album) => {
 
   };
 };
-
-
-
 
 
 
