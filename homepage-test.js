@@ -7,8 +7,8 @@ closeBtn.addEventListener("click", () => {
   rightSidebar.classList.add("d-none");
   rightSidebar.classList.remove("d-lg-flex");
 
-  mainCenter.classList.remove("col-lg-7");
-  mainCenter.classList.add("col-lg-9");
+  mainCenter.classList.remove("col-lg-8");
+  mainCenter.classList.add("col-lg-10");
 
   openBtn.classList.remove("d-none");
 });
@@ -16,8 +16,8 @@ closeBtn.addEventListener("click", () => {
 openBtn.addEventListener("click", () => {
   openBtn.classList.add("d-none");
 
-  mainCenter.classList.remove("col-lg-9");
-  mainCenter.classList.add("col-lg-7");
+  mainCenter.classList.remove("col-lg-10");
+  mainCenter.classList.add("col-lg-8");
 
   rightSidebar.classList.remove("d-none");
   rightSidebar.classList.add("d-lg-flex");
