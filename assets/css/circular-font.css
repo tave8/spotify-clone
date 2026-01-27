@@ -64,3 +64,151 @@
   font-weight: 900;
   font-style: italic;
 }
+/* =========================================
+   1. CODICE OBBLIGATORIO DEL PROF (FONTS)
+   ========================================= */
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Light.otf);
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-LightItalic.otf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Book.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BookItalic.otf);
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BoldItalic.otf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Black.otf);
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BlackItalic.otf);
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* --- FONTS & BASE --- */
+body {
+  font-family: "Circular", "Helvetica Neue", Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+/* --- GRADIENTI --- */
+.bg-gradiente-album {
+  background: rgb(184, 156, 60);
+  background: linear-gradient(
+    180deg,
+    rgba(200, 165, 60, 1) 0%,
+    rgba(33, 33, 33, 1) 100%
+  );
+}
+
+.bg-gradiente-nero {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.809) 0%, #00000095 100%);
+}
+
+/* --- EFFETTI HOVER --- */
+.icona-hover:hover {
+  color: white !important;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.link-hover:hover {
+  text-decoration: underline !important;
+}
+
+.hover-white:hover {
+  color: white !important;
+  cursor: pointer;
+}
+
+/* --- SCROLLBAR CUSTOM --- */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* --- OVERRIDE TABELLA BOOTSTRAP --- */
+.table {
+  --bs-table-bg: rgba(8, 2, 2, 0.613);
+  --bs-table-hover-bg: #1a1a1a;
+  --bs-table-color: #ffffff;
+}
+
+.table thead {
+  background-color: #0e0e0e;
+  background: #0e0e0e;
+}
+
+.table tbody tr td {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- STILI RESPONSIVE (Mobile Navbar) --- */
+.mobile-nav-item {
+  color: #b3b3b3;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.7rem;
+  transition: color 0.2s;
+}
+
+.mobile-nav-item i {
+  font-size: 1.5rem;
+  margin-bottom: 2px;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover {
+  color: white;
+}
