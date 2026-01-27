@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((r) => r.json())
     .then((artist) => {
       console.log(" Artista:", artist.name);
-      document.getElementById("artistHeader").style.backgroundImage = `url(${artist.picture_xl})`;
-      document.getElementById("artistAvatar").src = artist.picture_big;
+      document.getElementById("artistHeader").style.backgroundImage = `url(${artist.picture_big})`;
       document.getElementById("artistName").textContent = artist.name;
       document.getElementById("fansCount").textContent = artist.nb_fan.toLocaleString("it-IT") + " ascoltatori mensili";
 
