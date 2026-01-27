@@ -1,0 +1,139 @@
+:root {
+  --bg-primary: #000;
+  --bg-secondary: #181818;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --green-spotify: #1db954;
+}
+
+body[data-bs-theme="dark"] {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.cover {
+  height: 300px;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+#artistHeader {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 50vh;
+}
+
+.cover-overlay {
+  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.artist-avatar {
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.tracklist .track-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.tracklist .track-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 1rem;
+}
+
+.tracklist .track-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+
+.tracklist .track-number.active {
+  color: var(--green-spotify);
+}
+
+.tracklist .track-cover {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tracklist .track-info {
+  flex: 1;
+  min-width: 0;
+  margin-left: 1rem;
+}
+
+.tracklist .track-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.125rem;
+}
+
+.tracklist .track-artist {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tracklist .track-duration {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.activity-item {
+  transition: background 0.2s;
+}
+
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.btn-success {
+  background: var(--green-spotify);
+  border-color: var(--green-spotify);
+}
+
+.btn-success:hover {
+  background: #1ed760;
+  border-color: #1ed760;
+  transform: translateY(-1px);
+}
+
+.play-btn {
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .artist-avatar {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  #artistName {
+    font-size: 1.75rem !important;
+  }
+}
