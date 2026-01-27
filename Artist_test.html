@@ -71,20 +71,31 @@
           <!-- COVER ARTISTA -->
           <div id="artistHeader" class="cover mb-4 rounded-3 overflow-hidden position-relative">
             <div class="cover-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
-            <h1 id="artistName" class="artist-name mb-2 fs-1 fw-bold text-white lh-sm position-absolute bottom-0 ps-3">Caricamento...</h1>
+            <div class="d-flex flex-column flex-end position-absolute bottom-0 w-100 px-4">
+              <p class="d-none d-md-block">
+                <img src="./assets/imgs/Legitly-Verified-Blue-Badge-top-page-600x454.png" alt="VerifiedIMG" style="height: 20px" /><span
+                  >Artista verificato</span
+                >
+              </p>
+              <h1 id="artistName" class="artist-name mb-2 fs-1 fw-bold text-white lh-sm">Caricamento...</h1>
+              <p id="fansCount" class="listeners mb-4 text-white fs-6 fw-normal d-none d-md-block">0 ascoltatori mensili</p>
+            </div>
           </div>
 
           <!-- INFO ARTISTA (SPOTIFY STYLE) -->
-          <section class="artist-info mb-5 px-4">
+          <section class="artist-info mb-5 px-4 px-md-0">
             <div class="d-flex align-items-start">
               <div class="flex-grow-1 min-width-0">
-                <p id="fansCount" class="listeners mb-4 text-white-50 fs-5 fw-normal">0 ascoltatori mensili</p>
+                <p id="fansCount1" class="listeners mb-4 text-white-50 fs-6 fw-normal d-md-none">0 ascoltatori mensili</p>
                 <div class="buttons d-flex gap-3 align-items-center">
-                  <button class="btn btn-outline-light px-4 py-2 fs-6 fw-medium">Segui</button>
-                  <div class="text-white-50 fs-6"><i class="bi bi-three-dots-vertical me-1"></i></div>
+                  <button class="btn px-2 py-2 fs-4 fw-semibold play-btn d-none d-md-block"><i class="bi bi-play-circle-fill text-success fs-1"></i></button>
+                  <button class="btn btn-outline-light px-2 py-1 fs-6 fw-medium d-none d-md-block">Following</button>
+                  <div class="text-white-50 fs-6"><i class="bi bi-three-dots me-1 fs-4 d-none d-md-block"></i></div>
+                  <button class="btn btn-outline-light px-4 py-2 fs-6 fw-medium d-md-none">Segui</button>
+                  <div class="text-white-50 fs-6"><i class="bi bi-three-dots-vertical me-1 d-md-none"></i></div>
                   <div class="d-flex justify-content-end ms-auto">
-                    <button class="btn px-2 py-2 fs-4 fw-semibold play-btn"><i class="bi bi-shuffle text-success fs-3"></i></button>
-                    <button class="btn px-2 py-2 fs-4 fw-semibold play-btn"><i class="bi bi-play-circle-fill text-success fs-1"></i></button>
+                    <button class="btn px-2 py-2 fs-4 fw-semibold play-btn d-md-none"><i class="bi bi-shuffle text-success fs-3"></i></button>
+                    <button class="btn px-2 py-2 fs-4 fw-semibold play-btn d-md-none"><i class="bi bi-play-circle-fill text-success fs-1"></i></button>
                   </div>
                 </div>
               </div>

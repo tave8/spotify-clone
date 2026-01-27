@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("artistHeader").style.backgroundImage = `url(${artist.picture_big})`;
       document.getElementById("artistName").textContent = artist.name;
       document.getElementById("fansCount").textContent = artist.nb_fan.toLocaleString("it-IT") + " ascoltatori mensili";
+      document.getElementById("fansCount1").textContent = artist.nb_fan.toLocaleString("it-IT") + " ascoltatori mensili";
 
       // Ricerca per artista
       return fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=artist:"${encodeURIComponent(artist.name)}"&limit=25`);
