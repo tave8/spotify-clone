@@ -12,7 +12,7 @@ window.addEventListener("load", onPageLoad);
 const loadAlbum = async () => {
   try {
     const album = await getRemoteAlbum(getAlbumIdFromUrl());
-    populateAlbum(getSimplerAlbumInfo(album));
+    populateUIAlbum(getSimplerAlbumInfo(album));
   } catch (err) {
     console.error(err);
   }
@@ -23,7 +23,7 @@ const loadAlbum = async () => {
  * the API output; this wasy it's simple to access
  * the relevant properties while working with UI.
  */
-const populateAlbum = (album) => {
+const populateUIAlbum = (album) => {
     // continue here: populate the UI with album 
     // and its tracks 
 };
