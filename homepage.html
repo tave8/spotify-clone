@@ -17,6 +17,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
+    <link rel="stylesheet" href="./assets/css/menu-player-mobile.css" />
   </head>
   <body data-bs-theme="dark">
     <main class="container-fluid">
@@ -330,6 +331,54 @@
         <!-- FINE SIDEBAR DESTRA -->
       </div>
     </main>
+
+    <!-- MENU AND MEDIA PLAYER - MOBILE -->
+    <div class="container-fluid d-md-none" id="menu-and-player-mobile">
+      <!-- MEDIA PLAYER - MOBILE -->
+      <div class="container-fluid" id="media-player-mobile">
+        <div class="row">
+          <!-- column 1 (song title) -->
+          <div class="col col-6">
+            <span>Song title...</span>
+          </div>
+          <!-- column 2 (audio output) -->
+          <div class="col col-2">
+            <span><i class="bi bi-speaker"></i></span>
+          </div>
+          <!-- column 3 (like/love) -->
+          <div class="col col-2">
+            <span><i class="bi bi-heart"></i></span>
+          </div>
+          <!-- column 4 (play button) -->
+          <div class="col col-2">
+            <span><i class="bi bi-play-fill"></i></span>
+          </div>
+        </div>
+      </div>
+      <!-- MENU - MOBILE  -->
+      <div class="container-fluid" id="menu-mobile">
+        <!-- background layer -->
+        <div class="row background-layer"></div>
+        <!-- icons -->
+        <div class="row icons">
+          <!-- column 1 (home) -->
+          <div class="col col-4">
+            <span><i class="bi bi-house"></i></span>
+            <span>Home</span>
+          </div>
+          <!-- column 2 (search) -->
+          <div class="col col-4">
+            <span><i class="bi bi-search"></i></span>
+            <span>Cerca</span>
+          </div>
+          <!-- column 1 (your library) -->
+          <div class="col col-4">
+            <span><i class="bi bi-music-note-list"></i></span>
+            <span>La tua libreria</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
