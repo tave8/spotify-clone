@@ -2,7 +2,6 @@
  * Get album info from page URL and populate UI.
  */
 
-// get album info
 
 const onPageLoad = async () => {
   loadAlbum();
@@ -13,12 +12,20 @@ window.addEventListener("load", onPageLoad);
 const loadAlbum = async () => {
   try {
     const album = await getRemoteAlbum(getAlbumIdFromUrl());
-    console.log(album);
-
-    // populateAlbum(album);
+    populateAlbum(getSimplerAlbumInfo(album));
   } catch (err) {
     console.error(err);
   }
+};
+
+/**
+ * The input album should be an object simpler than 
+ * the API output; this wasy it's simple to access
+ * the relevant properties while working with UI.
+ */
+const populateAlbum = (album) => {
+    // continue here: populate the UI with album 
+    // and its tracks 
 };
 
 const getRemoteAlbum = async (albumId) => {
@@ -93,7 +100,8 @@ const getSimplerAlbumInfo = (album) => {
   };
 };
 
-const populateAlbum = (album) => {};
+
+
 
 const getAlbumIdFromUrl = () => {
   return helpers.getUrlQueryParam(vars.ALBUM_ID_QUERY_PARAM);
