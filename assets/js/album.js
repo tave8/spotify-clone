@@ -3,11 +3,32 @@
  */
 
 
+/**
+ * The input album should be an object simpler than 
+ * the API output; this wasy it's simple to access
+ * the relevant properties while working with UI.
+ */
+const populateUIAlbum = (album) => {
+    // CONTINUE HERE: populate the UI with album 
+    // and its tracks 
+    
+    // select the album html container, etc.
+};
+
+
+
+
+// ****************************
+
+
+
 const onPageLoad = async () => {
   loadAlbum();
 };
 
 window.addEventListener("load", onPageLoad);
+
+
 
 const loadAlbum = async () => {
   try {
@@ -18,15 +39,7 @@ const loadAlbum = async () => {
   }
 };
 
-/**
- * The input album should be an object simpler than 
- * the API output; this wasy it's simple to access
- * the relevant properties while working with UI.
- */
-const populateUIAlbum = (album) => {
-    // continue here: populate the UI with album 
-    // and its tracks 
-};
+
 
 const getRemoteAlbum = async (albumId) => {
   const url = `${vars.DEEZER_API_URL}/album/${albumId}`;
@@ -97,8 +110,11 @@ const getSimplerAlbumInfo = (album) => {
     totalAlbumDurationForUI,
     // [track]
     tracks,
+
   };
 };
+
+
 
 
 
