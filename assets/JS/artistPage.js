@@ -9,17 +9,48 @@ window.addEventListener("load", onPageLoad);
 
 let currentAudio = null;
 
+// NUOVO: Funzione centralizzata per aggiornare la sezione "Brani che ti piacciono"
+const updateLikedSection = (artistName, artistImage) => {
+  const count = getCountOfLikedSongs(artistName); // Funzione da storage.js
+  const section = document.getElementById("likedTracks");
+  const container = document.getElementById("likedTracksContainer");
+
+  if (count > 0) {
+    section.classList.remove("d-none"); // Mostra la sezione
+
+    // NUOVO: Generiamo l'HTML con l'immagine dell'artista e il conteggio
+    container.innerHTML = `
+        <div class="d-flex align-items-center p-3">
+            <div class="position-relative">
+                <img src="${artistImage}" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                <div class="bg-success rounded-circle position-absolute bottom-0 end-0 d-flex justify-content-center align-items-center p-1" style="width: 20px; height: 20px;">
+                    <i class="bi bi-heart-fill text-white" style="font-size: 10px;"></i>
+                </div>
+            </div>
+            <div class="ms-3">
+                <div class="fw-bold text-white">Hai messo "Mi piace" a ${count} brani</div>
+                <div class="text-white-50 small">di ${artistName}</div>
+            </div>
+        </div>
+    `;
+  } else {
+    section.classList.add("d-none"); // Nascondi se non ci sono like
+  }
+};
+
 const loadArtistAndTopTracks = async () => {
   try {
     // artist info only
-    const artist = await getRemoteArtist(getArtistIdFromUrl());
-    populateUIArtist(getSimplerArtistInfo(artist));
+    const artistRaw = await getRemoteArtist(getArtistIdFromUrl());
+    const artist = getSimplerArtistInfo(artistRaw);
+    populateUIArtist(artist);
 
     // top tracks of this artist
     const topTracksData = await getRemoteTopTracks(artist.name);
-    const filteredTracks = topTracksData.data.filter((t) => t.artist.id == artist.id).slice(0, 10);
+    const filteredTracks = topTracksData.data.filter((t) => t.artist.id == artistRaw.id).slice(0, 10);
 
-    populateUITopTracks(getSimplerTopTracksInfo(filteredTracks));
+    // NUOVO: Passiamo anche l'immagine piccola dell'artista per la sezione Like
+    populateUITopTracks(getSimplerTopTracksInfo(filteredTracks), artist.picture.small);
   } catch (err) {
     console.error(err);
     document.getElementById("tracksContainer").innerHTML = `<div class="text-danger p-4">Errore: ${err.message}</div>`;
@@ -42,9 +73,12 @@ const populateUIArtist = (artist) => {
   document.getElementById("fansCount").textContent = artist.totalFans.toLocaleString("it-IT") + " ascoltatori mensili";
 
   document.getElementById("fansCount1").textContent = artist.totalFans.toLocaleString("it-IT") + " ascoltatori mensili";
+
+  // NUOVO: Inizializziamo la sezione "Mi piace" appena caricata la pagina
+  updateLikedSection(artist.name, artist.picture.small);
 };
 
-const populateUITopTracks = (topTracks) => {
+const populateUITopTracks = (topTracks, artistSmallImage) => {
   // continue here: populate the top tracks UI
 
   const container = document.getElementById("tracksContainer");
@@ -63,43 +97,94 @@ const populateUITopTracks = (topTracks) => {
   const mobilePlayerTitle = document.getElementById("mobilePlayerTitle");
   const mobilePlayerArtist = document.getElementById("mobilePlayerArtist");
 
-  playPauseBtn.onclick = togglePlay;
-  mobilePlayIcon.onclick = (e) => {
-    e.stopPropagation();
-    togglePlay();
-  };
+  if (playPauseBtn) playPauseBtn.onclick = togglePlay;
+  if (mobilePlayIcon)
+    mobilePlayIcon.onclick = (e) => {
+      e.stopPropagation();
+      togglePlay();
+    };
 
   topTracks.forEach((track) => {
     const div = document.createElement("div");
-    div.className = "track-item";
+    // NUOVO: Aggiunte classi flex per layout ordinato
+    div.className = "track-item d-flex align-items-center justify-content-between p-2";
+
+    // NUOVO: Controllo stato iniziale del cuore
+    const isLiked = typeof isSongLiked === "function" ? isSongLiked(track.id) : false;
+    const heartIconClass = isLiked ? "bi-heart-fill text-success" : "bi-heart";
+
     div.innerHTML = `
-      <span class="track-number fw-bold me-4">${track.num}</span>
-      <img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded">
-      <div class="track-info">
-        <div class="track-title">${track.title}</div>
-        <div class="track-artist text-white-50 small">${track.artist}</div>
+      <div class="d-flex align-items-center flex-grow-1 overflow-hidden">
+        <span class="track-number fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
+        <img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded me-3 flex-shrink-0">
+        
+        <div class="track-info overflow-hidden"> 
+            <div class="track-title text-white fw-bold text-truncate">${track.title}</div>
+            <div class="track-artist text-white-50 small text-truncate">${track.artist}</div>
+        </div>
       </div>
-      <span class="ms-auto text-white-50 small">${track.durationForUI}</span>
+
+      <div class="d-flex align-items-center flex-shrink-0">
+         <i class="bi ${heartIconClass} fs-5 me-4 heart-btn" style="cursor: pointer; z-index: 10;"></i>
+         <span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.durationForUI}</span>
+      </div>
     `;
 
-    div.onclick = () => {
-      playerImg.src = track.albumCover.small;
-      playerImg.classList.remove("d-none");
-      playerTitle.textContent = track.title;
-      playerArtist.textContent = track.artist;
-      playerDuration.textContent = track.durationForUI;
+    const heartBtn = div.querySelector(".heart-btn");
 
-      mobilePlayerImg.src = track.albumCover.small;
-      mobilePlayerImg.classList.remove("d-none");
-      mobilePlayerTitle.textContent = track.title;
-      mobilePlayerArtist.textContent = track.artist;
+    // NUOVO: Gestione click sul cuore
+    heartBtn.onclick = (e) => {
+      e.stopPropagation(); // Ferma il click (non fa partire la canzone)
+
+      const songObj = {
+        id: track.id,
+        title: track.title,
+        artist: track.artist,
+        cover: track.albumCover.small,
+        duration: track.duration,
+        preview: track.preview,
+      };
+
+      const added = toggleLike(songObj); // Chiama storage.js
+
+      // NUOVO: Aggiorna icona visivamente
+      if (added) {
+        heartBtn.classList.remove("bi-heart");
+        heartBtn.classList.add("bi-heart-fill", "text-success");
+      } else {
+        heartBtn.classList.remove("bi-heart-fill", "text-success");
+        heartBtn.classList.add("bi-heart");
+      }
+
+      // NUOVO: Aggiorna la sezione "Brani che ti piacciono" in tempo reale
+      updateLikedSection(track.artist, artistSmallImage);
+    };
+
+    div.onclick = () => {
+      // populate player logic
+      if (playerImg) {
+        playerImg.src = track.albumCover.small;
+        playerImg.classList.remove("d-none");
+      }
+      if (playerTitle) playerTitle.textContent = track.title;
+      if (playerArtist) playerArtist.textContent = track.artist;
+      if (playerDuration) playerDuration.textContent = track.durationForUI;
+
+      if (mobilePlayerImg) {
+        mobilePlayerImg.src = track.albumCover.small;
+        mobilePlayerImg.classList.remove("d-none");
+      }
+      if (mobilePlayerTitle) mobilePlayerTitle.textContent = track.title;
+      if (mobilePlayerArtist) mobilePlayerArtist.textContent = track.artist;
 
       if (currentAudio) currentAudio.pause();
-      currentAudio = new Audio(track.preview);
-      currentAudio.play();
+      if (track.preview) {
+        currentAudio = new Audio(track.preview);
+        currentAudio.play();
 
-      playIcon.classList.replace("bi-play-fill", "bi-pause-fill");
-      mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
+        if (playIcon) playIcon.classList.replace("bi-play-fill", "bi-pause-fill");
+        if (mobilePlayIcon) mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
+      }
     };
 
     container.appendChild(div);
@@ -114,12 +199,12 @@ const togglePlay = () => {
 
   if (currentAudio.paused) {
     currentAudio.play();
-    playIcon.classList.replace("bi-play-fill", "bi-pause-fill");
-    mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
+    if (playIcon) playIcon.classList.replace("bi-play-fill", "bi-pause-fill");
+    if (mobilePlayIcon) mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
   } else {
     currentAudio.pause();
-    playIcon.classList.replace("bi-pause-fill", "bi-play-fill");
-    mobilePlayIcon.classList.replace("bi-pause-fill", "bi-play-fill");
+    if (playIcon) playIcon.classList.replace("bi-pause-fill", "bi-play-fill");
+    if (mobilePlayIcon) mobilePlayIcon.classList.replace("bi-pause-fill", "bi-play-fill");
   }
 };
 
@@ -149,12 +234,11 @@ const getRemoteTopTracks = async (artistName) => {
  * Outputs the artist info into fields
  * that are more intuitive to access/remember.
  *
- *  Artist info:
+ * Artist info:
         name
         total listeners
         popular 
  */
-
 const getSimplerArtistInfo = (artist) => {
   const name = artist.name;
   const picture = {
@@ -177,10 +261,12 @@ const getSimplerTopTracksInfo = (topTracks) => {
   return topTracks.map((track) => {
     trackNum += 1;
     return {
+      id: track.id, // NUOVO: Fondamentale per il like
       num: trackNum,
       title: track.title_short || track.title,
       artist: track.artist.name,
       durationForUI: getDurationForUI(track.duration),
+      duration: track.duration, // NUOVO: Serve per l'oggetto like
       preview: track.preview,
       albumCover: {
         big: track.album.cover_big,
