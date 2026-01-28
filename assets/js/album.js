@@ -9,28 +9,73 @@
  * the relevant properties while working with UI.
  */
 const populateUIAlbum = (album) => {
-    // CONTINUE HERE: populate the UI with album 
-    // and its tracks 
-    
-    // select the album html container, etc.
+  // populate only the album 
+  populateUIAlbumOnly(album)
+  // populate only the tracks
+  populateUIAlbumTracks(album)
 };
 
 // work with html here
+const populateUIAlbumOnly = (album) => {
+    const albumCover = getUIAlbumCover()
+    const albumTitle = getUIAlbumTitle()
+
+    albumCover.src = album.coverUrl.small
+    albumTitle.innerText = album.title
+}
 
 
+const populateUIAlbumTracks = (album) => {
+
+}
+
+
+
+
+// ************* UI
+
+const getUIAlbumSection = () => {
+  return document.getElementById("album-section")
+}
+
+const getUIAlbumCover = () => {
+  return document.getElementById("album-cover")
+}
+
+const getUIAlbumTitle = () => {
+  return document.getElementById("album-title")
+}
 
 // ****************************
 
 
 const onPageLoad = async () => {
-  loadAlbum();
+  // loadAlbumFromPageUrl();
+  // you can insert any album id here.
+  loadAlbumWithId("75621062")
 };
 
 window.addEventListener("load", onPageLoad);
 
 
+/**
+ * Load album with given album id.
+ */
+const loadAlbumWithId = async (albumId) => {
+    try {
+    const album = await getRemoteAlbum(albumId);
+    populateUIAlbum(getSimplerAlbumInfo(album));
+    console.log("simpler album info: ", getSimplerAlbumInfo(album))
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-const loadAlbum = async () => {
+
+/**
+ * Load album from page url (so with ?albumId=xxx in the page url)
+ */
+const loadAlbumFromPageUrl = async () => {
   try {
     const album = await getRemoteAlbum(getAlbumIdFromUrl());
     populateUIAlbum(getSimplerAlbumInfo(album));
@@ -71,7 +116,7 @@ const getSimplerAlbumInfo = (album) => {
   const title = album.title;
   const artistName = album.artist.name;
   const releaseYear = helpers.getYearFromDate(album.release_date);
-  const cover = {
+  const coverUrl = {
     big: album.cover_big,
     medium: album.cover_medium,
     small: album.cover_small,
@@ -100,7 +145,7 @@ const getSimplerAlbumInfo = (album) => {
     // Gioventù brucata
     title,
     // {small, big, etc.}
-    cover,
+    coverUrl,
     // Pinguini Tattici Nuclear
     artistName,
     // 2017
