@@ -14,9 +14,12 @@ const updateLikedSection = (artistName, artistImage) => {
   const count = getCountOfLikedSongs(artistName); // Funzione da storage.js
   const section = document.getElementById("likedTracks");
   const container = document.getElementById("likedTracksContainer");
+  const popularTracksCont = document.getElementById("popularTracks");
 
   if (count > 0) {
-    section.classList.remove("d-none"); // Mostra la sezione
+    section.classList.remove("d-md-none");
+    popularTracksCont.classList.add("col-md-8");
+    // Mostra la sezione
 
     // NUOVO: Generiamo l'HTML con l'immagine dell'artista e il conteggio
     container.innerHTML = `
@@ -34,7 +37,8 @@ const updateLikedSection = (artistName, artistImage) => {
         </div>
     `;
   } else {
-    section.classList.add("d-none"); // Nascondi se non ci sono like
+    section.classList.add("d-md-none");
+    popularTracksCont.classList.add("col-md"); // Nascondi se non ci sono like
   }
 };
 
