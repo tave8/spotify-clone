@@ -185,6 +185,8 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
         if (playIcon) playIcon.classList.replace("bi-play-fill", "bi-pause-fill");
         if (mobilePlayIcon) mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
       }
+      const playerBtnHeart = document.getElementById("playerHeart");
+      playerBtnHeart.addEventListener("click", () => {});
     };
 
     container.appendChild(div);
