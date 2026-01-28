@@ -71,20 +71,21 @@ const getMainAlbum = function (albumID) {
       console.log("Album ricevuti", data);
       const mainAlbumCard = document.getElementById("mainAlbum-card");
       const coverImg = data.cover_big;
-      const titleTrack = data.tracks.data[0].title_short;
+      const randomIndex = Math.floor(Math.random() * data.tracks.data.length);
+      const titleTrack = data.tracks.data[randomIndex].title_short;
       const artistName = data.artist.name;
 
       mainAlbumCard.innerHTML = `
       <div class="row">
               <div class="col-4">
-                <img class="img-fluid" src="${coverImg}" alt="album cover" />
+                <img class="img-fluid h-100" src="${coverImg}" alt="album cover" />
               </div>
               <div class="col-8 d-flex flex-column flex-nowrap">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <p class="fw-bold">ALBUM</p>
                   <button class="btn btn-dark rounded-pill text-muted">NASCONDI ANNUNCI</button>
                 </div>
-                <h1 class="display-5 fw-bold mt-1">${titleTrack}</h1>
+                <h1 class="display-5 fw-bold mt-1 mb-3 text-truncate">${titleTrack}</h1>
                 <p>${artistName}</p>
                 <p>Ascolta ora!</p>
                 <div class="d-flex align-items-center gap-3 mt-4">
