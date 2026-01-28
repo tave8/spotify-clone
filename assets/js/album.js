@@ -19,9 +19,15 @@ const populateUIAlbum = (album) => {
 const populateUIAlbumOnly = (album) => {
     const albumCover = getUIAlbumCover()
     const albumTitle = getUIAlbumTitle()
+    const albumDuration = getUIAlbumDuration()
+    const albumArtist = getUIAlbumArtist()
+    const albumReleaseYear = getUIAlbumReleaseYear()
 
     albumCover.src = album.coverUrl.small
     albumTitle.innerText = album.title
+    albumDuration.innerText = album.totalAlbumDurationForUI
+    albumArtist.innerText = album.artistName
+    albumReleaseYear.innerText = album.releaseYear
 }
 
 
@@ -46,6 +52,18 @@ const getUIAlbumTitle = () => {
   return document.getElementById("album-title")
 }
 
+const getUIAlbumDuration = () => {
+  return document.getElementById("album-duration")
+}
+
+const getUIAlbumArtist = () => {
+  return document.getElementById("album-artist")
+}
+
+const getUIAlbumReleaseYear = () => {
+  return document.getElementById("album-release-year")
+}
+
 // ****************************
 
 
@@ -56,6 +74,7 @@ const onPageLoad = async () => {
 };
 
 window.addEventListener("load", onPageLoad);
+
 
 
 /**
