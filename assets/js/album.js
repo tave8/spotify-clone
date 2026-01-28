@@ -26,6 +26,7 @@ const populateUIAlbumOnly = (album) => {
   albumTitle.innerText = album.title;
   albumDuration.innerText = album.totalAlbumDurationForUI;
   albumArtist.innerText = album.artistName;
+  albumArtist.href = `./artist.html?artistId=${album.artistId}`;
   albumReleaseYear.innerText = album.releaseYear;
 };
 
@@ -148,6 +149,7 @@ const getRemoteAlbum = async (albumId) => {
 const getSimplerAlbumInfo = (album) => {
   const title = album.title;
   const artistName = album.artist.name;
+  const artistId = album.artist.id;
   const releaseYear = helpers.getYearFromDate(album.release_date);
   const coverUrl = {
     big: album.cover_big,
@@ -182,6 +184,8 @@ const getSimplerAlbumInfo = (album) => {
     coverUrl,
     // Pinguini Tattici Nuclear
     artistName,
+    // 393454
+    artistId,
     // 2017
     releaseYear,
     // 12
