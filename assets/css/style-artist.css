@@ -23,6 +23,7 @@ body[data-bs-theme="dark"] {
   background-position: center center;
   background-repeat: no-repeat;
   height: 50vh;
+  border-radius: 0px;
 }
 
 .cover-overlay {

@@ -72,19 +72,66 @@ const loadArtistAndTopTracks = async () => {
  * the API output; this wasy it's simple to access
  * the relevant properties while working with UI.
  */
+/**
+ * The artist album should be an object simpler than
+ * the API output; this wasy it's simple to access
+ * the relevant properties while working with UI.
+ */
+/**
+ * Popola la UI con info artista e calcola il colore medio per lo sfondo
+ */
+/**
+ * Popola la UI con info artista e crea un gradiente continuo tra Header e Info
+ */
 const populateUIArtist = (artist) => {
-  // continue here: populate the UI with artist
-  // and its info/tracks
-
-  document.getElementById("artistHeader").style.backgroundImage = `url(${artist.picture.big})`;
-
+  // 1. Dati testuali
   document.getElementById("artistName").textContent = artist.name;
-
   document.getElementById("fansCount").textContent = artist.totalFans.toLocaleString("it-IT") + " ascoltatori mensili";
-
   document.getElementById("fansCount1").textContent = artist.totalFans.toLocaleString("it-IT") + " ascoltatori mensili";
 
-  // NUOVO: Inizializziamo la sezione "Mi piace" appena caricata la pagina
+  // 2. RIFERIMENTI DOM
+  const header = document.getElementById("artistHeader");
+  const infoSection = document.getElementById("infoArtist"); // L'ID corretto dal tuo HTML
+
+  // Fallback iniziale (solo immagine)
+  header.style.backgroundImage = `url(${artist.picture.big})`;
+  header.style.backgroundSize = "cover";
+  header.style.backgroundPosition = "center";
+
+  // 3. CALCOLO COLORE (Canvas Trick)
+  const img = new Image();
+  img.crossOrigin = "Anonymous";
+  img.src = artist.picture.big;
+
+  img.onload = function () {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext("2d");
+
+    // Disegniamo l'immagine in 1x1 pixel per la media
+    ctx.drawImage(img, 0, 0, 1, 1);
+
+    // Estraiamo RGB
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+
+    // --- APPLICAZIONE GRADIENTI ---
+
+    // A. HEADER: Immagine di sfondo che sfuma verso il colore in basso
+    // (rgba con opacità 0.8 alla fine per fondersi con la sezione sotto)
+    header.style.background = `
+        linear-gradient(to bottom, transparent 0%, rgba(${r},${g},${b}, 0.8) 100%), 
+        url(${artist.picture.big})
+    `;
+    header.style.backgroundSize = "cover";
+    header.style.backgroundPosition = "center 20%"; // Centrato leggermente in alto
+
+    // B. SECTION INFO: Parte dal colore (0.8) e sfuma a nero (#121212)
+    // Questo crea l'effetto "continuo" stile Spotify
+    infoSection.style.background = `linear-gradient(to bottom, rgba(${r},${g},${b}, 0.8) 0%, #121212 100%)`;
+  };
+
+  // 4. Inizializza la sezione "Mi piace"
   updateLikedSection(artist.name, artist.picture.small);
 };
 
