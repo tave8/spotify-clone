@@ -17,9 +17,10 @@ const updateLikedSection = (artistName, artistImage) => {
   const popularTracksCont = document.getElementById("popularTracks");
 
   if (count > 0) {
-    section.classList.remove("d-md-none");
-    popularTracksCont.classList.add("col-md-8");
     // Mostra la sezione
+    section.classList.remove("d-md-none");
+    popularTracksCont.classList.remove("col-12"); // ripristina col-md-8
+    popularTracksCont.classList.add("col-md-8");
 
     // NUOVO: Generiamo l'HTML con l'immagine dell'artista e il conteggio
     container.innerHTML = `
@@ -37,8 +38,11 @@ const updateLikedSection = (artistName, artistImage) => {
         </div>
     `;
   } else {
+    // Nascondi sezione liked e allarga i top tracks
     section.classList.add("d-md-none");
-    popularTracksCont.classList.add("col-md"); // Nascondi se non ci sono like
+    popularTracksCont.classList.remove("col-md-8");
+    popularTracksCont.classList.add("col-12");
+    container.innerHTML = "";
   }
 };
 
