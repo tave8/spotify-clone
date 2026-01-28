@@ -1,0 +1,43 @@
+/* Effetto hover per le icone grigie */
+.hover-white:hover {
+  color: #fff !important;
+  cursor: pointer;
+}
+
+/* Effetto ingrandimento tasto play */
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.1s;
+}
+
+/* Stile personalizzato per gli input range */
+.spotify-range {
+  height: 4px;
+  background-color: #4d4d4d;
+  border-radius: 2px;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Il "pollice" (il pallino che trascini) */
+.spotify-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  margin-top: -4px;
+  display: none;
+}
+
+/* Mostra il pallino quando passi sopra la barra */
+.spotify-range:hover::-webkit-slider-thumb {
+  display: block;
+}
+
+.spotify-range::-webkit-slider-runnable-track {
+  background: #5e5e5e;
+  height: 4px;
+  border-radius: 2px;
+}
