@@ -131,6 +131,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
     `;
 
     const heartBtn = div.querySelector(".heart-btn");
+    const playerBtnHeart = document.getElementById("playerHeart");
 
     // NUOVO: Gestione click sul cuore
     heartBtn.onclick = (e) => {
@@ -151,9 +152,13 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       if (added) {
         heartBtn.classList.remove("bi-heart");
         heartBtn.classList.add("bi-heart-fill", "text-success");
+        playerBtnHeart.classList.remove("bi-heart");
+        playerBtnHeart.classList.add("bi-heart-fill", "text-success");
       } else {
         heartBtn.classList.remove("bi-heart-fill", "text-success");
         heartBtn.classList.add("bi-heart");
+        playerBtnHeart.classList.remove("bi-heart-fill", "text-success");
+        playerBtnHeart.classList.add("bi-heart");
       }
 
       // NUOVO: Aggiorna la sezione "Brani che ti piacciono" in tempo reale
@@ -185,8 +190,36 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
         if (playIcon) playIcon.classList.replace("bi-play-fill", "bi-pause-fill");
         if (mobilePlayIcon) mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
       }
-      const playerBtnHeart = document.getElementById("playerHeart");
-      playerBtnHeart.addEventListener("click", () => {});
+
+      playerBtnHeart.addEventListener("click", (e) => {
+        e.stopPropagation(); // Ferma il click (non fa partire la canzone)
+        const songObj = {
+          id: track.id,
+          title: track.title,
+          artist: track.artist,
+          cover: track.albumCover.small,
+          duration: track.duration,
+          preview: track.preview,
+        };
+
+        const added = toggleLike(songObj); // Chiama storage.js
+
+        // NUOVO: Aggiorna icona visivamente
+        if (added) {
+          heartBtn.classList.remove("bi-heart");
+          heartBtn.classList.add("bi-heart-fill", "text-success");
+          playerBtnHeart.classList.remove("bi-heart");
+          playerBtnHeart.classList.add("bi-heart-fill", "text-success");
+        } else {
+          heartBtn.classList.remove("bi-heart-fill", "text-success");
+          heartBtn.classList.add("bi-heart");
+          playerBtnHeart.classList.remove("bi-heart-fill", "text-success");
+          playerBtnHeart.classList.add("bi-heart");
+        }
+
+        // NUOVO: Aggiorna la sezione "Brani che ti piacciono" in tempo reale
+        updateLikedSection(track.artist, artistSmallImage);
+      });
     };
 
     container.appendChild(div);
