@@ -217,13 +217,22 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
           playerBtnHeart.classList.add("bi-heart");
         }
 
-        // NUOVO: Aggiorna la sezione "Brani che ti piacciono" in tempo reale
+        // Aggiorna la sezione "Brani che ti piacciono" in tempo reale
         updateLikedSection(track.artist, artistSmallImage);
       });
     };
 
     container.appendChild(div);
   });
+
+  //FAR PARTIRE LA PRIMA CANZONE con il bottone verde
+  const playArtistBtn = document.getElementById("playTracksArtist");
+  const firstTrackRow = container.querySelector(".track-item");
+  if (playArtistBtn && firstTrackRow) {
+    playArtistBtn.onclick = () => {
+      firstTrackRow.click();
+    };
+  }
 };
 
 const togglePlay = () => {

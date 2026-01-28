@@ -87,7 +87,10 @@
               <div class="flex-grow-1 min-width-0 px-4">
                 <p id="fansCount1" class="listeners mb-4 text-white-50 fs-6 fw-normal d-md-none">0 ascoltatori mensili</p>
                 <div class="buttons d-flex gap-3 align-items-center">
-                  <button class="btn px-3 py-2 fs-4 fw-semibold play-btn d-none d-md-block rounded-circle bg-success text-black border-0 hover-scale">
+                  <button
+                    class="btn px-3 py-2 fs-4 fw-semibold play-btn d-none d-md-block rounded-circle bg-success text-black border-0 hover-scale"
+                    id="playTracksArtist"
+                  >
                     <i class="bi bi-play-fill fs-2"></i>
                   </button>
                   <button class="btn btn-outline-light px-3 py-1 fs-6 fw-bold rounded-pill d-none d-md-block">Following</button>
@@ -195,7 +198,7 @@
 
     <!-- MEDIA PLAYER -->
     <div class="container-fluid fixed-bottom bg-black py-3 d-none d-md-flex" style="z-index: 9999">
-      <div class="row align-items-center px-2 w-100 m-0">
+      <div class="row align-items-start px-2 w-100 m-0">
         <div class="col-3 d-flex align-items-center">
           <img id="playerImg" src="" alt="" class="d-none rounded shadow-sm me-3" style="width: 56px; height: 56px; object-fit: cover" />
           <div class="d-flex flex-column justify-content-center me-3">
