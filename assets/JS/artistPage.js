@@ -18,6 +18,7 @@ const updateLikedSection = (artistName, artistImage) => {
 
   if (count > 0) {
     // Mostra la sezione
+    section.classList.remove("d-none");
     section.classList.remove("d-md-none");
     popularTracksCont.classList.remove("col-12"); // ripristina col-md-8
     popularTracksCont.classList.add("col-md-8");
@@ -39,6 +40,7 @@ const updateLikedSection = (artistName, artistImage) => {
     `;
   } else {
     // Nascondi sezione liked e allarga i top tracks
+    section.classList.add("d-none");
     section.classList.add("d-md-none");
     popularTracksCont.classList.remove("col-md-8");
     popularTracksCont.classList.add("col-12");
