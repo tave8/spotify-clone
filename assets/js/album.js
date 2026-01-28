@@ -87,9 +87,9 @@ const getUIAlbumTracksTableRows = () => {
 // ****************************
 
 const onPageLoad = async () => {
-  // loadAlbumFromPageUrl();
+  loadAlbumFromPageUrl();
   // you can insert any album id here.
-  loadAlbumWithId("75621062");
+  // loadAlbumWithId("75621062");
 };
 
 window.addEventListener("load", onPageLoad);
