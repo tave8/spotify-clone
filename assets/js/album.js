@@ -2,94 +2,110 @@
  * Get album info from page URL and populate UI.
  */
 
-
 /**
- * The input album should be an object simpler than 
+ * The input album should be an object simpler than
  * the API output; this wasy it's simple to access
  * the relevant properties while working with UI.
  */
 const populateUIAlbum = (album) => {
-  // populate only the album 
-  populateUIAlbumOnly(album)
+  // populate only the album
+  populateUIAlbumOnly(album);
   // populate only the tracks
-  populateUIAlbumTracks(album)
+  populateUIAlbumTracks(album);
 };
 
 // work with html here
 const populateUIAlbumOnly = (album) => {
-    const albumCover = getUIAlbumCover()
-    const albumTitle = getUIAlbumTitle()
-    const albumDuration = getUIAlbumDuration()
-    const albumArtist = getUIAlbumArtist()
-    const albumReleaseYear = getUIAlbumReleaseYear()
+  const albumCover = getUIAlbumCover();
+  const albumTitle = getUIAlbumTitle();
+  const albumDuration = getUIAlbumDuration();
+  const albumArtist = getUIAlbumArtist();
+  const albumReleaseYear = getUIAlbumReleaseYear();
 
-    albumCover.src = album.coverUrl.small
-    albumTitle.innerText = album.title
-    albumDuration.innerText = album.totalAlbumDurationForUI
-    albumArtist.innerText = album.artistName
-    albumReleaseYear.innerText = album.releaseYear
-}
-
+  albumCover.src = album.coverUrl.small;
+  albumTitle.innerText = album.title;
+  albumDuration.innerText = album.totalAlbumDurationForUI;
+  albumArtist.innerText = album.artistName;
+  albumReleaseYear.innerText = album.releaseYear;
+};
 
 const populateUIAlbumTracks = (album) => {
+  const tracksTableRows = getUIAlbumTracksTableRows();
+  // empty tracks rows
+  tracksTableRows.innerHTML = "";
+  album.tracks.forEach((track) => {
+    tracksTableRows.innerHTML += createUIAlbumTrackHtmlStr(track);
+  });
+};
 
-}
-
-
-
+const createUIAlbumTrackHtmlStr = (track) => {
+  return `
+      <tr>
+        <td class="text-secondary align-middle">${track.num}</td>
+        <td>
+        <div class="d-flex flex-column">
+          <span class="text-white fw-bold text-truncate">${track.title}</span>
+          <span class="text-secondary small">${track.artistName}</span>
+        </div>
+        </td>
+        <td class="text-secondary align-middle text-end d-none d-md-table-cell">${track.rankForUI}</td>
+        <td class="text-secondary align-middle text-end">${track.durationForUI}</td>
+      </tr>
+  `;
+};
 
 // ************* UI
 
 const getUIAlbumSection = () => {
-  return document.getElementById("album-section")
-}
+  return document.getElementById("album-section");
+};
 
 const getUIAlbumCover = () => {
-  return document.getElementById("album-cover")
-}
+  return document.getElementById("album-cover");
+};
 
 const getUIAlbumTitle = () => {
-  return document.getElementById("album-title")
-}
+  return document.getElementById("album-title");
+};
 
 const getUIAlbumDuration = () => {
-  return document.getElementById("album-duration")
-}
+  return document.getElementById("album-duration");
+};
 
 const getUIAlbumArtist = () => {
-  return document.getElementById("album-artist")
-}
+  return document.getElementById("album-artist");
+};
 
 const getUIAlbumReleaseYear = () => {
-  return document.getElementById("album-release-year")
-}
+  return document.getElementById("album-release-year");
+};
+
+const getUIAlbumTracksTableRows = () => {
+  return document.getElementById("tracks-table").querySelector("tbody");
+};
 
 // ****************************
-
 
 const onPageLoad = async () => {
   // loadAlbumFromPageUrl();
   // you can insert any album id here.
-  loadAlbumWithId("75621062")
+  loadAlbumWithId("75621062");
 };
 
 window.addEventListener("load", onPageLoad);
-
-
 
 /**
  * Load album with given album id.
  */
 const loadAlbumWithId = async (albumId) => {
-    try {
+  try {
     const album = await getRemoteAlbum(albumId);
     populateUIAlbum(getSimplerAlbumInfo(album));
-    console.log("simpler album info: ", getSimplerAlbumInfo(album))
+    console.log("simpler album info: ", getSimplerAlbumInfo(album));
   } catch (err) {
     console.error(err);
   }
-}
-
+};
 
 /**
  * Load album from page url (so with ?albumId=xxx in the page url)
@@ -98,13 +114,11 @@ const loadAlbumFromPageUrl = async () => {
   try {
     const album = await getRemoteAlbum(getAlbumIdFromUrl());
     populateUIAlbum(getSimplerAlbumInfo(album));
-    console.log("simpler album info: ", getSimplerAlbumInfo(album))
+    console.log("simpler album info: ", getSimplerAlbumInfo(album));
   } catch (err) {
     console.error(err);
   }
 };
-
-
 
 const getRemoteAlbum = async (albumId) => {
   const url = `${vars.DEEZER_API_URL}/album/${albumId}`;
@@ -155,6 +169,7 @@ const getSimplerAlbumInfo = (album) => {
       title: track.title,
       artistName: track.artist.name,
       rank: track.rank,
+      rankForUI: helpers.getTrackRankForUI(track.rank),
       // 3:54
       durationForUI: helpers.getTrackDurationForUI(track.duration),
     };
@@ -175,11 +190,8 @@ const getSimplerAlbumInfo = (album) => {
     totalAlbumDurationForUI,
     // [track]
     tracks,
-
   };
 };
-
-
 
 const getAlbumIdFromUrl = () => {
   return helpers.getUrlQueryParam(vars.ALBUM_ID_QUERY_PARAM);

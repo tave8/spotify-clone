@@ -16,6 +16,20 @@ const helpers = {
   // ******* FORMATTERS
 
   /**
+   * Returns the rank formatted with dots separating the 100k.
+   * examples:
+   *    56034835 ->  56.034.835
+   *     1045334 ->  1.045.334 
+   */
+  getRankForUI: function (rankNum) {
+    return rankNum.toLocaleString('it-IT')
+  },
+
+  getTrackRankForUI: function (rankNum) {
+    return this.getRankForUI(rankNum)
+  },
+
+  /**
    * Returns the year of date string.
    *
    * example output:
