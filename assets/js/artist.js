@@ -28,12 +28,32 @@ const populateUITopTracks = (topTracks) => {
 
 
 const onPageLoad = async () => {
-  loadArtistAndTopTracks();
+  // loadArtistAndTopTracksFromPageUrl();
+  loadArtistAndTopTracksWithArtistId("412");
 };
 
 window.addEventListener("load", onPageLoad);
 
-const loadArtistAndTopTracks = async () => {
+
+const loadArtistAndTopTracksWithArtistId = async (artistId) => {
+  try {
+      // artist info only
+    const artist = await getRemoteArtist(artistId);
+    populateUIArtist(getSimplerArtistInfo(artist));
+    console.log("simpler artist info: ", getSimplerArtistInfo(artist))
+
+    // top tracks of this artist
+    const topTracksData = await getRemoteTopTracks(artist.tracklist);
+    const topTracks = topTracksData.data
+    populateUITopTracks(getSimplerTopTracksInfo(topTracks));
+    console.log("simpler top tracks info: ", getSimplerTopTracksInfo(topTracks))
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
+const loadArtistAndTopTracksFromPageUrl = async () => {
   try {
     // artist info only
     const artist = await getRemoteArtist(getArtistIdFromUrl());
