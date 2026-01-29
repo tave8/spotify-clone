@@ -128,7 +128,7 @@ body[data-bs-theme="dark"] {
 }
 
 /* Responsive */
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .artist-avatar {
     width: 100px !important;
     height: 100px !important;
@@ -137,4 +137,4 @@ body[data-bs-theme="dark"] {
   #artistName {
     font-size: 1.75rem !important;
   }
-}
+} */

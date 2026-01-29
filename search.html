@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify search</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./assets/css/search.css" />
+  </head>
+
+  <body>
+    <!-- INIZIO MAIN CONTENT -->
+    <div class="container-fluid main-content pb-5 mb-5">
+      <!-- INIZIO BARRA RICERCA -->
+      <div class="row pt-4 pb-3 sticky-top bg-dark-custom z-3">
+        <div class="col-12 col-md-6 col-lg-4">
+          <h2 class="fw-bold mb-3 text-white">Cerca</h2>
+
+          <div class="search-bar-container bg-white text-dark rounded-pill d-flex align-items-center px-3 py-2 border-0">
+            <i class="bi bi-search fs-5 me-2 text-secondary"></i>
+            <input type="text" id="search-input" class="form-control border-0 p-0 shadow-none text-dark fw-bold" placeholder="Cosa vuoi ascoltare?" />
+          </div>
+        </div>
+      </div>
+      <!-- FINE BARRA RICERCA -->
+
+      <!-- INIZIO SFOGLIA TUTTO -->
+      <div class="row mt-2">
+        <div class="col-12">
+          <h5 class="fw-bold mb-3 text-white">Sfoglia tutto</h5>
+        </div>
+      </div>
+
+      <!-- tracks go here -->
+      <div class="row g-3 mb-3" id="tracks">
+   
+      </div>
+      <!-- FINE SFOGLIA TUTTO -->
+    </div>
+    <!-- FINE MAIN CONTENT -->
+
+    <!-- INIZIO MEDIA PLAYER MOBILE (VISIBILE SOLO < md) -->
+    <div class="fixed-bottom-custom d-md-none">
+      <div class="container-fluid" id="menu-and-player-mobile">
+        <div class="container-fluid" id="media-player-mobile">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <span class="fw-bold text-white">Song title...</span>
+            </div>
+            <div class="col-2 text-end">
+              <i class="bi bi-speaker text-white"></i>
+            </div>
+            <div class="col-2 text-end">
+              <i class="bi bi-heart text-white"></i>
+            </div>
+            <div class="col-2 text-end">
+              <i class="bi bi-play-fill fs-3 text-white"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid pt-2 pb-2" id="menu-mobile">
+          <div class="row text-center">
+            <div class="col-4 opacity-50 text-white">
+              <i class="bi bi-house fs-4"></i>
+              <div style="font-size: 10px">Home</div>
+            </div>
+            <div class="col-4 text-white">
+              <i class="bi bi-search fs-4"></i>
+              <div style="font-size: 10px">Cerca</div>
+            </div>
+            <div class="col-4 opacity-50 text-white">
+              <i class="bi bi-music-note-list fs-4"></i>
+              <div style="font-size: 10px">Libreria</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FINE MEDIA PLAYER MOBILE -->
+
+    <!-- PASSAGGIO MOBILE -> DESKTOP:
+         - Mobile player: d-md-none (si vede SOLO sotto md)
+         - Desktop player: d-none d-md-block (si vede DA md in su) -->
+
+    <!-- INIZIO MEDIA PLAYER DESKTOP (VISIBILE SOLO >= md) -->
+    <div class="container-fluid fixed-bottom pt-2 pb-2 px-3 d-none d-md-block desktop-player-bg" id="media-player-desktop">
+      <div class="row h-100 align-items-center">
+        <div class="col-3 d-flex align-items-center">
+          <div class="rounded me-3 shadow d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background-color: #333">
+            <i class="bi bi-music-note-beamed text-secondary"></i>
+          </div>
+
+          <div class="d-flex flex-column me-3">
+            <h6 class="mb-0 text-white fw-bold" style="font-size: 0.9rem">Fat Funny Friend</h6>
+            <small class="text-secondary" style="font-size: 0.75rem">Maddie Zahm</small>
+          </div>
+
+          <i class="bi bi-heart text-secondary fs-6"></i>
+        </div>
+
+        <div class="col-6 d-flex flex-column align-items-center">
+          <div class="d-flex gap-3 mb-2">
+            <i class="bi bi-shuffle text-success fs-5"></i>
+            <i class="bi bi-skip-start-fill text-secondary fs-4"></i>
+            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px">
+              <i class="bi bi-play-fill text-black fs-4 ms-1"></i>
+            </div>
+            <i class="bi bi-skip-end-fill text-secondary fs-4"></i>
+            <i class="bi bi-repeat text-secondary fs-5"></i>
+          </div>
+
+          <div class="d-flex align-items-center w-75 gap-2">
+            <small class="text-secondary">0:58</small>
+            <div class="progress flex-grow-1" style="height: 4px">
+              <div class="progress-bar bg-white" style="width: 30%"></div>
+            </div>
+            <small class="text-secondary">3:20</small>
+          </div>
+        </div>
+
+        <div class="col-3 d-flex justify-content-end gap-3 text-secondary">
+          <i class="bi bi-mic"></i>
+          <i class="bi bi-list"></i>
+          <i class="bi bi-speaker"></i>
+        </div>
+      </div>
+    </div>
+    <!-- FINE MEDIA PLAYER DESKTOP -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- typing delayer library -->
+    <script src="https://typing-delayer.giutav.workers.dev/script.js"></script>
+
+    <script src="./assets/js/vars.js"></script>
+
+    <script src="./assets/js/search.js"></script>
+  </body>
+</html>

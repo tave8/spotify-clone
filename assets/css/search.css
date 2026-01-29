@@ -1,0 +1,316 @@
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Light.otf);
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-LightItalic.otf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Book.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BookItalic.otf);
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BoldItalic.otf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Black.otf);
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BlackItalic.otf);
+  font-weight: 900;
+  font-style: italic;
+}
+/* =========================================
+   1. CODICE OBBLIGATORIO DEL PROF (FONTS)
+   ========================================= */
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Light.otf);
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-LightItalic.otf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Book.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BookItalic.otf);
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Bold.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BoldItalic.otf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-Black.otf);
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Circular";
+  src: url(../fonts/CircularStd-BlackItalic.otf);
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* =========================================
+   1. RESET E STILI BASE
+   ========================================= */
+body {
+  background-color: #121212; /* Sfondo scuro Spotify */
+  color: white;
+  font-family:
+    "Circular", Helvetica, Arial, sans-serif; /* Font simile a Spotify */
+  overflow-x: hidden; /* Evita scroll orizzontale indesiderato */
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* =========================================
+   2. HEADER & BARRA DI RICERCA (RESPONSIVE)
+   ========================================= */
+/* Sfondo dell'header che rimane fisso in alto */
+.bg-dark-custom {
+  background-color: #121212;
+  z-index: 1020; /* Alto z-index per coprire le card mentre scorrono sotto */
+}
+
+/* Contenitore bianco della barra di ricerca */
+.search-bar-container {
+  background-color: white;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Stile dell'input di testo */
+.search-bar-container input {
+  background-color: transparent;
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+/* Colore del testo "Cosa vuoi ascoltare?" */
+.search-bar-container input::placeholder {
+  color: #757575;
+  font-weight: 500;
+}
+
+/* Effetto focus: bordo bianco + ombra scura (simile a Spotify Web) */
+.search-bar-container:focus-within {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #333;
+}
+
+/* =========================================
+   3. GRIGLIA "SFOGLIA TUTTO" (CARDS)
+   ========================================= */
+.genre-card {
+  position: relative;
+  width: 100%;
+  /* Default (Desktop/Tablet): Quadrata */
+  padding-top: 100%;
+  border-radius: 8px;
+  overflow: hidden; /* Taglia l'immagine ruotata che esce dai bordi */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Su MOBILE (schermi < 768px): Card rettangolari per risparmiare spazio verticale */
+@media (max-width: 767px) {
+  .genre-card {
+    padding-top: 55%;
+  }
+}
+
+/* Effetto Hover sulla card (opzionale) */
+.genre-card:hover {
+  transform: scale(1.02);
+}
+
+.genre-title {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-weight: bold;
+  font-size: 1.2rem; /* Testo più grande e leggibile */
+  line-height: 1.2;
+  max-width: 80%;
+  word-wrap: break-word;
+  z-index: 2;
+}
+
+/* Contenitore per l'immagine ruotata */
+.genre-img-placeholder {
+  position: absolute;
+  right: -15px; /* Spostata a destra */
+  bottom: -5px; /* Spostata in basso */
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.3); /* Colore temporaneo se manca img */
+  transform: rotate(25deg); /* La rotazione tipica di Spotify */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+/* Stile dell'immagine vera e propria all'interno del placeholder */
+.genre-img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* =========================================
+   4. PLAYER MOBILE & MENU (Visibile < md)
+   ========================================= */
+.fixed-bottom-custom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050; /* Sopra a tutto il resto */
+}
+
+/* Il player "fluttuante" sopra il menu */
+#media-player-mobile {
+  background-color: #3e3e3e;
+  border-radius: 6px;
+  width: 96%; /* Leggermente più stretto per effetto floating */
+  margin: 0 auto 8px auto; /* Centrato */
+  padding: 10px 10px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Il menu di navigazione in basso */
+#menu-mobile {
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0.8));
+  padding-top: 5px;
+  padding-bottom: 20px; /* Spazio per la home bar iOS/Android */
+}
+
+/* Icone menu */
+#menu-mobile .bi {
+  margin-bottom: 2px;
+}
+
+/* =========================================
+   5. PLAYER DESKTOP (Visibile >= md)
+   ========================================= */
+.desktop-player-bg {
+  background-color: #181818; /* Grigio scuro footer Spotify Desktop */
+  border-top: 1px solid #282828;
+  height: 90px; /* Altezza fissa standard */
+  z-index: 2000; /* Altissimo per stare sempre sopra */
+}
+
+/* Stile testo canzone/artista */
+.song-info:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* BARRA DESKTOP */
+.progress-container {
+  cursor: pointer;
+}
+
+/* Sfondo della barra  */
+.progress {
+  background-color: #4d4d4d;
+  border-radius: 2px;
+}
+
+/* Parte piena  barra  */
+.progress-bar {
+  background-color: #b3b3b3;
+  border-radius: 2px;
+}
+
+/* Quando passi il mouse sulla barra, diventa verde Spotify */
+.progress-container:hover .progress-bar {
+  background-color: #1db954 !important;
+}
