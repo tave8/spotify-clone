@@ -94,7 +94,7 @@ const getMainAlbum = function (albumID) {
                 <p>Song: ${titleTrack}</p>
                 <a href="./artist.html?artist_id=${artistID}" class="d-flex align-items-center gap-2 text-light text-decoration-none pointer"><span><img src="${artistImg}" alt="artist-image" width="30" class="rounded-circle"></span> ${artistName}</a>
                 <div class="d-flex align-items-center gap-3 mt-4">
-                  <a href="./album.html?album_id=${albumID}" class="btn btn-success fs-4 rounded-pill px-5 py-2">Play</a>
+                  <a href="./album.html?album_id=${albumID[0]}" class="btn btn-success fs-4 rounded-pill px-5 py-2">Play</a>
                   <button class="btn fs-4 btn-outline-light rounded-pill px-5 py-2">Salva</button>
                   <i class="bi bi-three-dots fs-2 ms-3"></i>
                 </div>
@@ -108,8 +108,7 @@ const getMainAlbum = function (albumID) {
 };
 
 const getArtist = function (elementList) {
-  console.log("element list", elementList);
-  const categoryContainer = document.getElementById("categories-container");
+  console.log("element Artistlist", elementList);
   const everyCard = document.querySelectorAll("#categories-container > div");
   console.log("Card", everyCard);
   const usedArtists = [];
@@ -142,10 +141,71 @@ const getArtist = function (elementList) {
   });
 };
 
+const getAlbums = function (elementList) {
+  const everyAlbumCard = document.querySelectorAll("#playlist-container > div");
+  console.log("Albums", everyAlbumCard);
+  const usedAlbmus = [];
+
+  everyAlbumCard.forEach((card) => {
+    let album;
+    let attempts = 0;
+
+    while (!album || usedAlbmus.includes(album.id)) {
+      const randomIndex = Math.floor(Math.random() * elementList.length);
+      album = elementList[randomIndex].album;
+      attempts++;
+
+      if (attempts > elementList.length) return;
+    }
+
+    usedAlbmus.push(album.id);
+
+    let albumImg = album.cover_big;
+    let albumTitle = album.title;
+    let type = "Playlist";
+
+    // if (album.type === "album") {
+    //   type = "Playlist";
+    // } else {
+    //   type = "Artist";
+    // }
+
+    card.innerHTML = `
+    <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
+      <a href="./album.html?album_id=${album.id}" class="text-light text-decoration-none">
+                    <div class="row d-lg-block g-3 g-lg-3">
+                      <div class="col-6 col-lg-12">
+                        <img src="${albumImg}" alt="album cover" class="img-fluid w-100 rounded-start" />
+                      </div>
+                      <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
+                        <p class="d-inline">${type}</p>
+                        <h4 class="d-inline">${albumTitle}</h4>
+                      </div>
+                    </div>
+                    <div class="d-flex d-lg-none justify-content-between align-items-center fs-2 my-3">
+                      <div class="d-flex align-items-center gap-5 gap-md-3 gap-lg-2">
+                        <i class="bi bi-heart-fill text-success"></i>
+                        <i class="bi bi-three-dots-vertical text-muted"></i>
+                      </div>
+                      <div class="d-flex align-items-center gap-3">
+                        <p class="mb-0 fs-6 text-muted">8 brani</p>
+                        <i class="bi bi-play-circle-fill fs-1 text-muted"></i>
+                      </div>
+                    </div>
+        </a>
+    </div>
+    `;
+  });
+
+  const spinner = document.getElementById("playlist-spinner");
+  spinner.classList.add("d-none");
+};
+
 getElements()
   .then((IDs) => {
     getMainAlbum(IDs);
     getArtist(IDs[1]);
+    getAlbums(IDs[1]);
   })
   .catch((err) => {
     console.log("Errore", err);
