@@ -28,7 +28,7 @@ const searchRemoteTracks = async (search) => {
 // Typing Delayer library
 new TypingDelayer({
   // the input CSS selector
-  inputSelector: "#searchInput",
+  inputSelector: "#search-input",
   // reference to the callback
   onTypingStopped: onSearchInputTypingStopped,
   minChars: 3,
