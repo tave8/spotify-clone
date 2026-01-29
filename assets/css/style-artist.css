@@ -138,3 +138,7 @@ body[data-bs-theme="dark"] {
     font-size: 1.75rem !important;
   }
 } */
+
+.mb-sm-personal {
+  margin-bottom: 4em !important;
+}
