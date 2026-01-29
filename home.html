@@ -87,8 +87,8 @@
           <!-- PARTE INIZIALE SOLO DESKTOP -->
           <div class="d-none d-md-flex justify-content-between align-content-center mt-2">
             <div class="fs-3">
-              <i class="bi bi-arrow-left-circle-fill text-black pointer"></i>
-              <i class="bi bi-arrow-right-circle-fill text-black pointer"></i>
+              <i class="bi bi-arrow-left-circle-fill text-muted pointer"></i>
+              <i class="bi bi-arrow-right-circle-fill text-muted pointer"></i>
             </div>
 
             <div>
@@ -118,19 +118,22 @@
           </div>
 
           <!-- Card ALBUM -->
-          <div class="d-none d-md-block mt-4 bg-black p-3">
+          <div id="mainAlbum-card" class="d-none d-md-block mt-4 bg-black p-3">
             <div class="row">
-              <div class="col-4">
-                <img class="img-fluid" src="./assets/imgs/main/image-15.jpg" alt="" />
+              <div class="col-4 text-center">
+                <img class="img-fluid d-none" src="./assets/imgs/main/image-15.jpg" alt="" />
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
-              <div class="col-8 d-flex flex-column">
+              <div class="col-8 d-flex flex-column flex-nowrap">
                 <div class="d-flex justify-content-between align-items-baseline">
                   <p class="fw-bold">ALBUM</p>
                   <button class="btn btn-dark rounded-pill text-muted">NASCONDI ANNUNCI</button>
                 </div>
-                <h1 class="display-4 fw-bold mt-1">VIOLA &#40;feat.Salmo&#41;</h1>
-                <p>Fedez, Salmo</p>
-                <p>Ascolta il nuovo singolo di Fedez e Salmo!</p>
+                <h1 class="display-4 fw-bold mt-2 mb-2"></h1>
+                <p></p>
+                <p></p>
                 <div class="d-flex align-items-center gap-3 mt-4">
                   <button class="btn btn-success fs-4 rounded-pill px-5 py-2">Play</button>
                   <button class="btn fs-4 btn-outline-light rounded-pill px-5 py-2">Salva</button>
@@ -227,7 +230,7 @@
                 <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
                   <div class="row d-lg-block g-3 g-lg-3">
                     <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-11.jpg" alt="" class="img-fluid" />
+                      <img src="./assets/imgs/search/image-11.jpg" alt="" class="img-fluid w-100 rounded-start" />
                     </div>
                     <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
                       <p class="d-inline">Playlist</p>
@@ -253,7 +256,7 @@
                 <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
                   <div class="row d-lg-block g-3 g-lg-3">
                     <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-10.jpg" alt="" class="img-fluid" />
+                      <img src="./assets/imgs/search/image-10.jpg" alt="" class="img-fluid w-100" />
                     </div>
                     <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
                       <p class="d-inline">Playlist</p>
@@ -279,7 +282,7 @@
                 <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
                   <div class="row d-lg-block g-3 g-lg-3">
                     <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-9.jpg" alt="" class="img-fluid" />
+                      <img src="./assets/imgs/search/image-9.jpg" alt="" class="img-fluid w-100" />
                     </div>
                     <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
                       <p class="d-inline">Artist</p>
@@ -305,7 +308,7 @@
                 <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
                   <div class="row d-lg-block g-3 g-lg-3">
                     <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-8.jpg" alt="" class="img-fluid" />
+                      <img src="./assets/imgs/search/image-8.jpg" alt="" class="img-fluid w-100" />
                     </div>
                     <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
                       <p class="d-inline">Playlist</p>
@@ -331,7 +334,7 @@
                 <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
                   <div class="row d-lg-block g-3 g-lg-3">
                     <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-7.jpg" alt="" class="img-fluid" />
+                      <img src="./assets/imgs/search/image-7.jpg" alt="" class="img-fluid w-100" />
                     </div>
                     <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
                       <p class="d-inline">Playlist</p>
