@@ -37,8 +37,7 @@
   /* background layer */
   > .background-layer {
     position: absolute;
-    opacity: 0.8;
-    background: linear-gradient(to top, #000000 50%, #666666 100%);
+    background: black;
     height: 100%;
     width: 100%;
     z-index: -1;
@@ -73,10 +72,6 @@
       justify-content: end;
 
       /* song title */
-      > span {
-        /* padding-left: 10px;
-            text-wrap: nowrap; */
-      }
     }
 
     /* column 4 (play button) */

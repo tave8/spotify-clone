@@ -12,62 +12,66 @@
     <link rel="stylesheet" href="./assets/css/home-custom.css" />
   </head>
   <body data-bs-theme="dark" class="overflow-x-hidden">
-    <main class="container-fluid p-0 m-0">
+    <main class="container-fluid m-0">
       <div class="row">
         <!-- SIDEBAR SINISTRA -->
-        <aside class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
-          <div class="sticky-top z-3" style="background-color: #121212 !important">
-            <nav class="navbar ps-4">
+        <aside id="left-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-scroll" style="padding-bottom: 80px">
+          <!-- div che rende la parte top sticky -->
+          <div class="sticky-top bg-secondary">
+            <nav class="navbar">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2"></i> Home</a>
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2 fs-6"></i> Home</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2"></i> Cerca</a>
+                <li class="nav-item fs-5">
+                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2 fs-6"></i> Cerca</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2"></i> La tua Libreria</a>
+                <li class="nav-item fs-5">
+                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2 fs-6"></i> La tua Libreria</a>
                 </li>
                 <div>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2"></i> Crea Playlist</a>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2 fs-6"></i> Crea Playlist</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2"></i> Brani che ti piacciono</a>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2 fs-6"></i> Brani che ti piacciono</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2"></i> I tuoi episodi</a>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2 fs-6"></i> I tuoi episodi</a>
                   </li>
                 </div>
               </ul>
             </nav>
+            <!-- SEPARATORE -->
             <hr />
           </div>
-          <div class="text-muted ps-4 pb-5" style="font-size: 14px">
-            <p>Late Night Drives 🌙🚗</p>
-            <p>Study & Work Space 📚💻</p>
-            <p>Indie Vibes Only 🎸✨</p>
-            <p>Soft Rain & Lo-Fi 🌧️🎧</p>
-            <p>Gym Mode: ON 🔥🏋️</p>
-            <p>Sunday Morning Coffee ☕🌤️</p>
-            <p>Sad Songs Club 😶‍🌫️💔</p>
-            <p>Night Walks in the City 🌃🚶</p>
-            <p>Chill Hits 2024 😌🎶</p>
-            <p>Throwback Bangers 🔙🎉</p>
-            <p>Epic Gaming Session 🎮⚡</p>
-            <p>Deep Focus Instrumental 🎻🧠</p>
-            <p>Alt Rock Therapy 🤘🖤</p>
-            <p>Road Trip Classics 🛣️🎵</p>
-            <p>Sunset Chillwave 🌅🌊</p>
-            <p>Beats to Code To 👨‍💻🎛️</p>
-            <p>Romantic Mood 💞🕯️</p>
-            <p>Electronic Night Club 🪩🔊</p>
-            <p>Acoustic & Slow Days 🎸🍂</p>
-            <p>Best of Me (Daily Mix) ❤️🎶</p>
+          <img src="" alt="" />
+          <!-- PLAYLIST RANDOMICHE -->
+          <div class="text-muted">
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Study & Work Space 📚💻</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Late Night Drives 🌙🚗</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Indie Vibes Only 🎸✨</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Soft Rain & Lo-Fi 🌧️🎧</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Gym Mode: ON 🔥🏋️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sunday Morning Coffee ☕🌤️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sad Songs Club 😶‍🌫️💔</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Night Walks in the City 🌃🚶</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Chill Hits 2024 😌🎶</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Throwback Bangers 🔙🎉</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Epic Gaming Session 🎮⚡</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Deep Focus Instrumental 🎻🧠</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Alt Rock Therapy 🤘🖤</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Road Trip Classics 🛣️🎵</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sunset Chillwave 🌅🌊</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Beats to Code To 👨‍💻🎛️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Romantic Mood 💞🕯️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Electronic Night Club 🪩🔊</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Acoustic & Slow Days 🎸🍂</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Best of Me (Daily Mix) ❤️🎶</a>
           </div>
         </aside>
         <!-- MAIN CONTENT -->
-        <section class="col-lg-8 vh-100 overflow-y-scroll" style="background-color: #121212 !important" id="main-center">
+        <section class="col-lg-8 vh-100 overflow-y-scroll p-0" style="background-color: #121212 !important" id="main-center">
           <!-- COVER ARTISTA -->
           <div id="artistHeader" class="cover overflow-hidden position-relative">
             <div class="cover-overlay position-absolute top-0 start-0 w-100 h-100 opacity-50"></div>
