@@ -14,20 +14,20 @@
     <main class="container-fluid p-0 m-0">
       <div class="row">
         <!-- SIDEBAR SINISTRA -->
-        <aside class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
+        <aside id="left-sidebar" class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
           <div class="sticky-top z-3" style="background-color: #121212 !important">
             <nav class="navbar ps-4">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2"></i> Home</a>
+                  <a class="nav-link active" aria-current="page" href="home.html"><i class="bi bi-house-door-fill me-2"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="bi bi-search me-2"></i> Cerca</a>
+                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2"></i> Cerca</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2"></i> La tua Libreria</a>
                 </li>
-                <div>
+                <div class="mt-2">
                   <li class="nav-item">
                     <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2"></i> Crea Playlist</a>
                   </li>
@@ -40,7 +40,7 @@
                 </div>
               </ul>
             </nav>
-            <hr />
+            <hr class="mx-3" />
           </div>
           <div class="text-muted ps-4 pb-5" style="font-size: 14px">
             <p>Late Night Drives 🌙🚗</p>
@@ -66,7 +66,15 @@
           </div>
         </aside>
         <!-- MAIN CONTENT -->
-        <section class="col-lg-8 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
+        <section class="col-lg-8 vh-100 overflow-y-scroll p-0" style="background-color: #121212 !important">
+          <!-- PARTE INIZIALE SOLO DESKTOP -->
+          <!--  <div class="d-none d-md-flex justify-content-between align-content-center mt-2 row position-relative">
+            <div class="fs-3 position-absolute">
+              <i class="bi bi-arrow-left-circle-fill text-muted pointer"></i>
+              <i class="bi bi-arrow-right-circle-fill text-muted pointer"></i>
+            </div> -->
+          <!-- devo capire come farlo vedere -->
+
           <!-- COVER ARTISTA -->
           <div id="artistHeader" class="cover overflow-hidden position-relative">
             <div class="cover-overlay position-absolute top-0 start-0 w-100 h-100 opacity-50"></div>
@@ -111,7 +119,7 @@
             </div>
           </section>
           <!-- BRANI PIÙ POPOLARI -->
-          <div class="d-md-flex flex-md-row d-flex flex-column-reverse">
+          <div class="d-md-flex flex-md-row d-flex flex-column-reverse mb-3">
             <section id="popularTracks" class="mb-5 pb-5 px-lg-4 px-4">
               <h5 class="text-white fw-bold mb-4">Brani più popolari</h5>
               <div id="tracksContainer" class="tracklist">
@@ -127,6 +135,7 @@
             </section>
           </div>
         </section>
+
         <!-- SIDEBAR DESTRA -->
         <aside class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="font-size: 12px; background-color: #121212 !important">
           <div class="d-flex justify-content-between align-items-baseline mt-2">
@@ -192,9 +201,9 @@
       </div>
     </main>
 
-    <!-- MEDIA PLAYER -->
-    <div class="container-fluid fixed-bottom bg-black py-3 d-none d-md-flex" style="z-index: 9999">
-      <div class="row align-items-start px-2 w-100 m-0">
+    <!-- MEDIA PLAYER DESKTOP -->
+    <div class="container-fluid fixed-bottom bg-black py-3 d-none d-lg-flex" style="z-index: 9999" id="media-player-desktop">
+      <div class="row align-items-start px-2 w-100 m-0 align-items-center">
         <div class="col-3 d-flex align-items-center">
           <img id="playerImg" src="" alt="" class="d-none rounded shadow-sm me-3" style="width: 56px; height: 56px; object-fit: cover" />
           <div class="d-flex flex-column justify-content-center me-3">
@@ -237,27 +246,26 @@
         </div>
       </div>
     </div>
+
     <!-- MOBILE MEDIA PLAYER -->
-    <div class="fixed-bottom d-md-none w-100">
-      <div class="mx-2 mobile-player-card rounded-3 position-relative d-flex align-items-center p-2 shadow-lg bg-dark" style="z-index: 9999">
+    <div class="fixed-bottom d-lg-none w-100" style="z-index: 10000">
+      <div class="mx-2 mobile-player-card rounded-3 position-relative d-flex align-items-center p-2 shadow-lg bg-dark d-lg-none" style="z-index: 9999">
         <div class="progress position-absolute bottom-0 start-0 w-100 rounded-bottom-3" style="height: 2px; background: transparent">
           <div class="progress-bar bg-white" role="progressbar" style="width: 30%"></div>
         </div>
-
         <img id="mobilePlayerImg" src="" class="rounded d-none" style="width: 40px; height: 40px; object-fit: cover" />
-
         <div class="d-flex flex-column ms-3 overflow-hidden flex-grow-1">
           <span id="mobilePlayerTitle" class="text-white fw-bold text-truncate" style="font-size: 13px">Scegli un brano</span>
           <span id="mobilePlayerArtist" class="text-white-50 text-truncate" style="font-size: 11px">Artist</span>
         </div>
-
         <div class="d-flex align-items-center gap-3 me-2">
           <i class="bi bi-speaker text-white-50 fs-4"></i>
           <i id="mobilePlayIcon" class="bi bi-play-fill text-white fs-1"></i>
         </div>
       </div>
 
-      <div class="bg-black py-3 border-top border-dark position-relative bg-opacity-75" style="z-index: 1050">
+      <!-- NAVIGAZIONE DA TABLET/MOBILE -->
+      <div class="bg-black py-3 border-top border-dark position-relative bg-opacity-100" style="z-index: 1050">
         <div class="row text-center text-white m-0">
           <div class="col-4 d-flex flex-column align-items-center">
             <a href="./home.html" class="col-4 d-flex flex-column align-items-center text-decoration-none">
@@ -265,10 +273,14 @@
               <span style="font-size: 10px" class="text-white-50">Home</span>
             </a>
           </div>
+
           <div class="col-4 d-flex flex-column align-items-center">
-            <i class="bi bi-search fs-4 text-white-50"></i>
-            <span style="font-size: 10px" class="text-white-50">Cerca</span>
+            <a href="./search.html" class="col-4 d-flex flex-column align-items-center text-decoration-none">
+              <i class="bi bi-search fs-4 text-white-50"></i>
+              <span style="font-size: 10px" class="text-white-50">Cerca</span>
+            </a>
           </div>
+
           <div class="col-4 d-flex flex-column align-items-center">
             <i class="bi bi-collection fs-4 text-white-50"></i>
             <span style="font-size: 10px" class="text-white-50">Libreria</span>
