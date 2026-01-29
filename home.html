@@ -97,14 +97,14 @@
                   style="left: 25px"
                 />
                 <button
-                  class="btn dropdown-toggle bg-black text-light rounded-end-pill position-relative ps-4 py-2"
+                  class="btn dropdown-toggle bg-secondary text-light rounded-end-pill position-relative ps-4 py-2"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Lidia Nautilus...
                 </button>
-                <ul class="dropdown-menu bg-black">
+                <ul class="dropdown-menu bg-secondary">
                   <li><a class="dropdown-item" href="#">Profile</a></li>
                   <li><a class="dropdown-item" href="#">Playlist</a></li>
                   <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -114,10 +114,9 @@
           </div>
 
           <!-- Card ALBUM -->
-          <div id="mainAlbum-card" class="d-none d-md-block mt-4 bg-black p-3">
+          <div id="mainAlbum-card" class="d-none d-md-block mt-4 bg-secondary p-3">
             <div class="row">
-              <div class="col-4 text-center">
-                <img class="img-fluid d-none" src="./assets/imgs/main/image-15.jpg" alt="" />
+              <div class="col-4 d-flex text-center justify-content-center align-items-center">
                 <div class="spinner-border text-success" role="status">
                   <span class="visually-hidden">Loading...</span>
                 </div>
@@ -141,7 +140,10 @@
 
           <!-- Header della section centrale  -->
           <div id="header" class="d-flex mt-4 justify-content-between">
-            <h2>Buonasera</h2>
+            <div>
+              <h2>Buonasera</h2>
+              <h6 class="d-none d-md-block text-muted mb-0 ms-1">Scopri nuovi artisti</h6>
+            </div>
             <div class="d-flex gap-3 px-2 fs-3 d-lg-none">
               <i class="bi bi-bell"></i>
               <i class="bi bi-clock-history"></i>
@@ -159,54 +161,60 @@
           <div id="categories-container" class="row g-3 mt-3 mb-2">
             <!-- Content -->
             <div class="col-6 col-lg-4">
-              <div class="d-flex align-items-center rounded-2 bg-gradient">
-                <img src="./assets/imgs/search/image-30.jpg" alt="" width="75" class="rounded-2" />
-                <p class="ms-2 mb-0">Be The Young</p>
+              <div class="d-flex justify-content-center align-items-center rounded-2 bg-gradient p-4">
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
             <!-- End Content -->
 
             <!-- Content -->
             <div class="col-6 col-lg-4">
-              <div class="d-flex align-items-center rounded-2 bg-gradient">
-                <img src="./assets/imgs/search/image-29.jpg" alt="" width="75" class="rounded-2" />
-                <p class="ms-2 mb-0">Classical</p>
+              <div class="d-flex justify-content-center align-items-center rounded-2 bg-gradient p-4">
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
             <!-- End Content -->
 
             <!-- Content -->
             <div class="col-6 col-lg-4">
-              <div class="d-flex align-items-center rounded-2 bg-gradient">
-                <img src="./assets/imgs/search/image-28.jpg" alt="" width="75" class="rounded-2" />
-                <p class="ms-2 mb-0">Afro Hits</p>
+              <div class="d-flex justify-content-center align-items-center rounded-2 bg-gradient p-4">
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
             <!-- End Content -->
 
             <!-- Content -->
             <div class="col-6 col-lg-4">
-              <div class="d-flex align-items-center rounded-2 bg-gradient">
-                <img src="./assets/imgs/search/image-27.jpg" alt="" width="75" class="rounded-2" />
-                <p class="ms-2 mb-0">Party Time</p>
+              <div class="d-flex justify-content-center align-items-center rounded-2 bg-gradient p-4">
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
             <!-- End Content -->
 
             <!-- Content -->
             <div class="col-6 col-lg-4">
-              <div class="d-flex align-items-center rounded-2 bg-gradient">
-                <img src="./assets/imgs/search/image-26.jpg" alt="" width="75" class="rounded-2" />
-                <p class="ms-2 mb-0">Friday Mood</p>
+              <div class="d-flex justify-content-center align-items-center rounded-2 bg-gradient p-4">
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
             <!-- End Content -->
 
             <!-- Content -->
             <div class="col-6 col-lg-4">
-              <div class="d-flex align-items-center rounded-2 bg-gradient">
-                <img src="./assets/imgs/search/image-24.jpg" alt="" width="75" class="rounded-2" />
-                <p class="ms-2 mb-0">Guitar Collection</p>
+              <div class="d-flex justify-content-center align-items-center rounded-2 bg-gradient p-4">
+                <div class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
             <!-- End Content -->
@@ -220,135 +228,30 @@
 
           <!-- PLAYLISTS -->
           <article class="my-4">
+            <div id="playlist-spinner" class="d-flex justify-content-center">
+              <div class="spinner-border text-success d-inline-block text-center" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
             <div id="playlist-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-5">
               <!-- CARD -->
-              <div>
-                <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
-                  <div class="row d-lg-block g-3 g-lg-3">
-                    <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-11.jpg" alt="" class="img-fluid w-100 rounded-start" />
-                    </div>
-                    <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
-                      <p class="d-inline">Playlist</p>
-                      <h4 class="d-inline">Study and Work Space</h4>
-                    </div>
-                  </div>
-                  <div class="d-flex d-lg-none justify-content-between align-items-center fs-2 my-3">
-                    <div class="d-flex align-items-center gap-5 gap-md-3 gap-lg-2">
-                      <i class="bi bi-heart-fill text-success"></i>
-                      <i class="bi bi-three-dots-vertical text-muted"></i>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
-                      <p class="mb-0 fs-6 text-muted">8 brani</p>
-                      <i class="bi bi-play-circle-fill fs-1 text-muted"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div></div>
               <!-- END CARD -->
 
               <!-- CARD -->
-              <div>
-                <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
-                  <div class="row d-lg-block g-3 g-lg-3">
-                    <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-10.jpg" alt="" class="img-fluid w-100" />
-                    </div>
-                    <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
-                      <p class="d-inline">Playlist</p>
-                      <h4 class="d-inline">Lo-fi Beats to Study & Chill</h4>
-                    </div>
-                  </div>
-                  <div class="d-flex d-lg-none justify-content-between align-items-center fs-2 my-3">
-                    <div class="d-flex align-items-center gap-5 gap-md-3 gap-lg-2">
-                      <i class="bi bi-heart-fill text-success"></i>
-                      <i class="bi bi-three-dots-vertical text-muted"></i>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
-                      <p class="mb-0 fs-6 text-muted">8 brani</p>
-                      <i class="bi bi-play-circle-fill fs-1 text-muted"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div></div>
               <!-- END CARD -->
 
               <!-- CARD -->
-              <div>
-                <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
-                  <div class="row d-lg-block g-3 g-lg-3">
-                    <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-9.jpg" alt="" class="img-fluid w-100" />
-                    </div>
-                    <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
-                      <p class="d-inline">Artist</p>
-                      <h4 class="d-inline">The Best of Nija</h4>
-                    </div>
-                  </div>
-                  <div class="d-flex d-lg-none justify-content-between align-items-center fs-2 my-3">
-                    <div class="d-flex align-items-center gap-5 gap-md-3 gap-lg-2">
-                      <i class="bi bi-heart-fill text-success"></i>
-                      <i class="bi bi-three-dots-vertical text-muted"></i>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
-                      <p class="mb-0 fs-6 text-muted">8 brani</p>
-                      <i class="bi bi-play-circle-fill fs-1 text-muted"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div></div>
               <!-- END CARD -->
 
               <!-- CARD -->
-              <div>
-                <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
-                  <div class="row d-lg-block g-3 g-lg-3">
-                    <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-8.jpg" alt="" class="img-fluid w-100" />
-                    </div>
-                    <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
-                      <p class="d-inline">Playlist</p>
-                      <h4 class="d-inline">No pain - No Gain</h4>
-                    </div>
-                  </div>
-                  <div class="d-flex d-lg-none justify-content-between align-items-center fs-2 my-3">
-                    <div class="d-flex align-items-center gap-5 gap-md-3 gap-lg-2">
-                      <i class="bi bi-heart-fill text-success"></i>
-                      <i class="bi bi-three-dots-vertical text-muted"></i>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
-                      <p class="mb-0 fs-6 text-muted">8 brani</p>
-                      <i class="bi bi-play-circle-fill fs-1 text-muted"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div></div>
               <!-- END CARD -->
 
               <!-- CARD -->
-              <div>
-                <div class="bg-gradient rounded-2 p-3 p-lg-0 h-100">
-                  <div class="row d-lg-block g-3 g-lg-3">
-                    <div class="col-6 col-lg-12">
-                      <img src="./assets/imgs/search/image-7.jpg" alt="" class="img-fluid w-100" />
-                    </div>
-                    <div class="col-6 d-flex flex-column col-lg-12 px-lg-3 py-lg-1">
-                      <p class="d-inline">Playlist</p>
-                      <h4 class="d-inline">Best Rock Hits</h4>
-                    </div>
-                  </div>
-                  <div class="d-flex d-lg-none justify-content-between align-items-center fs-2 my-3">
-                    <div class="d-flex align-items-center gap-5 gap-md-3 gap-lg-2">
-                      <i class="bi bi-heart-fill text-success"></i>
-                      <i class="bi bi-three-dots-vertical text-muted"></i>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
-                      <p class="mb-0 fs-6 text-muted">8 brani</p>
-                      <i class="bi bi-play-circle-fill fs-1 text-muted"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div></div>
               <!-- END CARD -->
             </div>
           </article>
