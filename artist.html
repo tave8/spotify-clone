@@ -14,35 +14,34 @@
     <main class="container-fluid p-0 m-0">
       <div class="row">
         <!-- SIDEBAR SINISTRA -->
-        <aside
-          class="d-none d-lg-flex flex-column col-lg bg-black vh-100 overflow-y-scroll sticky-lg-top sticky-md-top"
-          style="background-color: #121212 !important"
-        >
-          <nav class="navbar ps-4">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-door-fill me-2"></i> Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-search me-2"></i> Cerca</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2"></i> La tua Libreria</a>
-              </li>
-              <div class="mt-4">
+        <aside class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
+          <div class="sticky-top z-3" style="background-color: #121212 !important">
+            <nav class="navbar ps-4">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2"></i> Crea Playlist</a>
+                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="bi bi-house-heart me-2"></i> Brani che ti piacciono</a>
+                  <a class="nav-link" href="#"><i class="bi bi-search me-2"></i> Cerca</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="bi bi-bookmark me-2"></i> I tuoi episodi</a>
+                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2"></i> La tua Libreria</a>
                 </li>
-              </div>
-            </ul>
-          </nav>
-          <hr />
+                <div>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2"></i> Crea Playlist</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2"></i> Brani che ti piacciono</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2"></i> I tuoi episodi</a>
+                  </li>
+                </div>
+              </ul>
+            </nav>
+            <hr />
+          </div>
           <div class="text-muted ps-4 pb-5" style="font-size: 14px">
             <p>Late Night Drives 🌙🚗</p>
             <p>Study & Work Space 📚💻</p>
@@ -67,7 +66,7 @@
           </div>
         </aside>
         <!-- MAIN CONTENT -->
-        <section class="col-lg-6 col-xl-7 min-vh-100 p-0 mb-5 border border-top-0 border-5 border-black" style="background-color: #121212 !important">
+        <section class="col-lg-8 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
           <!-- COVER ARTISTA -->
           <div id="artistHeader" class="cover overflow-hidden position-relative">
             <div class="cover-overlay position-absolute top-0 start-0 w-100 h-100 opacity-50"></div>
@@ -129,10 +128,7 @@
           </div>
         </section>
         <!-- SIDEBAR DESTRA -->
-        <aside
-          class="d-none d-lg-flex flex-column col-lg bg-black vh-100 overflow-x-hidden px-3 sticky-lg-top sticky-md-top"
-          style="font-size: 12px; background-color: #121212 !important"
-        >
+        <aside class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="font-size: 12px; background-color: #121212 !important">
           <div class="d-flex justify-content-between align-items-baseline mt-2">
             <h6 class="fw-bold text-white">Attività Amici</h6>
             <div class="text-muted">
