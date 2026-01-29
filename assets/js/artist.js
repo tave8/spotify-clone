@@ -398,7 +398,7 @@ const getDurationForUI = (seconds) => {
 
 const getArtistIdFromUrl = () => {
   const params = new URLSearchParams(window.location.search);
-  return params.get("artistId");
+  return params.get("artist_id");
 };
 
 

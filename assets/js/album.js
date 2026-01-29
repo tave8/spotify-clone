@@ -26,7 +26,7 @@ const populateUIAlbumOnly = (album) => {
   albumTitle.innerText = album.title;
   albumDuration.innerText = album.totalAlbumDurationForUI;
   albumArtist.innerText = album.artistName;
-  albumArtist.href = `./artist.html?artistId=${album.artistId}`;
+  albumArtist.href = `./artist.html?artist_id=${album.artistId}`;
   albumReleaseYear.innerText = album.releaseYear;
 };
 

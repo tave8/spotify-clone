@@ -89,7 +89,7 @@ const getMainAlbum = function (albumID) {
                 <p>${artistName}</p>
                 <p>Ascolta ora!</p>
                 <div class="d-flex align-items-center gap-3 mt-4">
-                  <a href="./album.html?albumId=${albumID}" class="btn btn-success fs-4 rounded-pill px-5 py-2">Play</a>
+                  <a href="./album.html?album_id=${albumID}" class="btn btn-success fs-4 rounded-pill px-5 py-2">Play</a>
                   <button class="btn fs-4 btn-outline-light rounded-pill px-5 py-2">Salva</button>
                   <i class="bi bi-three-dots fs-2 ms-3"></i>
                 </div>
