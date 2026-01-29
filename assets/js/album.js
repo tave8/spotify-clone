@@ -20,12 +20,18 @@ const populateUIAlbumOnly = (album) => {
   const albumTitle = getUIAlbumTitle();
   const albumDuration = getUIAlbumDuration();
   const albumArtist = getUIAlbumArtist();
+  const albumArtistCover = getUIAlbumArtistCover();
   const albumReleaseYear = getUIAlbumReleaseYear();
 
-  albumCover.src = album.coverUrl.small;
+  albumCover.style.visibility = "visible";
+  albumArtistCover.style.visibility = "visible";
+  albumTitle.style.visibility = "visible";
+
+  albumCover.src = album.coverUrl.big;
   albumTitle.innerText = album.title;
   albumDuration.innerText = album.totalAlbumDurationForUI;
   albumArtist.innerText = album.artistName;
+  albumArtistCover.src = album.artist.picture_small;
   albumArtist.href = `./artist.html?artist_id=${album.artistId}`;
   albumReleaseYear.innerText = album.releaseYear;
 };
@@ -77,6 +83,10 @@ const getUIAlbumArtist = () => {
   return document.getElementById("album-artist");
 };
 
+const getUIAlbumArtistCover = () => {
+  return document.getElementById("album-artist-cover");
+};
+
 const getUIAlbumReleaseYear = () => {
   return document.getElementById("album-release-year");
 };
@@ -113,13 +123,44 @@ const loadAlbumWithId = async (albumId) => {
  */
 const loadAlbumFromPageUrl = async () => {
   try {
+    showUIAlbumSpinners();
+
     const album = await getRemoteAlbum(getAlbumIdFromUrl());
     populateUIAlbum(getSimplerAlbumInfo(album));
+
     console.log("simpler album info: ", getSimplerAlbumInfo(album));
   } catch (err) {
     console.error(err);
+    // showUIAlbumSpinners(false);
   }
 };
+
+const showUIAlbumSpinners = (show = true) => {
+  const albumCover = getUIAlbumCover();
+  const albumTitle = getUIAlbumTitle();
+  const albumDuration = getUIAlbumDuration();
+  const albumArtist = getUIAlbumArtist();
+  const albumReleaseYear = getUIAlbumReleaseYear();
+
+  const tracksRows = getUIAlbumTracksTableRows()
+
+  // albumCover.src = ;
+  // albumTitle.innerHTML = createUISpinnerHtmlStr();
+  albumDuration.innerHTML = createUISpinnerHtmlStr();
+  albumArtist.innerHTML = createUISpinnerHtmlStr();
+  albumReleaseYear.innerHTML = createUISpinnerHtmlStr();
+
+  tracksRows.innerHTML = createUISpinnerHtmlStr()
+};
+
+
+const createUISpinnerHtmlStr = () => {
+  return `
+    <div class="spinner-border text-success spinner-grow-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  `
+}
 
 const getRemoteAlbum = async (albumId) => {
   const url = `${vars.DEEZER_API_URL}/album/${albumId}`;
@@ -170,6 +211,7 @@ const getSimplerAlbumInfo = (album) => {
       num: trackNum,
       title: track.title,
       artistName: track.artist.name,
+      artist: track.artist,
       rank: track.rank,
       rankForUI: helpers.getTrackRankForUI(track.rank),
       // 3:54
@@ -186,6 +228,7 @@ const getSimplerAlbumInfo = (album) => {
     artistName,
     // 393454
     artistId,
+    artist: album.artist,
     // 2017
     releaseYear,
     // 12

@@ -84,10 +84,10 @@
             <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 gap-md-4 mt-5 text-center text-md-start">
                 <!--START ALBUM COVER -->
               <img
-                src="./assets/imgs/cover-gioventubrucata.jpg"
+                src=""
                 alt="Copertina Album"
                 class="shadow-lg flex-shrink-0 mb-3 mb-md-0"
-                style="width: 232px; height: 232px; object-fit: cover; box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5)"
+                style="width: 232px; height: 232px; object-fit: cover; box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5); visibility: hidden; border-radius: 3px;"
                 id="album-cover"
               />
               <!-- END ALBUM COVER -->
@@ -95,16 +95,16 @@
               <div class="d-flex flex-column text-white">
                 <span class="fw-bold small mb-1">ALBUM</span>
                 <!-- album title -->
-                <h1 class="display-5 display-md-2 fw-bolder mb-3" style="letter-spacing: -1px" id="album-title">Gioventù bruciata</h1>
+                <h1 class="display-5 display-md-2 fw-bolder mb-3" style="letter-spacing: -1px; visibility: hidden;" id="album-title"></h1>
 
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-1 small fw-bold flex-wrap">
-                  <img src="./assets/imgs/caffe-buongiorno.jpg" alt="Foto Artista" class="rounded-circle me-1" style="width: 24px; height: 24px; object-fit: cover" />
+                  <img src="" id="album-artist-cover" alt="Foto Artista" class="rounded-circle me-1" style="width: 24px; height: 24px; object-fit: cover; visibility: hidden;" />
                   <!-- ARTIST -->
-                  <a href="#" class="text-white text-decoration-none link-hover" id="album-artist">Pinguini Tattici Nucleari</a>
+                  <a href="#" class="text-white text-decoration-none link-hover" id="album-artist"></a>
                   <span class="mx-1">•</span>
-                  <span id="album-release-year">2017</span>
+                  <span id="album-release-year"></span>
                   <span class="mx-1">•</span>
-                  <span class="fw-normal text-white-50" id="album-duration">12 brani, 53 min 20 sec.</span>
+                  <span class="fw-normal text-white-50" id="album-duration"></span>
                 </div>
               </div>
             </div>
@@ -134,84 +134,6 @@
                 </tr>
               </thead>
               <tbody>
-
-                <!-- <tr>
-                  <td class="text-secondary align-middle">2</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Sciare</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">5.585.178</td>
-                  <td class="text-secondary align-middle text-end">4:41</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">3</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Gioventù Brucata</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">3.412.342</td>
-                  <td class="text-secondary align-middle text-end">5:24</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">4</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Ninnananna per genitori disattenti</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">2.365.629</td>
-                  <td class="text-secondary align-middle text-end">4:04</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">5</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">L'uomo che inventò il fuoco</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">3.417.862</td>
-                  <td class="text-secondary align-middle text-end">5:23</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">6</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Irene</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">17.249.689</td>
-                  <td class="text-secondary align-middle text-end">5:11</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">7</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Senti che cantare questi!</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">760.496</td>
-                  <td class="text-secondary align-middle text-end">1:11</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">8</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Pula</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">899.318</td>
-                  <td class="text-secondary align-middle text-end">5:46</td>
-                </tr> -->
               </tbody>
             </table>
             <!-- END TRACKS -->
