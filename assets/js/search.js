@@ -1,3 +1,11 @@
+const onLoadPage = () => {
+  addEventHandlers();
+  focusUISearchInput()
+}
+
+window.addEventListener("load", onLoadPage);
+
+
 const populateUITracks = (tracks) => {
   const tracksContainer = getUITracks();
   tracksContainer.innerHTML = "";
@@ -8,14 +16,16 @@ const populateUITracks = (tracks) => {
 
 const createUITrack = (track) => {
   return `
-      <div class="col-6 col-md-4 col-lg-2">
-        <div class="genre-card">
-          <span class="genre-title">${track.title}</span>
-          <div class="">
-            <!-- continue here -->
-          </div>
+      <!-- START SEARCH CARD -->
+      <div class="card search-card text-white" style="width: 18rem; background-color: #181818;">
+        <!-- track artist cover -->
+        <a href="./artist.html?artist_id=${track.artist.id}"><img src="${track.album.cover_medium}" class="card-img-top" alt="..." style="height: 200px; object-fit: contain" /></a>
+        <div class="card-body">
+          <!-- track title -->
+          <h5 class="card-title text-center"><a href="./album.html?album_id=${track.album.id}">${track.title}</a></h5>
         </div>
       </div>
+      <!-- END SEARCH CARD -->
   `;
 };
 
@@ -52,6 +62,7 @@ const searchRemoteTracks = async (search) => {
   return data;
 };
 
+
 // Typing Delayer library
 new TypingDelayer({
   // the input CSS selector
@@ -61,6 +72,20 @@ new TypingDelayer({
   minChars: 3,
 });
 
+
+const addEventHandlers = () => {
+}
+
+const focusUISearchInput = () => {
+  const searchInput = getUISearchInput();
+  searchInput.focus();
+}
+
 const getUITracks = () => {
   return document.querySelector("#tracks");
+};
+
+
+const getUISearchInput = () => {
+  return document.querySelector("#search-input");
 };
