@@ -566,3 +566,23 @@ const populateMoreAlbums = (albums) => {
     `;
   });
 };
+
+// ****************************************************************
+// NAVIGAZIONE (Frecce Indietro/Avanti)
+// ****************************************************************
+
+const setupNavigation = () => {
+  const btnBack = document.getElementById("btn-back");
+  const btnForward = document.getElementById("btn-forward");
+
+  if (btnBack) {
+    btnBack.onclick = () => window.history.back();
+  }
+
+  if (btnForward) {
+    btnForward.onclick = () => window.history.forward();
+  }
+};
+
+// Avvia la funzione
+setupNavigation();
