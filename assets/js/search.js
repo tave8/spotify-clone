@@ -95,7 +95,7 @@ const showUISearchInputSpinner = (show = true) => {
 };
 
 const showUILastSearchesIfAny = () => {
-
+  getUILastSearchResults().style.visibility = "visible";
 }
 
 const searchRemoteTracks = async (search) => {
@@ -120,7 +120,7 @@ new TypingDelayer({
 
 const addEventHandlers = () => {
   getUISearchInput().addEventListener("keyup", handleTypingSearchInput);
-  getUISearchInput().addEventListener("focus", handleFocusSearchInput);  
+  // getUISearchInput().addEventListener("focus", handleFocusSearchInput);  
 };
 
 // when user types in search input, update the query url param
@@ -131,7 +131,7 @@ const handleTypingSearchInput = (event) => {
 
 const handleFocusSearchInput = (event) => {
   // show last searches, if any
-  showUILastSearchesIfAny()
+  // showUILastSearchesIfAny()
 }
 
 const focusUISearchInput = () => {
