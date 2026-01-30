@@ -1,3 +1,11 @@
+const onLoadPage = () => {
+  addEventHandlers();
+  focusUISearchInput()
+}
+
+window.addEventListener("load", onLoadPage);
+
+
 const populateUITracks = (tracks) => {
   const tracksContainer = getUITracks();
   tracksContainer.innerHTML = "";
@@ -54,6 +62,7 @@ const searchRemoteTracks = async (search) => {
   return data;
 };
 
+
 // Typing Delayer library
 new TypingDelayer({
   // the input CSS selector
@@ -63,6 +72,20 @@ new TypingDelayer({
   minChars: 3,
 });
 
+
+const addEventHandlers = () => {
+}
+
+const focusUISearchInput = () => {
+  const searchInput = getUISearchInput();
+  searchInput.focus();
+}
+
 const getUITracks = () => {
   return document.querySelector("#tracks");
+};
+
+
+const getUISearchInput = () => {
+  return document.querySelector("#search-input");
 };
