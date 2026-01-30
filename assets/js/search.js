@@ -94,6 +94,10 @@ const showUISearchInputSpinner = (show = true) => {
   }
 };
 
+const showUILastSearchesIfAny = () => {
+
+}
+
 const searchRemoteTracks = async (search) => {
   const url = `${vars.DEEZER_API_URL}/search?q=${search}`;
   const config = {};
@@ -116,6 +120,7 @@ new TypingDelayer({
 
 const addEventHandlers = () => {
   getUISearchInput().addEventListener("keyup", handleTypingSearchInput);
+  getUISearchInput().addEventListener("focus", handleFocusSearchInput);  
 };
 
 // when user types in search input, update the query url param
@@ -123,6 +128,11 @@ const handleTypingSearchInput = (event) => {
   const userSearch = event.target.value;
   helpers.updateUrlQueryParam("query", userSearch);
 };
+
+const handleFocusSearchInput = (event) => {
+  // show last searches, if any
+  showUILastSearchesIfAny()
+}
 
 const focusUISearchInput = () => {
   const searchInput = getUISearchInput();
@@ -135,6 +145,10 @@ const getUITracks = () => {
 
 const getUISearchInput = () => {
   return document.querySelector("#search-input");
+};
+
+const getUILastSearchResults = () => {
+  return document.querySelector("#last-search-results");
 };
 
 const getUISearchInputSpinner = () => {
