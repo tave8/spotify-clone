@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Epify | Album</title>
+    <title>Album</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -18,38 +18,51 @@
       integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./assets/css/media-player-desktop.css" />
+    <link rel="stylesheet" href="./assets/css/menu-player-mobile.css" />
+    <link rel="stylesheet" href="./assets/css/home-custom.css" />
 
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-    <link rel="stylesheet" href="./assets/css/home-custom.css" />
+
+    <style>
+      .table {
+        background-color: #121212 !important;
+      }
+
+      .table thead th {
+        background-color: #121212 !important;
+        box-shadow: 0 1px 0 #333;
+      }
+    </style>
   </head>
 
   <body data-bs-theme="dark">
-    <main class="container-fluid position-relative">
+    <main class="container-fluid">
       <div class="row">
         <!-- SIDEBAR SINISTRA -->
-        <aside id="left-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-scroll" style="padding-bottom: 100px">
+        <aside id="left-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-scroll" style="padding-bottom: 80px">
           <!-- div che rende la parte top sticky -->
           <div class="sticky-top bg-secondary">
             <nav class="navbar">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item fs-6">
-                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2 fs-5"></i> Home</a>
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2 fs-6"></i> Home</a>
                 </li>
-                <li class="nav-item fs-6">
-                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2 fs-5"></i> Cerca</a>
+                <li class="nav-item fs-5">
+                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2 fs-6"></i> Cerca</a>
                 </li>
-                <li class="nav-item fs-6">
-                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2 fs-5"></i> La tua Libreria</a>
+                <li class="nav-item fs-5">
+                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2 fs-6"></i> La tua Libreria</a>
                 </li>
                 <div>
-                  <li class="nav-item fs-6">
-                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2 fs-5"></i> Crea Playlist</a>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2 fs-6"></i> Crea Playlist</a>
                   </li>
-                  <li class="nav-item fs-6">
-                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2 fs-5"></i> Brani che ti piacciono</a>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2 fs-6"></i> Brani che ti piacciono</a>
                   </li>
-                  <li class="nav-item fs-6">
-                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2 fs-5"></i> I tuoi episodi</a>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2 fs-6"></i> I tuoi episodi</a>
                   </li>
                 </div>
               </ul>
@@ -59,7 +72,7 @@
           </div>
           <img src="" alt="" />
           <!-- PLAYLIST RANDOMICHE -->
-          <div class="text-muted" style="font-size: 14px">
+          <div class="text-muted">
             <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Study & Work Space 📚💻</a>
             <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Late Night Drives 🌙🚗</a>
             <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Indie Vibes Only 🎸✨</a>
@@ -84,9 +97,15 @@
         </aside>
         <!-- FINE SIDEBAR SINISTRA -->
 
-        <section id="main-center" class="col-12 col-lg-8 d-flex flex-column p-0 vh-100 overflow-y-scroll">
+        <section class="col-12 col-md d-flex flex-column vh-100 overflow-y-scroll p-0 bg-dark text-white pb-5" id="main-center">
           <!-- START ALBUM -->
-          <div class="p-3 p-md-4 pt-5 bg-gradiente-album" id="album-section">
+
+          <div class="p-3 p-md-4 pt-5 bg-gradiente-album position-relative" id="album-section">
+            <div class="fs-3 py-1 position-absolute z-1">
+              <i class="bi bi-arrow-left-circle-fill text-muted pointer"></i>
+              <i class="bi bi-arrow-right-circle-fill text-muted pointer"></i>
+            </div>
+
             <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 gap-md-4 mt-5 text-center text-md-start">
               <!--START ALBUM COVER -->
               <img
@@ -105,11 +124,11 @@
 
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-1 small fw-bold flex-wrap">
                   <img
-                    src=""
                     id="album-artist-cover"
+                    src="./assets/imgs/caffe-buongiorno.jpg"
                     alt="Foto Artista"
                     class="rounded-circle me-1"
-                    style="width: 24px; height: 24px; object-fit: cover; visibility: hidden"
+                    style="width: 24px; height: 24px; object-fit: cover"
                   />
                   <!-- ARTIST -->
                   <a href="#" class="text-white text-decoration-none link-hover" id="album-artist"></a>
@@ -123,41 +142,43 @@
           </div>
           <!-- END ALBUM -->
 
-          <div class="px-3 px-md-4 py-3 bg-gradiente-nero flex-grow-1" id="tracks-section">
-            <div class="d-flex align-items-center gap-4 mb-4">
+          <div class="py-3 flex-grow-1 pb" id="tracks-section" style="background-color: #121212 !important">
+            <div class="d-flex align-items-center gap-3 mb-2 px-md-4">
               <button class="btn btn-success rounded-circle p-0 d-flex justify-content-center align-items-center" style="width: 56px; height: 56px">
                 <i class="bi bi-play-fill fs-2 text-black ms-1"></i>
               </button>
+              <button class="btn fs-4 fw-semibold play-btn d-md-none text-white"><i class="bi bi-shuffle fs-3 text-success"></i></button>
               <i class="bi bi-heart fs-3 text-secondary icona-hover"></i>
               <i class="bi bi-arrow-down-circle fs-3 text-secondary icona-hover"></i>
               <i class="bi bi-three-dots fs-3 text-secondary icona-hover"></i>
             </div>
 
             <!-- START TRACKS -->
-            <table class="table table-hover table-borderless" id="tracks-table">
-              <thead class="border-bottom border-secondary sticky-top">
-                <tr class="text-secondary small">
-                  <th scope="col" style="width: 5%">#</th>
-                  <th scope="col" style="width: 45%">TITOLO</th>
-                  <th scope="col" class="text-end d-none d-md-table-cell">RIPRODUZIONI</th>
-                  <th scope="col" class="text-end" style="width: 10%">
-                    <i class="bi bi-clock"></i>
-                  </th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <div class="row text-white-50 small border-bottom border-secondary py-2 px-3 mx-0 mb-2 sticky-top" style="background-color: #121212 !important">
+              <div class="col-1 text-center">#</div>
+              <div class="col-7 col-md-5">TITOLO</div>
+              <div class="col-3 text-end d-none d-md-block">RIPRODUZIONI</div>
+              <div class="col-2 col-md-1 text-center"></div>
+              <div class="col-2 text-end pe-4"><i class="bi bi-clock"></i></div>
+            </div>
+
+            <div id="tracks-container" class="d-flex flex-column gap-1 pb-2"></div>
             <!-- END TRACKS -->
 
-            <div style="height: 100px"></div>
+            <div class="container" style="padding-bottom: 5em !important">
+              <h3 class="text-light py-2 px-3" id="moreAlbumsArtist"></h3>
+              <div class="container" id="moreAlbums">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-2"></div>
+              </div>
+            </div>
           </div>
         </section>
 
         <!-- SIDEBAR DESTRA -->
         <aside id="right-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-auto">
-          <div class="d-flex justify-content-between align-items-baseline mt-2">
+          <div class="d-flex justify-content-between align-items-baseline mt-2 fs-5">
             <h4 class="fs-5">Attività Amici</h4>
-            <div class="fs-5 text-muted">
+            <div class="text-muted">
               <i class="bi bi-person-add pointer"></i>
               <i id="close-rightsidebar" class="bi bi-x-lg pointer"></i>
             </div>
@@ -170,13 +191,13 @@
                 <div class="col-2">
                   <img src="./assets/imgs/search/image-11.jpg" alt="" class="img-fluid rounded-circle" />
                 </div>
-                <div class="col-8 d-flex flex-column" style="font-size: 14px">
+                <div class="col-8 d-flex flex-column">
                   <p class="m-0 fw-bold">Charlie hookham</p>
                   <p class="m-0">In camera - Yumi Zouma</p>
                   <p class="m-0"><i class="bi bi-disc"></i> EP III</p>
                 </div>
                 <div class="col-2">
-                  <p style="font-size: 0.8rem">4 ore</p>
+                  <p class="fs-6">4 ore</p>
                 </div>
               </div>
               <!-- END ACTIVITY -->
@@ -186,13 +207,13 @@
                 <div class="col-2">
                   <img src="./assets/imgs/search/image-14.jpg" alt="" class="img-fluid rounded-circle" />
                 </div>
-                <div class="col-8 d-flex flex-column" style="font-size: 14px">
+                <div class="col-8 d-flex flex-column">
                   <p class="m-0 fw-bold">lightdark02</p>
                   <p class="m-0">Aimed to Kill - Jade LeMac</p>
                   <p class="m-0"><i class="bi bi-disc"></i> Aimed to Kill</p>
                 </div>
                 <div class="col-2">
-                  <p style="font-size: 0.8rem">4 ore</p>
+                  <p class="fs-6">4 ore</p>
                 </div>
               </div>
               <!-- END ACTIVITY -->
@@ -202,13 +223,13 @@
                 <div class="col-2">
                   <img src="./assets/imgs/search/image-8.jpg" alt="" class="img-fluid rounded-circle" />
                 </div>
-                <div class="col-8 d-flex flex-column" style="font-size: 14px">
+                <div class="col-8 d-flex flex-column">
                   <p class="m-0 fw-bold">Valeria Traverso</p>
                   <p class="m-0">New Kings - Sleeping Wolf</p>
                   <p class="m-0"><i class="bi bi-disc"></i> Twint Badass mood</p>
                 </div>
                 <div class="col-2">
-                  <p style="font-size: 0.8rem">4 ore</p>
+                  <p class="fs-6">4 ore</p>
                 </div>
               </div>
               <!-- END ACTIVITY -->
@@ -217,96 +238,119 @@
         </aside>
         <!-- FINE SIDEBAR DESTRA -->
       </div>
-      <i id="open-rightsidebar" class="bi bi-arrow-left-circle fs-3 position-fixed d-none pointer z-3" style="left: 98%; top: 50%"></i>
     </main>
+    <i id="open-rightsidebar" class="bi bi-arrow-left-circle fs-3 position-fixed d-none pointer" style="left: 98%; top: 47%"></i>
 
-    <!-- MOBILE MEDIA PLAYER -->
-    <div class="fixed-bottom d-md-none w-100">
-      <div class="mx-2 mobile-player-card rounded-3 position-relative d-flex align-items-center p-2 shadow-lg bg-dark" style="z-index: 9999">
+    <!-- MENU AND MEDIA PLAYER - MOBILE -->
+    <div class="container-fluid d-lg-none" id="menu-and-player-mobile" style="max-height: 130px">
+      <!-- MEDIA PLAYER - MOBILE -->
+      <div
+        class="mx-2 mobile-player-card rounded-3 position-relative d-flex align-items-center p-2 shadow-lg bg-dark d-lg-none"
+        style="z-index: 9999; margin-bottom: 10px"
+      >
         <div class="progress position-absolute bottom-0 start-0 w-100 rounded-bottom-3" style="height: 2px; background: transparent">
-          <div class="progress-bar bg-white" role="progressbar" style="width: 30%"></div>
+          <div id="mobileProgressBar" class="progress-bar bg-white" role="progressbar" style="width: 0%"></div>
         </div>
 
         <img id="mobilePlayerImg" src="" class="rounded d-none" style="width: 40px; height: 40px; object-fit: cover" />
-
         <div class="d-flex flex-column ms-3 overflow-hidden flex-grow-1">
-          <span id="mobilePlayerTitle" class="text-white fw-bold text-truncate" style="font-size: 13px">Scegli un brano</span>
-          <span id="mobilePlayerArtist" class="text-white-50 text-truncate" style="font-size: 11px">Artist</span>
+          <span id="mobilePlayerTitle" class="text-white fw-bold text-truncate" style="font-size: 13px">Scegli brano</span>
+          <span id="mobilePlayerArtist" class="text-white-50 text-truncate" style="font-size: 11px">...</span>
         </div>
-
         <div class="d-flex align-items-center gap-3 me-2">
+          <i id="playerHeart2" class="bi bi-heart text-secondary fs-6 player-control-icon ms-2 pointer"></i>
           <i class="bi bi-speaker text-white-50 fs-4"></i>
           <i id="mobilePlayIcon" class="bi bi-play-fill text-white fs-1"></i>
         </div>
       </div>
-
-      <div class="bg-black py-3 border-top border-dark position-relative bg-opacity-75" style="z-index: 1050">
+      <!-- MENU - MOBILE  -->
+      <div class="container-fluid bg-black border-top border-dark opacity-100" id="menu-mobile" style="z-index: 1050">
         <div class="row text-center text-white m-0">
           <div class="col-4 d-flex flex-column align-items-center">
-            <a href="./home.html" class="col-4 d-flex flex-column align-items-center text-decoration-none">
-              <i class="bi bi-house-door-fill fs-4 text-white-50"></i>
-              <span style="font-size: 10px" class="text-white-50">Home</span>
+            <a href="./home.html" class="col-4 d-flex flex-column align-items-center text-decoration-none text-white-50">
+              <i class="bi bi-house fs-4"></i>
+              <span style="font-size: 10px">Home</span>
             </a>
           </div>
           <div class="col-4 d-flex flex-column align-items-center">
-            <a href="./search.html" class="col-4 d-flex flex-column align-items-center text-decoration-none">
-              <i class="bi bi-search fs-4 text-white-50"></i>
-              <span style="font-size: 10px" class="text-white-50">Cerca</span>
+            <a href="./search.html" class="col-4 d-flex flex-column align-items-center text-decoration-none text-white-50">
+              <i class="bi bi-search fs-4"></i>
+              <span style="font-size: 10px">Cerca</span>
             </a>
           </div>
           <div class="col-4 d-flex flex-column align-items-center">
-            <i class="bi bi-collection fs-4 text-white-50"></i>
+            <i class="bi bi-music-note-list fs-4 text-white-50"></i>
             <span style="font-size: 10px" class="text-white-50">Libreria</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- MEDIA PLAYER -->
-    <div class="container-fluid fixed-bottom py-3 d-none d-md-flex" style="z-index: 9999; background-color: #181818fd; max-height: 100px">
-      <div class="row align-items-start px-2 w-100 m-0">
+    <!-- INIZIO MEDIAPLAYER - DESKTOP -->
+    <div class="container-fluid fixed-bottom pt-2 pb-2 px-3 d-none d-lg-block" id="media-player-desktop" style="max-height: 80px" id="media-player-desktop">
+      <div class="row h-100 align-items-center">
         <div class="col-3 d-flex align-items-center">
-          <img id="playerImg" src="" alt="" class="d-none rounded shadow-sm me-3" style="width: 56px; height: 56px; object-fit: cover" />
+          <img
+            src="./assets/imgs/main/image-14.jpg"
+            alt="cover"
+            class="rounded me-3 shadow"
+            style="width: 60px; height: 60px; object-fit: cover"
+            id="playerImg"
+          />
+
           <div class="d-flex flex-column justify-content-center me-3">
-            <span id="playerTitle" class="text-white fs-6 fw-bold text-truncate" style="max-width: 150px"></span>
-            <span id="playerArtist" class="text-white-50 small text-truncate" style="max-width: 150px"></span>
+            <h6 id="playerTitle" class="mb-0 text-white fw-bold song-info" style="font-size: 0.9rem">Fat Funny Friend</h6>
+            <small class="text-secondary song-info" style="font-size: 0.75rem">Maddie Zahm</small>
           </div>
-          <i class="bi bi-heart text-white-50 ms-2 fs-5" style="cursor: pointer" id="playerHeart"></i>
+
+          <i id="playerHeart" class="bi bi-heart text-secondary fs-6 player-control-icon ms-2"></i>
         </div>
 
-        <div class="col-6 d-flex flex-column align-items-center">
-          <div class="d-flex align-items-center gap-4 mb-2">
-            <i class="bi bi-shuffle text-success fs-5" role="button"></i>
-            <i class="bi bi-skip-start-fill text-white-50 fs-3 hover-white" role="button"></i>
+        <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <i class="bi bi-shuffle text-success fs-5 player-control-icon"></i>
+            <i class="bi bi-skip-start-fill text-secondary 4 player-control-icon"></i>
+
             <div
+              class="bg-white rounded-circle d-flex align-items-center justify-content-center player-control-icon"
+              style="width: 35px; height: 35px; transition: 0.2s"
               id="playPauseBtn"
-              class="bg-white rounded-circle d-flex justify-content-center align-items-center hover-scale"
-              style="width: 35px; height: 35px; cursor: pointer"
             >
-              <i id="playIcon" class="bi bi-play-fill text-black fs-3 ms-1"></i>
+              <i id="playIcon" class="bi bi-play-fill text-black fs-4 ms-1"></i>
             </div>
-            <i class="bi bi-skip-end-fill text-white-50 fs-3 hover-white" role="button"></i>
-            <i class="bi bi-repeat text-white-50 fs-5 hover-white" role="button"></i>
+
+            <i class="bi bi-skip-end-fill text-secondary fs-4 player-control-icon"></i>
+            <i class="bi bi-repeat text-secondary fs-5 player-control-icon"></i>
           </div>
-          <div class="d-flex align-items-center w-75 gap-2">
-            <span class="text-white-50 small" style="font-size: 11px">0:24</span>
-            <input type="range" class="form-range spotify-range" min="0" max="100" value="30" />
-            <span id="playerDuration" class="text-white-50 small" style="font-size: 11px">0:00</span>
+
+          <div class="d-flex align-items-center w-75 gap-2 progress-container">
+            <small id="playerDuration" class="text-secondary" style="font-size: 0.7rem">0:58</small>
+
+            <div class="progress flex-grow-1" style="height: 4px">
+              <div class="progress-bar bg-white" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <small class="text-secondary" style="font-size: 0.7rem">3:20</small>
           </div>
         </div>
 
-        <div class="col-3 d-flex align-items-center justify-content-end gap-3">
-          <i class="bi bi-mic text-white-50 fs-6 hover-white" title="Testo"></i>
-          <i class="bi bi-list text-white-50 fs-5 hover-white" title="Coda"></i>
-          <i class="bi bi-speaker text-white-50 fs-6 hover-white" title="Dispositivi"></i>
-          <div class="d-flex align-items-center gap-2" style="width: 100px">
-            <i class="bi bi-volume-up text-white-50 fs-5"></i>
-            <input type="range" class="form-range spotify-range" min="0" max="100" value="80" />
+        <div class="col-3 d-flex align-items-center justify-content-end gap-3 text-secondary">
+          <i class="bi bi-mic player-control-icon" title="Testo"></i>
+          <i class="bi bi-list player-control-icon" title="Coda"></i>
+          <i class="bi bi-speaker player-control-icon" title="Dispositivi"></i>
+
+          <div class="d-flex align-items-center gap-2 progress-container" style="width: 100px">
+            <i class="bi bi-volume-up player-control-icon"></i>
+            <div class="progress flex-grow-1" style="height: 4px">
+              <div class="progress-bar bg-white" role="progressbar" style="width: 80%"></div>
+            </div>
           </div>
-          <i class="bi bi-arrows-angle-expand text-white-50 fs-6 ms-2 hover-white"></i>
+
+          <i class="bi bi-arrows-angle-expand player-control-icon ms-2" title="Schermo intero"></i>
         </div>
       </div>
     </div>
+    <!--FINE MEDIAPLAYER DESKTOP -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -314,9 +358,10 @@
       crossorigin="anonymous"
     ></script>
 
+    <script src="./assets/JS/uniformamento_ui.js"></script>
     <script src="./assets/js/vars.js"></script>
     <script src="./assets/js/helpers.js"></script>
     <script src="./assets/js/album.js"></script>
-    <script src="./assets/js/sidebar.js"></script>
+    <script src="./assets/JS/storage.js"></script>
   </body>
 </html>

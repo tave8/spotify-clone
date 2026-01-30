@@ -1,6 +1,7 @@
 const onLoadPage = () => {
   addEventHandlers();
   focusUISearchInput();
+  searchIfQueryInUrl();
 };
 
 window.addEventListener("load", onLoadPage);
@@ -28,6 +29,23 @@ const createUITrack = (track) => {
   `;
 };
 
+/**
+ * If there is a "query" param in the URL, perform a search with its value,
+ * as if the user had typed it in the search input.
+ */
+const searchIfQueryInUrl = () => {
+  if (!existsQueryUrlParam()) {
+    return;
+  }
+  // something like "beatles" in ?query=beatles
+  const userSearch = getQueryUrlParam();
+  // set the search input value to match the query param
+  const searchInput = getUISearchInput();
+  searchInput.value = userSearch;
+
+  searchTracks(userSearch);
+};
+
 const getSimplerTracksInfo = (tracksData) => {
   const tracks = tracksData.data;
   return tracks.map((track) => {
@@ -40,13 +58,39 @@ const getSimplerTracksInfo = (tracksData) => {
   });
 };
 
-const onSearchInputTypingStopped = async (userSearch, moreInfo) => {
+/**
+ * Performs a search for tracks with the given user search string.
+ * Can be used as a callback for when the user stops typing in the search input,
+ * or can be invoked directly (for example, when loading the page if there is a "query" param in the URL).
+ */
+const searchTracks = async (userSearch) => {
   try {
+    showUISearchInputSpinner();
+
     const tracksData = await searchRemoteTracks(userSearch);
     console.log("search result: ", getSimplerTracksInfo(tracksData));
     populateUITracks(getSimplerTracksInfo(tracksData));
+
+    showUISearchInputSpinner(false);
   } catch (err) {
     console.error(err);
+    showUISearchInputSpinner(false);
+  }
+};
+
+/**
+ * Callback invoked when user stops typing in the search input.
+ */
+const onSearchInputTypingStopped = async (userSearch, moreInfo) => {
+  searchTracks(userSearch);
+};
+
+const showUISearchInputSpinner = (show = true) => {
+  const spinner = getUISearchInputSpinner();
+  if (show) {
+    spinner.classList.remove("visually-hidden");
+  } else {
+    spinner.classList.add("visually-hidden");
   }
 };
 
@@ -70,7 +114,15 @@ new TypingDelayer({
   minChars: 3,
 });
 
-const addEventHandlers = () => {};
+const addEventHandlers = () => {
+  getUISearchInput().addEventListener("keyup", handleTypingSearchInput);
+};
+
+// when user types in search input, update the query url param
+const handleTypingSearchInput = (event) => {
+  const userSearch = event.target.value;
+  helpers.updateUrlQueryParam("query", userSearch);
+};
 
 const focusUISearchInput = () => {
   const searchInput = getUISearchInput();
@@ -83,4 +135,16 @@ const getUITracks = () => {
 
 const getUISearchInput = () => {
   return document.querySelector("#search-input");
+};
+
+const getUISearchInputSpinner = () => {
+  return document.querySelector(".search-bar-container .search-input-spinner");
+};
+
+const existsQueryUrlParam = () => {
+  return helpers.existsUrlQueryParam("query");
+};
+
+const getQueryUrlParam = () => {
+  return helpers.getUrlQueryParam("query");
 };

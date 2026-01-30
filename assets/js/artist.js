@@ -1,13 +1,14 @@
-/**
+/*
  * Get artist info from page URL and populate UI.
  */
 const onPageLoad = async () => {
-  loadArtistAndTopTracks();
+  await loadArtistAndTopTracks();
 };
 
 window.addEventListener("load", onPageLoad);
 
 let currentAudio = null;
+let currentTrack = null;
 
 // NUOVO: Funzione centralizzata per aggiornare la sezione "Brani che ti piacciono"
 const updateLikedSection = (artistName, artistImage) => {
@@ -25,19 +26,19 @@ const updateLikedSection = (artistName, artistImage) => {
 
     // NUOVO: Generiamo l'HTML con l'immagine dell'artista e il conteggio
     container.innerHTML = `
-        <div class="d-flex align-items-center p-3">
-            <div class="position-relative">
-                <img src="${artistImage}" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
-                <div class="bg-success rounded-circle position-absolute bottom-0 end-0 d-flex justify-content-center align-items-center p-1" style="width: 20px; height: 20px;">
-                    <i class="bi bi-heart-fill text-white" style="font-size: 10px;"></i>
-                </div>
-            </div>
-            <div class="ms-3">
-                <div class="fw-bold text-white">Hai messo "Mi piace" a ${count} brani</div>
-                <div class="text-white-50 small">di ${artistName}</div>
-            </div>
-        </div>
-    `;
+<div class="d-flex align-items-center p-3">
+<div class="position-relative">
+<img src="${artistImage}" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+<div class="bg-success rounded-circle position-absolute bottom-0 end-0 d-flex justify-content-center align-items-center p-1" style="width: 20px; height: 20px;">
+<i class="bi bi-heart-fill text-white" style="font-size: 10px;"></i>
+</div>
+</div>
+<div class="ms-3">
+<div class="fw-bold text-white">Hai messo "Mi piace" a ${count} brani</div>
+<div class="text-white-50 small">di ${artistName}</div>
+</div>
+</div>
+`;
   } else {
     // Nascondi sezione liked e allarga i top tracks
     section.classList.add("d-none");
@@ -48,8 +49,38 @@ const updateLikedSection = (artistName, artistImage) => {
   }
 };
 
+// Mostra spinner per Top Tracks e Altri Album
+const showLoadingState = () => {
+  const tracksContainer = document.getElementById("tracksContainer");
+  const moreAlbumsRow = document.querySelector("#moreAlbums .row");
+
+  tracksContainer.innerHTML = `
+    <div class="d-flex justify-content-center p-4">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  `;
+
+  moreAlbumsRow.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    moreAlbumsRow.innerHTML += `
+      <div class="col">
+        <div class="card bg-dark border-0">
+          <div class="placeholder-glow">
+            <div class="placeholder col-12 mb-2" style="height:160px;"></div>
+            <div class="placeholder col-8"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
 const loadArtistAndTopTracks = async () => {
   try {
+    showLoadingState(); // Mostra spinner
+
     // artist info only
     const artistRaw = await getRemoteArtist(getArtistIdFromUrl());
     const artist = getSimplerArtistInfo(artistRaw);
@@ -61,6 +92,11 @@ const loadArtistAndTopTracks = async () => {
 
     // NUOVO: Passiamo anche l'immagine piccola dell'artista per la sezione Like
     populateUITopTracks(getSimplerTopTracksInfo(filteredTracks), artist.picture.small);
+
+    // Carica altri album
+    const artistAlbums = await getArtistAlbums(artistRaw.id);
+    populateMoreAlbums(artistAlbums);
+    document.getElementById("moreAlbumsArtist").innerText = `Altri album di ${artist.name}`;
   } catch (err) {
     console.error(err);
     document.getElementById("tracksContainer").innerHTML = `<div class="text-danger p-4">Errore: ${err.message}</div>`;
@@ -120,9 +156,9 @@ const populateUIArtist = (artist) => {
     // A. HEADER: Immagine di sfondo che sfuma verso il colore in basso
     // (rgba con opacità 0.8 alla fine per fondersi con la sezione sotto)
     header.style.background = `
-        linear-gradient(to bottom, transparent 0%, rgba(${r},${g},${b}, 0.8) 100%), 
-        url(${artist.picture.big})
-    `;
+linear-gradient(to bottom, transparent 0%, rgba(${r},${g},${b}, 0.8) 100%),
+url(${artist.picture.big})
+`;
     header.style.backgroundSize = "cover";
     header.style.backgroundPosition = "center 20%"; // Centrato leggermente in alto
 
@@ -134,8 +170,6 @@ const populateUIArtist = (artist) => {
   // 4. Inizializza la sezione "Mi piace"
   updateLikedSection(artist.name, artist.picture.small);
 };
-
-let currentTrack = null;
 
 const populateUITopTracks = (topTracks, artistSmallImage) => {
   const container = document.getElementById("tracksContainer");
@@ -161,16 +195,33 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       togglePlay();
     };
 
+  // === NUOVO: SELEZIONE ENTRAMBI I CUORI ===
   const playerBtnHeart = document.getElementById("playerHeart");
+  const playerBtnHeart2 = document.getElementById("playerHeart2"); // Cuore mobile
 
-  // Listener unico per il cuore del player
-  playerBtnHeart.onclick = (e) => {
+  // Funzione helper per aggiornare visivamente TUTTI i cuori del player
+  const updatePlayerHearts = (isLiked) => {
+    [playerBtnHeart, playerBtnHeart2].forEach((btn) => {
+      if (btn) {
+        if (isLiked) {
+          btn.classList.replace("bi-heart", "bi-heart-fill");
+          btn.classList.add("text-success");
+        } else {
+          btn.classList.replace("bi-heart-fill", "bi-heart");
+          btn.classList.remove("text-success");
+        }
+      }
+    });
+  };
+
+  // Listener unico per il click sui cuori del player (Desktop o Mobile)
+  const handlePlayerHeartClick = (e) => {
     e.stopPropagation();
     if (!currentTrack) return;
 
     const added = toggleLike(currentTrack);
 
-    // Aggiorna icone brano selezionato
+    // 1. Aggiorna le icone nella lista brani
     document.querySelectorAll(".heart-btn").forEach((btn) => {
       if (btn.dataset.trackId == currentTrack.id) {
         if (added) {
@@ -183,18 +234,18 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       }
     });
 
-    // Aggiorna icona player
-    if (added) {
-      playerBtnHeart.classList.replace("bi-heart", "bi-heart-fill");
-      playerBtnHeart.classList.add("text-success");
-    } else {
-      playerBtnHeart.classList.replace("bi-heart-fill", "bi-heart");
-      playerBtnHeart.classList.remove("text-success");
-    }
+    // 2. Aggiorna entrambi i cuori del player
+    updatePlayerHearts(added);
 
+    // 3. Aggiorna la sezione in alto
     updateLikedSection(currentTrack.artist, artistSmallImage);
   };
 
+  // Assegna il listener a entrambi i pulsanti (se esistono nella pagina)
+  if (playerBtnHeart) playerBtnHeart.onclick = handlePlayerHeartClick;
+  if (playerBtnHeart2) playerBtnHeart2.onclick = handlePlayerHeartClick;
+
+  // === GENERAZIONE LISTA BRANI ===
   topTracks.forEach((track) => {
     const div = document.createElement("div");
     div.className = "track-item d-flex align-items-center justify-content-between p-2";
@@ -204,7 +255,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
 
     div.innerHTML = `
       <div class="d-flex align-items-center flex-grow-1 overflow-hidden">
-        <span class="track-number fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
+        <span class="track-number fs-5 fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
         <img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded me-3 flex-shrink-0">
         <div class="track-info overflow-hidden"> 
             <div class="track-title text-white fw-bold text-truncate">${track.title}</div>
@@ -212,9 +263,8 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
         </div>
       </div>
       
-      <!-- rank (conosciuto come "numero riproduzioni della traccia) -->
       <div class="d-flex align-items-center flex-shrink-0 pe-3">
-         <span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
+         <span class="text-white-50 small d-none d-md-flex" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
       </div>
 
       <div class="d-flex align-items-center flex-shrink-0">
@@ -223,13 +273,14 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       </div>
     `;
 
+    // GESTIONE CLICK CUORE NELLA LISTA
     const heartBtn = div.querySelector(".heart-btn");
     heartBtn.onclick = (e) => {
       e.stopPropagation();
-      currentTrack = { ...track }; // Aggiorna track corrente
-      const added = toggleLike(currentTrack);
 
-      // Aggiorna icona
+      const added = toggleLike(track); // Usa 'track' direttamente per evitare confusione
+
+      // Aggiorna icona riga
       if (added) {
         heartBtn.classList.replace("bi-heart", "bi-heart-fill");
         heartBtn.classList.add("text-success");
@@ -238,24 +289,19 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
         heartBtn.classList.remove("text-success");
       }
 
-      // Aggiorna player
-      if (playerBtnHeart) {
-        if (added) {
-          playerBtnHeart.classList.replace("bi-heart", "bi-heart-fill");
-          playerBtnHeart.classList.add("text-success");
-        } else {
-          playerBtnHeart.classList.replace("bi-heart-fill", "bi-heart");
-          playerBtnHeart.classList.remove("text-success");
-        }
+      // Se la canzone a cui ho messo like è quella attualmente nel player, aggiorna i cuori del player
+      if (currentTrack && currentTrack.id === track.id) {
+        updatePlayerHearts(added);
       }
 
       updateLikedSection(track.artist, artistSmallImage);
     };
 
+    // GESTIONE CLICK PLAY SULLA RIGA
     div.onclick = () => {
       currentTrack = { ...track };
 
-      // Aggiorna player
+      // Popola UI Desktop
       if (playerImg) {
         playerImg.src = track.albumCover.small;
         playerImg.classList.remove("d-none");
@@ -264,6 +310,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       if (playerArtist) playerArtist.textContent = track.artist;
       if (playerDuration) playerDuration.textContent = track.durationForUI;
 
+      // Popola UI Mobile
       if (mobilePlayerImg) {
         mobilePlayerImg.src = track.albumCover.small;
         mobilePlayerImg.classList.remove("d-none");
@@ -271,6 +318,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       if (mobilePlayerTitle) mobilePlayerTitle.textContent = track.title;
       if (mobilePlayerArtist) mobilePlayerArtist.textContent = track.artist;
 
+      // Gestione Audio
       if (currentAudio) currentAudio.pause();
       if (track.preview) {
         currentAudio = new Audio(track.preview);
@@ -279,20 +327,15 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
         if (mobilePlayIcon) mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
       }
 
-      // Aggiorna stato cuore player
-      if (isSongLiked(track.id)) {
-        playerBtnHeart.classList.replace("bi-heart", "bi-heart-fill");
-        playerBtnHeart.classList.add("text-success");
-      } else {
-        playerBtnHeart.classList.replace("bi-heart-fill", "bi-heart");
-        playerBtnHeart.classList.remove("text-success");
-      }
+      // Aggiorna lo stato dei cuori del player appena parte la canzone
+      const isLikedNow = isSongLiked(track.id);
+      updatePlayerHearts(isLikedNow);
     };
 
     container.appendChild(div);
   });
 
-  //FAR PARTIRE LA PRIMA CANZONE con il bottone verde
+  // TASTO VERDE "PLAY" IN ALTO
   const playArtistBtn = document.getElementById("playTracksArtist");
   const firstTrackRow = container.querySelector(".track-item");
   if (playArtistBtn && firstTrackRow) {
@@ -342,14 +385,14 @@ const getRemoteTopTracks = async (artistName) => {
 };
 
 /**
- * Outputs the artist info into fields
- * that are more intuitive to access/remember.
- *
- * Artist info:
-        name
-        total listeners
-        popular 
- */
+* Outputs the artist info into fields
+* that are more intuitive to access/remember.
+*
+* Artist info:
+name
+total listeners
+popular
+*/
 const getSimplerArtistInfo = (artist) => {
   const name = artist.name;
   const picture = {
@@ -401,7 +444,51 @@ const getArtistIdFromUrl = () => {
   return params.get("artist_id");
 };
 
-
 const getRankForUI = function (rankNum) {
-  return rankNum.toLocaleString('it-IT')
-}
+  return rankNum.toLocaleString("it-IT");
+};
+
+// Recupera tutti gli album di un artista
+const getArtistAlbums = async (artistId) => {
+  try {
+    const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/albums`;
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error("Errore fetch artist albums. Status: " + resp.status);
+    const data = await resp.json();
+    return data.data; // Restituisce solo l'array di album
+  } catch (err) {
+    console.error(err);
+    return []; // Fallback vuoto
+  }
+};
+
+// Popola la sezione "Altri album" di un artista
+const populateMoreAlbums = (albums) => {
+  const row = document.querySelector("#moreAlbums .row");
+  row.innerHTML = "";
+
+  // Prendiamo solo i primi 5 album per evitare troppi elementi
+  const albumsToShow = albums.slice(0, 5);
+
+  albumsToShow.forEach((album) => {
+    row.innerHTML += `
+      <div class="col">
+        <a href="./album.html?album_id=${album.id}" class="text-decoration-none">
+          <div class="card bg-dark border-0 h-100 album-card-hover">
+            <img 
+              src="${album.cover_medium}" 
+              class="card-img-top" 
+              alt="${album.title}"
+            >
+            <div class="card-body px-0">
+              <p class="card-title text-white small fw-bold mb-0 px-3 text-truncate">
+                ${album.title}
+              </p>
+              <p class="text-secondary small text-start px-3">Album</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    `;
+  });
+};
