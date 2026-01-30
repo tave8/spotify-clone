@@ -6,6 +6,10 @@
   --green-spotify: #1db954;
 }
 
+body {
+  font-family: "Circular", Helvetica, Arial, sans-serif;
+}
+
 body[data-bs-theme="dark"] {
   background: var(--bg-primary);
   color: var(--text-primary);
@@ -24,12 +28,14 @@ body[data-bs-theme="dark"] {
 }
 
 #categories-container > div > a,
-#playlist-container > div > div {
+#playlist-container > div > div,
+.animated {
   transition: 0.5s ease-in-out;
 }
 
 #categories-container > div > a:hover,
-#playlist-container > div > div:hover {
+#playlist-container > div > div:hover,
+.animated:hover {
   background-color: #198754;
   transform: scale(1.05);
   transform-origin: center;
