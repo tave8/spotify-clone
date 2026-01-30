@@ -210,3 +210,6 @@ getElements()
   .catch((err) => {
     console.log("Errore", err);
   });
+
+//Navigazione
+setupNavigation();

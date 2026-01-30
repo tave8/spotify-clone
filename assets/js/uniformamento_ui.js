@@ -25,3 +25,17 @@ openBtn.addEventListener("click", () => {
   rightSidebar.classList.remove("d-none");
   rightSidebar.classList.add("d-lg-flex");
 });
+
+// ************* NUOVA FUNZIONE: NAVIGAZIONE *************
+const setupNavigation = () => {
+  const btnBack = document.getElementById("btn-back");
+  const btnForward = document.getElementById("btn-forward");
+
+  if (btnBack) {
+    btnBack.onclick = () => window.history.back();
+  }
+
+  if (btnForward) {
+    btnForward.onclick = () => window.history.forward();
+  }
+};
