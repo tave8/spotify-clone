@@ -35,16 +35,16 @@ const createUITrack = (track) => {
  */
 const searchIfQueryInUrl = () => {
   if (!existsQueryUrlParam()) {
-    return
+    return;
   }
   // something like "beatles" in ?query=beatles
   const userSearch = getQueryUrlParam();
   // set the search input value to match the query param
   const searchInput = getUISearchInput();
   searchInput.value = userSearch;
-  
+
   searchTracks(userSearch);
-}
+};
 
 const getSimplerTracksInfo = (tracksData) => {
   const tracks = tracksData.data;
@@ -58,7 +58,6 @@ const getSimplerTracksInfo = (tracksData) => {
   });
 };
 
-
 /**
  * Performs a search for tracks with the given user search string.
  * Can be used as a callback for when the user stops typing in the search input,
@@ -67,18 +66,17 @@ const getSimplerTracksInfo = (tracksData) => {
 const searchTracks = async (userSearch) => {
   try {
     showUISearchInputSpinner();
-  
+
     const tracksData = await searchRemoteTracks(userSearch);
     console.log("search result: ", getSimplerTracksInfo(tracksData));
     populateUITracks(getSimplerTracksInfo(tracksData));
-  
+
     showUISearchInputSpinner(false);
-  
   } catch (err) {
     console.error(err);
     showUISearchInputSpinner(false);
   }
-}
+};
 
 /**
  * Callback invoked when user stops typing in the search input.
@@ -87,7 +85,6 @@ const onSearchInputTypingStopped = async (userSearch, moreInfo) => {
   searchTracks(userSearch);
 };
 
-
 const showUISearchInputSpinner = (show = true) => {
   const spinner = getUISearchInputSpinner();
   if (show) {
@@ -95,7 +92,7 @@ const showUISearchInputSpinner = (show = true) => {
   } else {
     spinner.classList.add("visually-hidden");
   }
-}
+};
 
 const searchRemoteTracks = async (search) => {
   const url = `${vars.DEEZER_API_URL}/search?q=${search}`;
@@ -117,7 +114,15 @@ new TypingDelayer({
   minChars: 3,
 });
 
-const addEventHandlers = () => {};
+const addEventHandlers = () => {
+  getUISearchInput().addEventListener("keyup", handleTypingSearchInput);
+};
+
+// when user types in search input, update the query url param
+const handleTypingSearchInput = (event) => {
+  const userSearch = event.target.value;
+  helpers.updateUrlQueryParam("query", userSearch);
+};
 
 const focusUISearchInput = () => {
   const searchInput = getUISearchInput();
@@ -137,9 +142,9 @@ const getUISearchInputSpinner = () => {
 };
 
 const existsQueryUrlParam = () => {
-  return helpers.existsUrlQueryParam("query")
-}
+  return helpers.existsUrlQueryParam("query");
+};
 
 const getQueryUrlParam = () => {
-  return helpers.getUrlQueryParam("query")
-}
+  return helpers.getUrlQueryParam("query");
+};

@@ -17,6 +17,12 @@ const helpers = {
     return new URLSearchParams(location.search).has(param);
   },
 
+  updateUrlQueryParam: function (param, value) {
+    const url = new URL(window.location);
+    url.searchParams.set(param, value);
+    window.history.replaceState({}, "", url);
+  },
+
   // ******* FORMATTERS
 
   /**
