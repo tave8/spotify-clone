@@ -161,16 +161,33 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       togglePlay();
     };
 
+  // === NUOVO: SELEZIONE ENTRAMBI I CUORI ===
   const playerBtnHeart = document.getElementById("playerHeart");
+  const playerBtnHeart2 = document.getElementById("playerHeart2"); // Cuore mobile
 
-  // Listener unico per il cuore del player
-  playerBtnHeart.onclick = (e) => {
+  // Funzione helper per aggiornare visivamente TUTTI i cuori del player
+  const updatePlayerHearts = (isLiked) => {
+    [playerBtnHeart, playerBtnHeart2].forEach((btn) => {
+      if (btn) {
+        if (isLiked) {
+          btn.classList.replace("bi-heart", "bi-heart-fill");
+          btn.classList.add("text-success");
+        } else {
+          btn.classList.replace("bi-heart-fill", "bi-heart");
+          btn.classList.remove("text-success");
+        }
+      }
+    });
+  };
+
+  // Listener unico per il click sui cuori del player (Desktop o Mobile)
+  const handlePlayerHeartClick = (e) => {
     e.stopPropagation();
     if (!currentTrack) return;
 
     const added = toggleLike(currentTrack);
 
-    // Aggiorna icone brano selezionato
+    // 1. Aggiorna le icone nella lista brani
     document.querySelectorAll(".heart-btn").forEach((btn) => {
       if (btn.dataset.trackId == currentTrack.id) {
         if (added) {
@@ -183,18 +200,18 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       }
     });
 
-    // Aggiorna icona player
-    if (added) {
-      playerBtnHeart.classList.replace("bi-heart", "bi-heart-fill");
-      playerBtnHeart.classList.add("text-success");
-    } else {
-      playerBtnHeart.classList.replace("bi-heart-fill", "bi-heart");
-      playerBtnHeart.classList.remove("text-success");
-    }
+    // 2. Aggiorna entrambi i cuori del player
+    updatePlayerHearts(added);
 
+    // 3. Aggiorna la sezione in alto
     updateLikedSection(currentTrack.artist, artistSmallImage);
   };
 
+  // Assegna il listener a entrambi i pulsanti (se esistono nella pagina)
+  if (playerBtnHeart) playerBtnHeart.onclick = handlePlayerHeartClick;
+  if (playerBtnHeart2) playerBtnHeart2.onclick = handlePlayerHeartClick;
+
+  // === GENERAZIONE LISTA BRANI ===
   topTracks.forEach((track) => {
     const div = document.createElement("div");
     div.className = "track-item d-flex align-items-center justify-content-between p-2";
@@ -203,32 +220,33 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
     const heartIconClass = isLiked ? "bi-heart-fill text-success" : "bi-heart";
 
     div.innerHTML = `
-<div class="d-flex align-items-center flex-grow-1 overflow-hidden">
-<span class="track-number fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
-<img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded me-3 flex-shrink-0">
-<div class="track-info overflow-hidden">
-<div class="track-title text-white fw-bold text-truncate">${track.title}</div>
-<div class="track-artist text-white-50 small text-truncate">${track.artist}</div>
-</div>
-</div>
-<!-- rank (conosciuto come "numero riproduzioni della traccia) -->
-<div class="d-flex align-items-center flex-shrink-0 pe-3">
-<span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
-</div>
+      <div class="d-flex align-items-center flex-grow-1 overflow-hidden">
+        <span class="track-number fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
+        <img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded me-3 flex-shrink-0">
+        <div class="track-info overflow-hidden"> 
+            <div class="track-title text-white fw-bold text-truncate">${track.title}</div>
+            <div class="track-artist text-white-50 small text-truncate">${track.artist}</div>
+        </div>
+      </div>
+      
+      <div class="d-flex align-items-center flex-shrink-0 pe-3">
+         <span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
+      </div>
 
-<div class="d-flex align-items-center flex-shrink-0">
-<i class="bi ${heartIconClass} fs-5 me-4 heart-btn" style="cursor: pointer; z-index: 10;" data-track-id="${track.id}"></i>
-<span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.durationForUI}</span>
-</div>
-`;
+      <div class="d-flex align-items-center flex-shrink-0">
+         <i class="bi ${heartIconClass} fs-5 me-4 heart-btn" style="cursor: pointer; z-index: 10;" data-track-id="${track.id}"></i>
+         <span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.durationForUI}</span>
+      </div>
+    `;
 
+    // GESTIONE CLICK CUORE NELLA LISTA
     const heartBtn = div.querySelector(".heart-btn");
     heartBtn.onclick = (e) => {
       e.stopPropagation();
-      currentTrack = { ...track }; // Aggiorna track corrente
-      const added = toggleLike(currentTrack);
 
-      // Aggiorna icona
+      const added = toggleLike(track); // Usa 'track' direttamente per evitare confusione
+
+      // Aggiorna icona riga
       if (added) {
         heartBtn.classList.replace("bi-heart", "bi-heart-fill");
         heartBtn.classList.add("text-success");
@@ -237,24 +255,19 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
         heartBtn.classList.remove("text-success");
       }
 
-      // Aggiorna player
-      if (playerBtnHeart) {
-        if (added) {
-          playerBtnHeart.classList.replace("bi-heart", "bi-heart-fill");
-          playerBtnHeart.classList.add("text-success");
-        } else {
-          playerBtnHeart.classList.replace("bi-heart-fill", "bi-heart");
-          playerBtnHeart.classList.remove("text-success");
-        }
+      // Se la canzone a cui ho messo like è quella attualmente nel player, aggiorna i cuori del player
+      if (currentTrack && currentTrack.id === track.id) {
+        updatePlayerHearts(added);
       }
 
       updateLikedSection(track.artist, artistSmallImage);
     };
 
+    // GESTIONE CLICK PLAY SULLA RIGA
     div.onclick = () => {
       currentTrack = { ...track };
 
-      // Aggiorna player
+      // Popola UI Desktop
       if (playerImg) {
         playerImg.src = track.albumCover.small;
         playerImg.classList.remove("d-none");
@@ -263,6 +276,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       if (playerArtist) playerArtist.textContent = track.artist;
       if (playerDuration) playerDuration.textContent = track.durationForUI;
 
+      // Popola UI Mobile
       if (mobilePlayerImg) {
         mobilePlayerImg.src = track.albumCover.small;
         mobilePlayerImg.classList.remove("d-none");
@@ -270,6 +284,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       if (mobilePlayerTitle) mobilePlayerTitle.textContent = track.title;
       if (mobilePlayerArtist) mobilePlayerArtist.textContent = track.artist;
 
+      // Gestione Audio
       if (currentAudio) currentAudio.pause();
       if (track.preview) {
         currentAudio = new Audio(track.preview);
@@ -278,20 +293,15 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
         if (mobilePlayIcon) mobilePlayIcon.classList.replace("bi-play-fill", "bi-pause-fill");
       }
 
-      // Aggiorna stato cuore player
-      if (isSongLiked(track.id)) {
-        playerBtnHeart.classList.replace("bi-heart", "bi-heart-fill");
-        playerBtnHeart.classList.add("text-success");
-      } else {
-        playerBtnHeart.classList.replace("bi-heart-fill", "bi-heart");
-        playerBtnHeart.classList.remove("text-success");
-      }
+      // Aggiorna lo stato dei cuori del player appena parte la canzone
+      const isLikedNow = isSongLiked(track.id);
+      updatePlayerHearts(isLikedNow);
     };
 
     container.appendChild(div);
   });
 
-  //FAR PARTIRE LA PRIMA CANZONE con il bottone verde
+  // TASTO VERDE "PLAY" IN ALTO
   const playArtistBtn = document.getElementById("playTracksArtist");
   const firstTrackRow = container.querySelector(".track-item");
   if (playArtistBtn && firstTrackRow) {
