@@ -409,7 +409,7 @@ const getSimplerAlbumInfo = (album) => {
 
       // --- FIX IMPORTANTE PER I LIKE ---
       // Aggiungiamo 'artist' perché storage.js/artist.html usano questa chiave
-      artist: track.artist,
+      artist: track.artist.name,
 
       artistName: track.artist.name,
       // artist.js si aspetta di trovare song.album.cover_small o simili per la lista
