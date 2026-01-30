@@ -40,15 +40,34 @@ const getSimplerTracksInfo = (tracksData) => {
   });
 };
 
+/**
+ * Callback invoked when user stops typing in the search input
+ */
 const onSearchInputTypingStopped = async (userSearch, moreInfo) => {
   try {
+    showUISearchInputSpinner();
+
     const tracksData = await searchRemoteTracks(userSearch);
     console.log("search result: ", getSimplerTracksInfo(tracksData));
     populateUITracks(getSimplerTracksInfo(tracksData));
+
+    showUISearchInputSpinner(false);
+
   } catch (err) {
     console.error(err);
+    showUISearchInputSpinner(false);
+
   }
 };
+
+const showUISearchInputSpinner = (show = true) => {
+  const spinner = getUISearchInputSpinner();
+  if (show) {
+    spinner.classList.remove("visually-hidden");
+  } else {
+    spinner.classList.add("visually-hidden");
+  }
+}
 
 const searchRemoteTracks = async (search) => {
   const url = `${vars.DEEZER_API_URL}/search?q=${search}`;
@@ -83,4 +102,8 @@ const getUITracks = () => {
 
 const getUISearchInput = () => {
   return document.querySelector("#search-input");
+};
+
+const getUISearchInputSpinner = () => {
+  return document.querySelector(".search-bar-container .search-input-spinner");
 };
