@@ -39,7 +39,7 @@ a {
 
 /* Stile dell'input di testo */
 .search-bar-container input {
-  background-color: white !important;
+  /* background-color: white !important; */
   font-size: 0.95rem;
   text-overflow: ellipsis;
   font-weight: 600;
