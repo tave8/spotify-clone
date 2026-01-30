@@ -13,6 +13,10 @@ const helpers = {
     return value;
   },
 
+  existsUrlQueryParam: function (param) {
+    return new URLSearchParams(location.search).has(param);
+  },
+
   // ******* FORMATTERS
 
   /**
