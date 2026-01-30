@@ -481,10 +481,10 @@ const populateMoreAlbums = (albums) => {
               alt="${album.title}"
             >
             <div class="card-body px-0">
-              <p class="card-title text-white small fw-bold mb-0 text-truncate">
+              <p class="card-title text-white small fw-bold mb-0 px-3 text-truncate">
                 ${album.title}
               </p>
-              <p class="text-secondary small text-center">Album</p>
+              <p class="text-secondary small text-start px-3">Album</p>
             </div>
           </div>
         </a>

@@ -97,7 +97,7 @@
         </aside>
         <!-- FINE SIDEBAR SINISTRA -->
 
-        <section class="col-12 col-md d-flex flex-column vh-100 overflow-y-scroll p-0 bg-dark text-white" id="main-center">
+        <section class="col-12 col-md d-flex flex-column vh-100 overflow-y-scroll p-0 bg-dark text-white pb-5" id="main-center">
           <!-- START ALBUM -->
 
           <div class="p-3 p-md-4 pt-5 bg-gradiente-album position-relative" id="album-section">
@@ -124,6 +124,7 @@
 
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-1 small fw-bold flex-wrap">
                   <img
+                    id="album-artist-cover"
                     src="./assets/imgs/caffe-buongiorno.jpg"
                     alt="Foto Artista"
                     class="rounded-circle me-1"
@@ -141,7 +142,7 @@
           </div>
           <!-- END ALBUM -->
 
-          <div class="py-3 flex-grow-1" id="tracks-section" style="background-color: #121212 !important">
+          <div class="py-3 flex-grow-1 pb" id="tracks-section" style="background-color: #121212 !important">
             <div class="d-flex align-items-center gap-3 mb-2 px-md-4">
               <button class="btn btn-success rounded-circle p-0 d-flex justify-content-center align-items-center" style="width: 56px; height: 56px">
                 <i class="bi bi-play-fill fs-2 text-black ms-1"></i>
@@ -161,11 +162,11 @@
               <div class="col-2 text-end pe-4"><i class="bi bi-clock"></i></div>
             </div>
 
-            <div id="tracks-container" class="d-flex flex-column gap-1"></div>
+            <div id="tracks-container" class="d-flex flex-column gap-1 pb-2"></div>
             <!-- END TRACKS -->
 
-            <div>
-              <h3 class="text-light py-2" id="moreAlbumsArtist"></h3>
+            <div class="container" style="padding-bottom: 5em !important">
+              <h3 class="text-light py-2 px-3" id="moreAlbumsArtist"></h3>
               <div class="container" id="moreAlbums">
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-2"></div>
               </div>
