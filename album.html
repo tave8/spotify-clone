@@ -82,12 +82,12 @@
           <!-- START ALBUM -->
           <div class="p-3 p-md-4 pt-5 bg-gradiente-album" id="album-section">
             <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 gap-md-4 mt-5 text-center text-md-start">
-                <!--START ALBUM COVER -->
+              <!--START ALBUM COVER -->
               <img
                 src=""
                 alt="Copertina Album"
                 class="shadow-lg flex-shrink-0 mb-3 mb-md-0"
-                style="width: 232px; height: 232px; object-fit: cover; box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5); visibility: hidden; border-radius: 3px;"
+                style="width: 232px; height: 232px; object-fit: cover; box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5); visibility: hidden; border-radius: 3px"
                 id="album-cover"
               />
               <!-- END ALBUM COVER -->
@@ -95,10 +95,16 @@
               <div class="d-flex flex-column text-white">
                 <span class="fw-bold small mb-1">ALBUM</span>
                 <!-- album title -->
-                <h1 class="display-5 display-md-2 fw-bolder mb-3" style="letter-spacing: -1px; visibility: hidden;" id="album-title"></h1>
+                <h1 class="display-5 display-md-2 fw-bolder mb-3" style="letter-spacing: -1px; visibility: hidden" id="album-title"></h1>
 
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-1 small fw-bold flex-wrap">
-                  <img src="" id="album-artist-cover" alt="Foto Artista" class="rounded-circle me-1" style="width: 24px; height: 24px; object-fit: cover; visibility: hidden;" />
+                  <img
+                    src=""
+                    id="album-artist-cover"
+                    alt="Foto Artista"
+                    class="rounded-circle me-1"
+                    style="width: 24px; height: 24px; object-fit: cover; visibility: hidden"
+                  />
                   <!-- ARTIST -->
                   <a href="#" class="text-white text-decoration-none link-hover" id="album-artist"></a>
                   <span class="mx-1">•</span>
@@ -120,7 +126,7 @@
               <i class="bi bi-arrow-down-circle fs-3 text-secondary icona-hover"></i>
               <i class="bi bi-three-dots fs-3 text-secondary icona-hover"></i>
             </div>
-            
+
             <!-- START TRACKS -->
             <table class="table table-hover table-borderless" id="tracks-table">
               <thead class="border-bottom border-secondary sticky-top">
@@ -133,12 +139,16 @@
                   </th>
                 </tr>
               </thead>
-              <tbody>
-              </tbody>
+              <tbody></tbody>
             </table>
             <!-- END TRACKS -->
 
-            <div style="height: 100px"></div>
+            <div>
+              <h3 class="text-light py-2" id="moreAlbumsArtist"></h3>
+              <div class="container" id="moreAlbums">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5"></div>
+              </div>
+            </div>
           </div>
         </section>
 
