@@ -34,3 +34,8 @@ body[data-bs-theme="dark"] {
   transform: scale(1.05);
   transform-origin: center;
 }
+
+/* per hover album */
+.hover-bg-secondary:hover {
+  background: rgba(255, 255, 255, 0.05); /* Effetto hover stile Spotify */
+}

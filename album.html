@@ -141,108 +141,27 @@
           </div>
           <!-- END ALBUM -->
 
-          <div class="px-3 px-md-4 py-3 flex-grow-1" id="tracks-section" style="background-color: #121212 !important">
-            <div class="d-flex align-items-center gap-4 mb-4">
+          <div class="py-3 flex-grow-1" id="tracks-section" style="background-color: #121212 !important">
+            <div class="d-flex align-items-center gap-3 mb-2 px-md-4">
               <button class="btn btn-success rounded-circle p-0 d-flex justify-content-center align-items-center" style="width: 56px; height: 56px">
                 <i class="bi bi-play-fill fs-2 text-black ms-1"></i>
               </button>
+              <button class="btn fs-4 fw-semibold play-btn d-md-none text-white"><i class="bi bi-shuffle fs-3 text-success"></i></button>
               <i class="bi bi-heart fs-3 text-secondary icona-hover"></i>
               <i class="bi bi-arrow-down-circle fs-3 text-secondary icona-hover"></i>
               <i class="bi bi-three-dots fs-3 text-secondary icona-hover"></i>
             </div>
 
             <!-- START TRACKS -->
-            <table class="table table-hover table-borderless" id="tracks-table">
-              <thead class="border-bottom border-secondary sticky-top">
-                <tr class="text-secondary small py-2">
-                  <th scope="col" style="width: 5%">#</th>
-                  <th scope="col" style="width: 45%">TITOLO</th>
-                  <th scope="col" class="text-end d-none d-md-table-cell">RIPRODUZIONI</th>
-                  <th scope="col" class="text-end" style="width: 10%">
-                    <i class="bi bi-clock"></i>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- <tr>
-                  <td class="text-secondary align-middle">2</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Sciare</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">5.585.178</td>
-                  <td class="text-secondary align-middle text-end">4:41</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">3</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Gioventù Brucata</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">3.412.342</td>
-                  <td class="text-secondary align-middle text-end">5:24</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">4</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Ninnananna per genitori disattenti</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">2.365.629</td>
-                  <td class="text-secondary align-middle text-end">4:04</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">5</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">L'uomo che inventò il fuoco</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">3.417.862</td>
-                  <td class="text-secondary align-middle text-end">5:23</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">6</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Irene</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">17.249.689</td>
-                  <td class="text-secondary align-middle text-end">5:11</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">7</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Senti che cantare questi!</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">760.496</td>
-                  <td class="text-secondary align-middle text-end">1:11</td>
-                </tr>
-                <tr>
-                  <td class="text-secondary align-middle">8</td>
-                  <td>
-                    <div class="d-flex flex-column">
-                      <span class="text-white fw-bold text-truncate">Pula</span>
-                      <span class="text-secondary small">Pinguini Tattici Nucleari</span>
-                    </div>
-                  </td>
-                  <td class="text-secondary align-middle text-end d-none d-md-table-cell">899.318</td>
-                  <td class="text-secondary align-middle text-end">5:46</td>
-                </tr> -->
-              </tbody>
-            </table>
+            <div class="row text-white-50 small border-bottom border-secondary py-2 px-3 mx-0 mb-2 sticky-top" style="background-color: #121212 !important">
+              <div class="col-1 text-center">#</div>
+              <div class="col-7 col-md-5">TITOLO</div>
+              <div class="col-3 text-end d-none d-md-block">RIPRODUZIONI</div>
+              <div class="col-2 col-md-1 text-center"></div>
+              <div class="col-2 text-end pe-4"><i class="bi bi-clock"></i></div>
+            </div>
+
+            <div id="tracks-container" class="d-flex flex-column gap-1"></div>
             <!-- END TRACKS -->
 
             <div style="height: 100px"></div>
@@ -319,37 +238,36 @@
     <!-- MENU AND MEDIA PLAYER - MOBILE -->
     <div class="container-fluid d-lg-none" id="menu-and-player-mobile" style="max-height: 130px">
       <!-- MEDIA PLAYER - MOBILE -->
-      <div class="container-fluid" id="media-player-mobile">
-        <div class="row">
-          <!-- column 1 (song title) -->
-          <div class="col col-6">
-            <span>Song title...</span>
-          </div>
-          <!-- column 2 (audio output) -->
-          <div class="col col-2">
-            <span><i class="bi bi-speaker"></i></span>
-          </div>
-          <!-- column 3 (like/love) -->
-          <div class="col col-2">
-            <span><i class="bi bi-heart"></i></span>
-          </div>
-          <!-- column 4 (play button) -->
-          <div class="col col-2">
-            <span><i class="bi bi-play-fill"></i></span>
-          </div>
+      <div
+        class="mx-2 mobile-player-card rounded-3 position-relative d-flex align-items-center p-2 shadow-lg bg-dark d-lg-none"
+        style="z-index: 9999; margin-bottom: 10px"
+      >
+        <div class="progress position-absolute bottom-0 start-0 w-100 rounded-bottom-3" style="height: 2px; background: transparent">
+          <div id="mobileProgressBar" class="progress-bar bg-white" role="progressbar" style="width: 0%"></div>
+        </div>
+
+        <img id="mobilePlayerImg" src="" class="rounded d-none" style="width: 40px; height: 40px; object-fit: cover" />
+        <div class="d-flex flex-column ms-3 overflow-hidden flex-grow-1">
+          <span id="mobilePlayerTitle" class="text-white fw-bold text-truncate" style="font-size: 13px">Scegli brano</span>
+          <span id="mobilePlayerArtist" class="text-white-50 text-truncate" style="font-size: 11px">...</span>
+        </div>
+        <div class="d-flex align-items-center gap-3 me-2">
+          <i id="playerHeart2" class="bi bi-heart text-secondary fs-6 player-control-icon ms-2 pointer"></i>
+          <i class="bi bi-speaker text-white-50 fs-4"></i>
+          <i id="mobilePlayIcon" class="bi bi-play-fill text-white fs-1"></i>
         </div>
       </div>
       <!-- MENU - MOBILE  -->
-      <div class="container-fluid bg-black py-2 border-top border-dark opacity-100" id="menu-mobile" style="z-index: 1050">
+      <div class="container-fluid bg-black border-top border-dark opacity-100" id="menu-mobile" style="z-index: 1050">
         <div class="row text-center text-white m-0">
           <div class="col-4 d-flex flex-column align-items-center">
-            <a href="home.html" class="col-4 d-flex flex-column align-items-center text-decoration-none text-white-50">
+            <a href="./home.html" class="col-4 d-flex flex-column align-items-center text-decoration-none text-white-50">
               <i class="bi bi-house fs-4"></i>
               <span style="font-size: 10px">Home</span>
             </a>
           </div>
           <div class="col-4 d-flex flex-column align-items-center">
-            <a href="search.html" class="col-4 d-flex flex-column align-items-center text-decoration-none text-white-50">
+            <a href="./search.html" class="col-4 d-flex flex-column align-items-center text-decoration-none text-white-50">
               <i class="bi bi-search fs-4"></i>
               <span style="font-size: 10px">Cerca</span>
             </a>
@@ -363,17 +281,23 @@
     </div>
 
     <!-- INIZIO MEDIAPLAYER - DESKTOP -->
-    <div class="container-fluid fixed-bottom pt-2 pb-2 px-3 d-none d-lg-block" id="media-player-desktop" style="max-height: 80px">
+    <div class="container-fluid fixed-bottom pt-2 pb-2 px-3 d-none d-lg-block" id="media-player-desktop" style="max-height: 80px" id="media-player-desktop">
       <div class="row h-100 align-items-center">
         <div class="col-3 d-flex align-items-center">
-          <img src="./assets/imgs/main/image-14.jpg" alt="cover" class="rounded me-3 shadow" style="width: 60px; height: 60px; object-fit: cover" />
+          <img
+            src="./assets/imgs/main/image-14.jpg"
+            alt="cover"
+            class="rounded me-3 shadow"
+            style="width: 60px; height: 60px; object-fit: cover"
+            id="playerImg"
+          />
 
           <div class="d-flex flex-column justify-content-center me-3">
-            <h6 class="mb-0 text-white fw-bold song-info" style="font-size: 0.9rem">Fat Funny Friend</h6>
+            <h6 id="playerTitle" class="mb-0 text-white fw-bold song-info" style="font-size: 0.9rem">Fat Funny Friend</h6>
             <small class="text-secondary song-info" style="font-size: 0.75rem">Maddie Zahm</small>
           </div>
 
-          <i class="bi bi-heart text-secondary fs-6 player-control-icon ms-2"></i>
+          <i id="playerHeart" class="bi bi-heart text-secondary fs-6 player-control-icon ms-2"></i>
         </div>
 
         <div class="col-6 d-flex flex-column align-items-center justify-content-center">
@@ -384,8 +308,9 @@
             <div
               class="bg-white rounded-circle d-flex align-items-center justify-content-center player-control-icon"
               style="width: 35px; height: 35px; transition: 0.2s"
+              id="playPauseBtn"
             >
-              <i class="bi bi-play-fill text-black fs-4 ms-1"></i>
+              <i id="playIcon" class="bi bi-play-fill text-black fs-4 ms-1"></i>
             </div>
 
             <i class="bi bi-skip-end-fill text-secondary fs-4 player-control-icon"></i>
@@ -393,7 +318,7 @@
           </div>
 
           <div class="d-flex align-items-center w-75 gap-2 progress-container">
-            <small class="text-secondary" style="font-size: 0.7rem">0:58</small>
+            <small id="playerDuration" class="text-secondary" style="font-size: 0.7rem">0:58</small>
 
             <div class="progress flex-grow-1" style="height: 4px">
               <div class="progress-bar bg-white" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
@@ -431,5 +356,6 @@
     <script src="./assets/js/vars.js"></script>
     <script src="./assets/js/helpers.js"></script>
     <script src="./assets/js/album.js"></script>
+    <script src="./assets/JS/storage.js"></script>
   </body>
 </html>

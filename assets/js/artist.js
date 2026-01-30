@@ -221,7 +221,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
 
     div.innerHTML = `
       <div class="d-flex align-items-center flex-grow-1 overflow-hidden">
-        <span class="track-number fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
+        <span class="track-number fs-5 fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
         <img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded me-3 flex-shrink-0">
         <div class="track-info overflow-hidden"> 
             <div class="track-title text-white fw-bold text-truncate">${track.title}</div>
@@ -230,7 +230,7 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
       </div>
       
       <div class="d-flex align-items-center flex-shrink-0 pe-3">
-         <span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
+         <span class="text-white-50 small d-none d-md-flex" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
       </div>
 
       <div class="d-flex align-items-center flex-shrink-0">
