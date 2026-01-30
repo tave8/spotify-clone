@@ -36,7 +36,7 @@ body[data-bs-theme="dark"] {
 #categories-container > div > a:hover,
 #playlist-container > div > div:hover,
 .animated:hover {
-  background-color: #198754;
+  background-color: #198754 !important;
   transform: scale(1.05);
   transform-origin: center;
 }
