@@ -6,6 +6,10 @@
   --green-spotify: #1db954;
 }
 
+body {
+  font-family: "Circular", Helvetica, Arial, sans-serif;
+}
+
 body[data-bs-theme="dark"] {
   background: var(--bg-primary);
   color: var(--text-primary);

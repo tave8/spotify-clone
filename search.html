@@ -7,39 +7,190 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./assets/css/circular-font.css" />
     <link rel="stylesheet" href="./assets/css/search.css" />
   </head>
 
-  <body>
-    <!-- INIZIO MAIN CONTENT -->
-    <div class="container-fluid main-content pb-5 mb-5">
-      <!-- INIZIO BARRA RICERCA -->
-      <div class="row pt-4 pb-3 sticky-top bg-dark-custom z-3">
-        <div class="col-12 col-md-6 col-lg-4">
-          <h2 class="fw-bold mb-3 text-white">Cerca</h2>
-
-          <div class="search-bar-container bg-white text-dark rounded-pill d-flex align-items-center px-3 py-2 border-0">
-            <i class="bi bi-search fs-5 me-2 text-secondary"></i>
-            <input type="text" id="search-input" class="form-control border-0 p-0 shadow-none text-dark fw-bold" placeholder="Cosa vuoi ascoltare?" />
+  <body data-bs-theme="dark">
+    <main class="container-fluid position-relative">
+      <div class="row">
+        <!-- SIDEBAR SINISTRA -->
+        <aside id="left-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-scroll" style="padding-bottom: 80px">
+          <!-- div che rende la parte top sticky -->
+          <div class="sticky-top bg-secondary">
+            <nav class="navbar">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2 fs-3"></i> Home</a>
+                </li>
+                <li class="nav-item fs-5">
+                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2 fs-4"></i> Cerca</a>
+                </li>
+                <li class="nav-item fs-5">
+                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2 fs-4"></i> La tua Libreria</a>
+                </li>
+                <div class="mt-3">
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2 fs-4"></i> Crea Playlist</a>
+                  </li>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2 fs-4"></i> Brani che ti piacciono</a>
+                  </li>
+                  <li class="nav-item fs-5">
+                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2 fs-4"></i> I tuoi episodi</a>
+                  </li>
+                </div>
+              </ul>
+            </nav>
+            <!-- SEPARATORE -->
+            <hr />
           </div>
-        </div>
-      </div>
-      <!-- FINE BARRA RICERCA -->
+          <img src="" alt="" />
+          <!-- PLAYLIST RANDOMICHE -->
+          <div class="text-muted">
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Study & Work Space 📚💻</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Late Night Drives 🌙🚗</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Indie Vibes Only 🎸✨</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Soft Rain & Lo-Fi 🌧️🎧</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Gym Mode: ON 🔥🏋️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sunday Morning Coffee ☕🌤️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sad Songs Club 😶‍🌫️💔</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Night Walks in the City 🌃🚶</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Chill Hits 2024 😌🎶</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Throwback Bangers 🔙🎉</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Epic Gaming Session 🎮⚡</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Deep Focus Instrumental 🎻🧠</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Alt Rock Therapy 🤘🖤</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Road Trip Classics 🛣️🎵</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sunset Chillwave 🌅🌊</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Beats to Code To 👨‍💻🎛️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Romantic Mood 💞🕯️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Electronic Night Club 🪩🔊</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Acoustic & Slow Days 🎸🍂</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Best of Me (Daily Mix) ❤️🎶</a>
+          </div>
+        </aside>
+        <!-- FINE SIDEBAR SINISTRA -->
 
-      <!-- INIZIO SFOGLIA TUTTO -->
-      <div class="row mt-2">
-        <div class="col-12">
-          <h5 class="fw-bold mb-3 text-white">Sfoglia tutto</h5>
-        </div>
-      </div>
+        <!-- SEZIONE CENTRALE MAIN -->
+        <section id="main-center" class="col-12 col-lg-8 d-flex flex-column vh-100 overflow-y-scroll" style="padding-bottom: 80px">
+          <!-- Dropdown solo desktop -->
+          <div class="row justify-content-between align-content-center mt-2">
+            <!-- INIZIO BARRA RICERCA -->
+            <div class="col-12 col-md-6">
+              <h2 class="fw-bold mb-3 text-white">Cerca</h2>
 
-      <!-- tracks go here -->
-      <div class="row g-3 mb-3" id="tracks">
-   
+              <div class="search-bar-container bg-white text-dark rounded-pill d-flex align-items-center px-3 py-2 border-0">
+                <i class="bi bi-search fs-5 me-2 text-secondary"></i>
+                <input type="text" id="search-input" class="form-control border-0 p-0 shadow-none text-dark fw-bold" placeholder="Cosa vuoi ascoltare?" />
+              </div>
+            </div>
+
+            <div class="col-md-6 d-none d-md-flex justify-content-end">
+              <div class="dropdown">
+                <img
+                  class="rounded-circle position-relative z-1 border border-2 border-black"
+                  src="./assets/imgs/main/image-11.jpg"
+                  alt=""
+                  width="48"
+                  style="left: 25px"
+                />
+                <button
+                  class="btn dropdown-toggle bg-secondary text-light rounded-end-pill position-relative ps-4 py-2"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Lidia Nautilus...
+                </button>
+                <ul class="dropdown-menu bg-secondary">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Playlist</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- FINE BARRA RICERCA -->
+
+          <!-- INIZIO SFOGLIA TUTTO -->
+          <div class="d-flex justify-content-center d-md-block mt-4 px-2">
+            <h5 class="fw-bold mb-3 text-white">Sfoglia tutto</h5>
+          </div>
+
+          <!-- tracks go here -->
+          <div class="row g-3 mb-3" id="tracks"></div>
+          <!-- FINE SFOGLIA TUTTO -->
+          <!-- FINE MAIN CONTENT -->
+        </section>
+        <!-- FINE SEZIONE CENTRALE MAIN -->
+
+        <!-- SIDEBAR DESTRA -->
+        <aside id="right-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-auto">
+          <div class="d-flex justify-content-between align-items-baseline mt-2">
+            <h4>Attività Amici</h4>
+            <div class="fs-4 text-muted">
+              <i class="bi bi-person-add pointer"></i>
+              <i id="close-rightsidebar" class="bi bi-x-lg pointer"></i>
+            </div>
+          </div>
+
+          <section id="activities-container">
+            <div class="d-flex flex-column mt-4">
+              <!-- ACTIVITY  -->
+              <div class="row align-items-start p-1 g-1 mb-3">
+                <div class="col-2">
+                  <img src="./assets/imgs/search/image-11.jpg" alt="" class="img-fluid rounded-circle" />
+                </div>
+                <div class="col-8 d-flex flex-column">
+                  <p class="m-0 fw-bold">Charlie hookham</p>
+                  <p class="m-0">In camera - Yumi Zouma</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> EP III</p>
+                </div>
+                <div class="col-2">
+                  <p class="fs-6">4 ore</p>
+                </div>
+              </div>
+              <!-- END ACTIVITY -->
+
+              <!-- ACTIVITY  -->
+              <div class="row align-items-start p-1 g-1 mb-3">
+                <div class="col-2">
+                  <img src="./assets/imgs/search/image-14.jpg" alt="" class="img-fluid rounded-circle" />
+                </div>
+                <div class="col-8 d-flex flex-column">
+                  <p class="m-0 fw-bold">lightdark02</p>
+                  <p class="m-0">Aimed to Kill - Jade LeMac</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> Aimed to Kill</p>
+                </div>
+                <div class="col-2">
+                  <p class="fs-6">4 ore</p>
+                </div>
+              </div>
+              <!-- END ACTIVITY -->
+
+              <!-- ACTIVITY  -->
+              <div class="row align-items-start p-1 g-1 mb-3">
+                <div class="col-2">
+                  <img src="./assets/imgs/search/image-8.jpg" alt="" class="img-fluid rounded-circle" />
+                </div>
+                <div class="col-8 d-flex flex-column">
+                  <p class="m-0 fw-bold">Valeria Traverso</p>
+                  <p class="m-0">New Kings - Sleeping Wolf</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> Twint Badass mood</p>
+                </div>
+                <div class="col-2">
+                  <p class="fs-6">4 ore</p>
+                </div>
+              </div>
+              <!-- END ACTIVITY -->
+            </div>
+          </section>
+        </aside>
+        <!-- FINE SIDEBAR DESTRA -->
       </div>
-      <!-- FINE SFOGLIA TUTTO -->
-    </div>
-    <!-- FINE MAIN CONTENT -->
+      <i id="open-rightsidebar" class="bi bi-arrow-left-circle fs-3 position-fixed d-none pointer" style="left: 98%; top: 47%"></i>
+    </main>
 
     <!-- INIZIO MEDIA PLAYER MOBILE (VISIBILE SOLO < md) -->
     <div class="fixed-bottom-custom d-md-none">
@@ -137,5 +288,6 @@
     <script src="./assets/js/vars.js"></script>
 
     <script src="./assets/js/search.js"></script>
+    <script src="./assets/js/sidebar.js"></script>
   </body>
 </html>

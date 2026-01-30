@@ -1,12 +1,12 @@
 const populateUITracks = (tracks) => {
-    const tracksContainer = getUITracks();
-    tracksContainer.innerHTML = "";
-    tracks.forEach(track => {
-      tracksContainer.innerHTML += createUITrack(track);  
-    })
-}
+  const tracksContainer = getUITracks();
+  tracksContainer.innerHTML = "";
+  tracks.forEach((track) => {
+    tracksContainer.innerHTML += createUITrack(track);
+  });
+};
 
-const createUITrack = (track) => {  
+const createUITrack = (track) => {
   return `
       <div class="col-6 col-md-4 col-lg-2">
         <div class="genre-card">
@@ -16,30 +16,28 @@ const createUITrack = (track) => {
           </div>
         </div>
       </div>
-  `
-}
-
+  `;
+};
 
 const getSimplerTracksInfo = (tracksData) => {
-  const tracks = tracksData.data; 
-  return tracks.map(track => {
+  const tracks = tracksData.data;
+  return tracks.map((track) => {
     return {
       title: track.title,
       artist: track.artist,
       album: track.album,
-      preview: track.preview
-    }
-  })
-}
-
+      preview: track.preview,
+    };
+  });
+};
 
 const onSearchInputTypingStopped = async (userSearch, moreInfo) => {
   try {
     const tracksData = await searchRemoteTracks(userSearch);
-    console.log("search result: ", getSimplerTracksInfo(tracksData))
-    populateUITracks(getSimplerTracksInfo(tracksData))
+    console.log("search result: ", getSimplerTracksInfo(tracksData));
+    populateUITracks(getSimplerTracksInfo(tracksData));
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
 };
 
@@ -63,7 +61,6 @@ new TypingDelayer({
   minChars: 3,
 });
 
-
 const getUITracks = () => {
   return document.querySelector("#tracks");
-} 
+};

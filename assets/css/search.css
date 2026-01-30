@@ -1,141 +1,18 @@
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Light.otf);
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-LightItalic.otf);
-  font-weight: 300;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Book.otf);
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-BookItalic.otf);
-  font-weight: 400;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Medium.otf);
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-MediumItalic.otf);
-  font-weight: 500;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-MediumItalic.otf);
-  font-weight: 500;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Bold.otf);
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-BoldItalic.otf);
-  font-weight: 700;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Black.otf);
-  font-weight: 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-BlackItalic.otf);
-  font-weight: 900;
-  font-style: italic;
-}
-/* =========================================
-   1. CODICE OBBLIGATORIO DEL PROF (FONTS)
-   ========================================= */
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Light.otf);
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-LightItalic.otf);
-  font-weight: 300;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Book.otf);
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-BookItalic.otf);
-  font-weight: 400;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Medium.otf);
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-MediumItalic.otf);
-  font-weight: 500;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Bold.otf);
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-BoldItalic.otf);
-  font-weight: 700;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-Black.otf);
-  font-weight: 900;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Circular";
-  src: url(../fonts/CircularStd-BlackItalic.otf);
-  font-weight: 900;
-  font-style: italic;
-}
-
 /* =========================================
    1. RESET E STILI BASE
    ========================================= */
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #181818;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --green-spotify: #1db954;
+}
+
 body {
   background-color: #121212; /* Sfondo scuro Spotify */
   color: white;
-  font-family:
-    "Circular", Helvetica, Arial, sans-serif; /* Font simile a Spotify */
+  font-family: "Circular", Helvetica, Arial, sans-serif; /* Font simile a Spotify */
   overflow-x: hidden; /* Evita scroll orizzontale indesiderato */
 }
 
@@ -157,11 +34,12 @@ a {
 .search-bar-container {
   background-color: white;
   transition: box-shadow 0.2s ease;
+  max-width: 500px;
 }
 
 /* Stile dell'input di testo */
 .search-bar-container input {
-  background-color: transparent;
+  background-color: white !important;
   font-size: 0.95rem;
   text-overflow: ellipsis;
   font-weight: 600;
@@ -313,4 +191,25 @@ a {
 /* Quando passi il mouse sulla barra, diventa verde Spotify */
 .progress-container:hover .progress-bar {
   background-color: #1db954 !important;
+}
+
+/* =========================================
+   6. CLASSI POINTER PER SIDEBAR
+   ========================================= */
+
+body[data-bs-theme="dark"] {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.bg-secondary {
+  background: var(--bg-secondary) !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  color: #198754 !important;
 }
