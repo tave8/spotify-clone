@@ -109,10 +109,10 @@
             <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-3 gap-md-4 mt-5 text-center text-md-start">
               <!--START ALBUM COVER -->
               <img
-                src="./assets/imgs/cover-gioventubrucata.jpg"
+                src=""
                 alt="Copertina Album"
                 class="shadow-lg flex-shrink-0 mb-3 mb-md-0"
-                style="width: 232px; height: 232px; object-fit: cover; box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5)"
+                style="width: 232px; height: 232px; object-fit: cover; box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5); visibility: hidden; border-radius: 3px"
                 id="album-cover"
               />
               <!-- END ALBUM COVER -->
@@ -120,7 +120,7 @@
               <div class="d-flex flex-column text-white">
                 <span class="fw-bold small mb-1">ALBUM</span>
                 <!-- album title -->
-                <h1 class="display-5 display-md-2 fw-bolder mb-3" style="letter-spacing: -1px" id="album-title">Gioventù bruciata</h1>
+                <h1 class="display-5 display-md-2 fw-bolder mb-3" style="letter-spacing: -1px; visibility: hidden" id="album-title"></h1>
 
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-1 small fw-bold flex-wrap">
                   <img
@@ -130,11 +130,11 @@
                     style="width: 24px; height: 24px; object-fit: cover"
                   />
                   <!-- ARTIST -->
-                  <a href="#" class="text-white text-decoration-none link-hover" id="album-artist">Pinguini Tattici Nucleari</a>
+                  <a href="#" class="text-white text-decoration-none link-hover" id="album-artist"></a>
                   <span class="mx-1">•</span>
-                  <span id="album-release-year">2017</span>
+                  <span id="album-release-year"></span>
                   <span class="mx-1">•</span>
-                  <span class="fw-normal text-white-50" id="album-duration">12 brani, 53 min 20 sec.</span>
+                  <span class="fw-normal text-white-50" id="album-duration"></span>
                 </div>
               </div>
             </div>
@@ -164,7 +164,12 @@
             <div id="tracks-container" class="d-flex flex-column gap-1"></div>
             <!-- END TRACKS -->
 
-            <div style="height: 100px"></div>
+            <div>
+              <h3 class="text-light py-2" id="moreAlbumsArtist"></h3>
+              <div class="container" id="moreAlbums">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-2"></div>
+              </div>
+            </div>
           </div>
         </section>
 

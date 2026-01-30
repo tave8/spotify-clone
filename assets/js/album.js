@@ -45,6 +45,7 @@ const loadAlbumWithId = async (albumId) => {
   try {
     const album = await getRemoteAlbum(albumId);
     populateUIAlbum(getSimplerAlbumInfo(album));
+    console.log("simpler album info: ", getSimplerAlbumInfo(album));
   } catch (err) {
     console.error(err);
   }
@@ -55,11 +56,56 @@ const loadAlbumWithId = async (albumId) => {
  */
 const loadAlbumFromPageUrl = async () => {
   try {
+    showUIAlbumSpinners();
+    showUIMoreAlbumsSpinner();
+
     const album = await getRemoteAlbum(getAlbumIdFromUrl());
     populateUIAlbum(getSimplerAlbumInfo(album));
+    const simplerAlbum = getSimplerAlbumInfo(album);
+
+    // Aggiugne altri 10 album diversi dai top 10 sopra elencati
+    const artistAlbums = await getArtistAlbums(simplerAlbum.artistId);
+    populateMoreAlbums(artistAlbums);
+
+    // Aggiunge il nome artista a riga 147 HTML
+    document.getElementById("moreAlbumsArtist").innerText = `Altro di ${simplerAlbum.artistName}`;
+
+    console.log("simpler album info: ", getSimplerAlbumInfo(album));
   } catch (err) {
     console.error(err);
+    // showUIAlbumSpinners(false);
   }
+};
+
+// Per implementare spinner negli album sotto se pagina e in loading
+const getUIMoreAlbumsRow = () => {
+  return document.querySelector("#moreAlbums .row");
+};
+
+const showUIAlbumSpinners = (show = true) => {
+  const albumCover = getUIAlbumCover();
+  const albumTitle = getUIAlbumTitle();
+  const albumDuration = getUIAlbumDuration();
+  const albumArtist = getUIAlbumArtist();
+  const albumReleaseYear = getUIAlbumReleaseYear();
+
+  const tracksRows = getUIAlbumTracksTableRows();
+
+  // albumCover.src = ;
+  // albumTitle.innerHTML = createUISpinnerHtmlStr();
+  albumDuration.innerHTML = createUISpinnerHtmlStr();
+  albumArtist.innerHTML = createUISpinnerHtmlStr();
+  albumReleaseYear.innerHTML = createUISpinnerHtmlStr();
+
+  tracksRows.innerHTML = createUISpinnerHtmlStr();
+};
+
+const createUISpinnerHtmlStr = () => {
+  return `
+    <div class="spinner-border text-success spinner-grow-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  `;
 };
 
 const getRemoteAlbum = async (albumId) => {
@@ -91,6 +137,7 @@ const populateUIAlbumOnly = (album) => {
   const albumTitle = getUIAlbumTitle();
   const albumDuration = getUIAlbumDuration();
   const albumArtist = getUIAlbumArtist();
+  const albumArtistCover = getUIAlbumArtistCover();
   const albumReleaseYear = getUIAlbumReleaseYear();
 
   // Riferimenti alle sezioni per lo sfondo
@@ -100,9 +147,14 @@ const populateUIAlbumOnly = (album) => {
   const buttonsContainer = tracksSection ? tracksSection.querySelector(".d-flex") : null;
 
   albumCover.src = album.coverUrl.medium;
+  albumCover.style.visibility = "visible";
+  albumArtistCover.style.visibility = "visible";
+  albumTitle.style.visibility = "visible";
+
   albumTitle.innerText = album.title;
   albumDuration.innerText = album.totalAlbumDurationForUI;
   albumArtist.innerText = album.artistName;
+  albumArtistCover.src = album.artist.picture_small;
   albumArtist.href = `./artist.html?artist_id=${album.artistId}`;
   albumReleaseYear.innerText = album.releaseYear;
 
@@ -357,6 +409,10 @@ const getUIAlbumArtist = () => {
   return document.getElementById("album-artist");
 };
 
+const getUIAlbumArtistCover = () => {
+  return document.getElementById("album-artist-cover");
+};
+
 const getUIAlbumReleaseYear = () => {
   return document.getElementById("album-release-year");
 };
@@ -441,6 +497,7 @@ const getSimplerAlbumInfo = (album) => {
     artistName,
     // 393454
     artistId,
+    artist: album.artist,
     // 2017
     releaseYear,
     // 12
@@ -454,4 +511,60 @@ const getSimplerAlbumInfo = (album) => {
 
 const getAlbumIdFromUrl = () => {
   return helpers.getUrlQueryParam(vars.ALBUM_ID_QUERY_PARAM);
+};
+
+const getArtistAlbums = async (artistId) => {
+  const url = `${vars.DEEZER_API_URL}/artist/${artistId}/albums`;
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error("Errore fetch artist albums");
+  const data = await resp.json();
+  return data.data;
+};
+
+// Implemento spinner per gli altri 10 spinner sotto
+const showUIMoreAlbumsSpinner = () => {
+  const row = getUIMoreAlbumsRow();
+  row.innerHTML = "";
+
+  for (let i = 0; i < 5; i++) {
+    row.innerHTML += `
+      <div class="col">
+        <div class="card bg-dark border-0">
+          <div class="placeholder-glow">
+            <div class="placeholder col-12 mb-2" style="height:160px;"></div>
+            <div class="placeholder col-8"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
+const populateMoreAlbums = (albums) => {
+  const row = document.querySelector("#moreAlbums .row");
+  row.innerHTML = "";
+
+  const moreTen = albums.slice(10, 15);
+
+  moreTen.forEach((album) => {
+    row.innerHTML += `
+      <div class="col">
+        <a href="./album.html?album_id=${album.id}" class="text-decoration-none">
+          <div class="card bg-dark border-0 h-100 album-card-hover">
+            <img 
+              src="${album.cover_medium}" 
+              class="card-img-top" 
+              alt="${album.title}"
+            >
+            <div class="card-body px-0">
+              <p class="card-title text-white small fw-bold mb-0 text-truncate">
+                ${album.title}
+              </p>
+              <p class="text-secondary small text-center">Album</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    `;
+  });
 };
