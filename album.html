@@ -23,6 +23,17 @@
     <link rel="stylesheet" href="./assets/css/home-custom.css" />
 
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
+
+    <style>
+      .table {
+        background-color: #121212 !important;
+      }
+
+      .table thead th {
+        background-color: #121212 !important;
+        box-shadow: 0 1px 0 #333;
+      }
+    </style>
   </head>
 
   <body data-bs-theme="dark">
@@ -130,7 +141,7 @@
           </div>
           <!-- END ALBUM -->
 
-          <div class="px-3 px-md-4 py-3 bg-gradiente-nero flex-grow-1" id="tracks-section">
+          <div class="px-3 px-md-4 py-3 flex-grow-1" id="tracks-section" style="background-color: #121212 !important">
             <div class="d-flex align-items-center gap-4 mb-4">
               <button class="btn btn-success rounded-circle p-0 d-flex justify-content-center align-items-center" style="width: 56px; height: 56px">
                 <i class="bi bi-play-fill fs-2 text-black ms-1"></i>
@@ -143,7 +154,7 @@
             <!-- START TRACKS -->
             <table class="table table-hover table-borderless" id="tracks-table">
               <thead class="border-bottom border-secondary sticky-top">
-                <tr class="text-secondary small">
+                <tr class="text-secondary small py-2">
                   <th scope="col" style="width: 5%">#</th>
                   <th scope="col" style="width: 45%">TITOLO</th>
                   <th scope="col" class="text-end d-none d-md-table-cell">RIPRODUZIONI</th>

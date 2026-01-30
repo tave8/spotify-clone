@@ -1,4 +1,4 @@
-/**
+/*
  * Get artist info from page URL and populate UI.
  */
 const onPageLoad = async () => {
@@ -25,19 +25,19 @@ const updateLikedSection = (artistName, artistImage) => {
 
     // NUOVO: Generiamo l'HTML con l'immagine dell'artista e il conteggio
     container.innerHTML = `
-        <div class="d-flex align-items-center p-3">
-            <div class="position-relative">
-                <img src="${artistImage}" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
-                <div class="bg-success rounded-circle position-absolute bottom-0 end-0 d-flex justify-content-center align-items-center p-1" style="width: 20px; height: 20px;">
-                    <i class="bi bi-heart-fill text-white" style="font-size: 10px;"></i>
-                </div>
-            </div>
-            <div class="ms-3">
-                <div class="fw-bold text-white">Hai messo "Mi piace" a ${count} brani</div>
-                <div class="text-white-50 small">di ${artistName}</div>
-            </div>
-        </div>
-    `;
+<div class="d-flex align-items-center p-3">
+<div class="position-relative">
+<img src="${artistImage}" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+<div class="bg-success rounded-circle position-absolute bottom-0 end-0 d-flex justify-content-center align-items-center p-1" style="width: 20px; height: 20px;">
+<i class="bi bi-heart-fill text-white" style="font-size: 10px;"></i>
+</div>
+</div>
+<div class="ms-3">
+<div class="fw-bold text-white">Hai messo "Mi piace" a ${count} brani</div>
+<div class="text-white-50 small">di ${artistName}</div>
+</div>
+</div>
+`;
   } else {
     // Nascondi sezione liked e allarga i top tracks
     section.classList.add("d-none");
@@ -120,9 +120,9 @@ const populateUIArtist = (artist) => {
     // A. HEADER: Immagine di sfondo che sfuma verso il colore in basso
     // (rgba con opacità 0.8 alla fine per fondersi con la sezione sotto)
     header.style.background = `
-        linear-gradient(to bottom, transparent 0%, rgba(${r},${g},${b}, 0.8) 100%), 
-        url(${artist.picture.big})
-    `;
+linear-gradient(to bottom, transparent 0%, rgba(${r},${g},${b}, 0.8) 100%),
+url(${artist.picture.big})
+`;
     header.style.backgroundSize = "cover";
     header.style.backgroundPosition = "center 20%"; // Centrato leggermente in alto
 
@@ -203,25 +203,24 @@ const populateUITopTracks = (topTracks, artistSmallImage) => {
     const heartIconClass = isLiked ? "bi-heart-fill text-success" : "bi-heart";
 
     div.innerHTML = `
-      <div class="d-flex align-items-center flex-grow-1 overflow-hidden">
-        <span class="track-number fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
-        <img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded me-3 flex-shrink-0">
-        <div class="track-info overflow-hidden"> 
-            <div class="track-title text-white fw-bold text-truncate">${track.title}</div>
-            <div class="track-artist text-white-50 small text-truncate">${track.artist}</div>
-        </div>
-      </div>
-      
-      <!-- rank (conosciuto come "numero riproduzioni della traccia) -->
-      <div class="d-flex align-items-center flex-shrink-0 pe-3">
-         <span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
-      </div>
+<div class="d-flex align-items-center flex-grow-1 overflow-hidden">
+<span class="track-number fw-bold me-3 text-secondary" style="width: 20px;">${track.num}</span>
+<img src="${track.albumCover.small}" style="width:40px;height:40px" class="rounded me-3 flex-shrink-0">
+<div class="track-info overflow-hidden">
+<div class="track-title text-white fw-bold text-truncate">${track.title}</div>
+<div class="track-artist text-white-50 small text-truncate">${track.artist}</div>
+</div>
+</div>
+<!-- rank (conosciuto come "numero riproduzioni della traccia) -->
+<div class="d-flex align-items-center flex-shrink-0 pe-3">
+<span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.rankForUI}</span>
+</div>
 
-      <div class="d-flex align-items-center flex-shrink-0">
-         <i class="bi ${heartIconClass} fs-5 me-4 heart-btn" style="cursor: pointer; z-index: 10;" data-track-id="${track.id}"></i>
-         <span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.durationForUI}</span>
-      </div>
-    `;
+<div class="d-flex align-items-center flex-shrink-0">
+<i class="bi ${heartIconClass} fs-5 me-4 heart-btn" style="cursor: pointer; z-index: 10;" data-track-id="${track.id}"></i>
+<span class="text-white-50 small" style="min-width: 40px; text-align: right;">${track.durationForUI}</span>
+</div>
+`;
 
     const heartBtn = div.querySelector(".heart-btn");
     heartBtn.onclick = (e) => {
@@ -342,14 +341,14 @@ const getRemoteTopTracks = async (artistName) => {
 };
 
 /**
- * Outputs the artist info into fields
- * that are more intuitive to access/remember.
- *
- * Artist info:
-        name
-        total listeners
-        popular 
- */
+* Outputs the artist info into fields
+* that are more intuitive to access/remember.
+*
+* Artist info:
+name
+total listeners
+popular
+*/
 const getSimplerArtistInfo = (artist) => {
   const name = artist.name;
   const picture = {
@@ -401,7 +400,6 @@ const getArtistIdFromUrl = () => {
   return params.get("artist_id");
 };
 
-
 const getRankForUI = function (rankNum) {
-  return rankNum.toLocaleString('it-IT')
-}
+  return rankNum.toLocaleString("it-IT");
+};
