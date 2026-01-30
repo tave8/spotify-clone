@@ -8,9 +8,53 @@
   <body>
     <!-- THIS PAGE IS JUST TO EXPERIMENT WITH JAVASCRIPT. IT CAN BE DELETED ANY TIME  -->
 
+    <!-- MEDIA PLAYER - OLD -->
+    <div class="container-fluid fixed-bottom bg-black py-3 d-none d-md-flex" style="z-index: 9999">
+      <div class="row align-items-start px-2 w-100 m-0">
+        <div class="col-3 d-flex align-items-center">
+          <img id="playerImg" src="" alt="" class="d-none rounded shadow-sm me-3" style="width: 56px; height: 56px; object-fit: cover" />
+          <div class="d-flex flex-column justify-content-center me-3">
+            <span id="playerTitle" class="text-white fs-6 fw-bold text-truncate" style="max-width: 150px"></span>
+            <span id="playerArtist" class="text-white-50 small text-truncate" style="max-width: 150px"></span>
+          </div>
+          <i class="bi bi-heart text-white-50 ms-2 fs-5" style="cursor: pointer" id="playerHeart"></i>
+        </div>
 
-    <input type="text" id="searchInput">
+        <div class="col-6 d-flex flex-column align-items-center">
+          <div class="d-flex align-items-center gap-4 mb-2">
+            <i class="bi bi-shuffle text-success fs-5" role="button"></i>
+            <i class="bi bi-skip-start-fill text-white-50 fs-3 hover-white" role="button"></i>
+            <div
+              id="playPauseBtn"
+              class="bg-white rounded-circle d-flex justify-content-center align-items-center hover-scale"
+              style="width: 35px; height: 35px; cursor: pointer"
+            >
+              <i id="playIcon" class="bi bi-play-fill text-black fs-3 ms-1"></i>
+            </div>
+            <i class="bi bi-skip-end-fill text-white-50 fs-3 hover-white" role="button"></i>
+            <i class="bi bi-repeat text-white-50 fs-5 hover-white" role="button"></i>
+          </div>
+          <div class="d-flex align-items-center w-75 gap-2">
+            <span class="text-white-50 small" style="font-size: 11px">0:24</span>
+            <input type="range" class="form-range spotify-range" min="0" max="100" value="30" />
+            <span id="playerDuration" class="text-white-50 small" style="font-size: 11px">0:00</span>
+          </div>
+        </div>
 
+        <div class="col-3 d-flex align-items-center justify-content-end gap-3">
+          <i class="bi bi-mic text-white-50 fs-6 hover-white" title="Testo"></i>
+          <i class="bi bi-list text-white-50 fs-5 hover-white" title="Coda"></i>
+          <i class="bi bi-speaker text-white-50 fs-6 hover-white" title="Dispositivi"></i>
+          <div class="d-flex align-items-center gap-2" style="width: 100px">
+            <i class="bi bi-volume-up text-white-50 fs-5"></i>
+            <input type="range" class="form-range spotify-range" min="0" max="100" value="80" />
+          </div>
+          <i class="bi bi-arrows-angle-expand text-white-50 fs-6 ms-2 hover-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <input type="text" id="searchInput" />
 
     <script src="./assets/js/vars.js"></script>
     <script src="./assets/js/helpers.js"></script>
