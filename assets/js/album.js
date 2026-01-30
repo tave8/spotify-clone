@@ -548,7 +548,7 @@ const populateMoreAlbums = (albums) => {
     row.innerHTML += `
       <div class="col">
         <a href="./album.html?album_id=${album.id}" class="text-decoration-none">
-          <div class="card bg-dark border-0 h-100 album-card-hover">
+          <div class="card animated border-0 h-100 pointer">
             <img 
               src="${album.cover_medium}" 
               class="card-img-top" 
