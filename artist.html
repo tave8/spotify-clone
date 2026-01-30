@@ -3,70 +3,75 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Artista</title>
+    <title>Epify | Artist</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
     <link rel="stylesheet" href="./assets/css/style-artist.css" />
     <link rel="stylesheet" href="./assets/css/menu-player.css" />
+    <link rel="stylesheet" href="./assets/css/home-custom.css" />
   </head>
   <body data-bs-theme="dark" class="overflow-x-hidden">
-    <main class="container-fluid p-0 m-0">
+    <main class="container-fluid">
       <div class="row">
         <!-- SIDEBAR SINISTRA -->
-        <aside class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
-          <div class="sticky-top z-3" style="background-color: #121212 !important">
-            <nav class="navbar ps-4">
+        <aside id="left-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-scroll" style="padding-bottom: 80px">
+          <!-- div che rende la parte top sticky -->
+          <div class="sticky-top bg-secondary">
+            <nav class="navbar">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2"></i> Home</a>
+                <li class="nav-item fs-6">
+                  <a class="nav-link active" aria-current="page" href="./home.html"><i class="bi bi-house-door-fill me-2 fs-5"></i> Home</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2"></i> Cerca</a>
+                <li class="nav-item fs-6">
+                  <a class="nav-link" href="./search.html"><i class="bi bi-search me-2 fs-5"></i> Cerca</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2"></i> La tua Libreria</a>
+                <li class="nav-item fs-6">
+                  <a class="nav-link" href="#"><i class="bi bi-music-note-list me-2 fs-5"></i> La tua Libreria</a>
                 </li>
                 <div>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2"></i> Crea Playlist</a>
+                  <li class="nav-item fs-6">
+                    <a class="nav-link" href="#"><i class="bi bi-plus-square-fill me-2 fs-5"></i> Crea Playlist</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2"></i> Brani che ti piacciono</a>
+                  <li class="nav-item fs-6">
+                    <a class="nav-link" href="#"><i class="bi bi-house-heart me-2 fs-5"></i> Brani che ti piacciono</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2"></i> I tuoi episodi</a>
+                  <li class="nav-item fs-6">
+                    <a class="nav-link" href="#"><i class="bi bi-bookmark me-2 fs-5"></i> I tuoi episodi</a>
                   </li>
                 </div>
               </ul>
             </nav>
+            <!-- SEPARATORE -->
             <hr />
           </div>
-          <div class="text-muted ps-4 pb-5" style="font-size: 14px">
-            <p>Late Night Drives 🌙🚗</p>
-            <p>Study & Work Space 📚💻</p>
-            <p>Indie Vibes Only 🎸✨</p>
-            <p>Soft Rain & Lo-Fi 🌧️🎧</p>
-            <p>Gym Mode: ON 🔥🏋️</p>
-            <p>Sunday Morning Coffee ☕🌤️</p>
-            <p>Sad Songs Club 😶‍🌫️💔</p>
-            <p>Night Walks in the City 🌃🚶</p>
-            <p>Chill Hits 2024 😌🎶</p>
-            <p>Throwback Bangers 🔙🎉</p>
-            <p>Epic Gaming Session 🎮⚡</p>
-            <p>Deep Focus Instrumental 🎻🧠</p>
-            <p>Alt Rock Therapy 🤘🖤</p>
-            <p>Road Trip Classics 🛣️🎵</p>
-            <p>Sunset Chillwave 🌅🌊</p>
-            <p>Beats to Code To 👨‍💻🎛️</p>
-            <p>Romantic Mood 💞🕯️</p>
-            <p>Electronic Night Club 🪩🔊</p>
-            <p>Acoustic & Slow Days 🎸🍂</p>
-            <p>Best of Me (Daily Mix) ❤️🎶</p>
+          <img src="" alt="" />
+          <!-- PLAYLIST RANDOMICHE -->
+          <div class="text-muted" style="font-size: 14px">
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Study & Work Space 📚💻</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Late Night Drives 🌙🚗</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Indie Vibes Only 🎸✨</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Soft Rain & Lo-Fi 🌧️🎧</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Gym Mode: ON 🔥🏋️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sunday Morning Coffee ☕🌤️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sad Songs Club 😶‍🌫️💔</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Night Walks in the City 🌃🚶</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Chill Hits 2024 😌🎶</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Throwback Bangers 🔙🎉</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Epic Gaming Session 🎮⚡</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Deep Focus Instrumental 🎻🧠</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Alt Rock Therapy 🤘🖤</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Road Trip Classics 🛣️🎵</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Sunset Chillwave 🌅🌊</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Beats to Code To 👨‍💻🎛️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Romantic Mood 💞🕯️</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Electronic Night Club 🪩🔊</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Acoustic & Slow Days 🎸🍂</a>
+            <a href="#" class="link-body-emphasis d-block mb-3 text-decoration-none">Best of Me (Daily Mix) ❤️🎶</a>
           </div>
         </aside>
         <!-- MAIN CONTENT -->
-        <section class="col-lg-8 vh-100 overflow-y-scroll" style="background-color: #121212 !important">
+        <section id="main-center" class="col-lg-8 vh-100 overflow-y-scroll px-0" style="background-color: #121212 !important">
           <!-- COVER ARTISTA -->
           <div id="artistHeader" class="cover overflow-hidden position-relative">
             <div class="cover-overlay position-absolute top-0 start-0 w-100 h-100 opacity-50"></div>
@@ -128,12 +133,12 @@
           </div>
         </section>
         <!-- SIDEBAR DESTRA -->
-        <aside class="d-none d-lg-flex flex-column col-lg-2 vh-100 overflow-y-scroll" style="font-size: 12px; background-color: #121212 !important">
+        <aside id="right-sidebar" class="d-none d-lg-flex flex-column col-lg-2 bg-secondary vh-100 overflow-y-auto">
           <div class="d-flex justify-content-between align-items-baseline mt-2">
-            <h6 class="fw-bold text-white">Attività Amici</h6>
-            <div class="text-muted">
-              <i class="bi bi-person-add fs-6"></i>
-              <i class="bi bi-x-lg ms-2 fs-6"></i>
+            <h4 class="fs-5">Attività Amici</h4>
+            <div class="fs-5 text-muted">
+              <i class="bi bi-person-add pointer"></i>
+              <i id="close-rightsidebar" class="bi bi-x-lg pointer"></i>
             </div>
           </div>
 
@@ -144,13 +149,13 @@
                 <div class="col-2">
                   <img src="./assets/imgs/search/image-11.jpg" alt="" class="img-fluid rounded-circle" />
                 </div>
-                <div class="col-8 d-flex flex-column ps-2">
-                  <p class="m-0 fw-bold text-white" style="font-size: 11px">Charlie hookham</p>
-                  <p class="m-0 text-white-50" style="font-size: 10px">In camera - Yumi Zouma</p>
-                  <p class="m-0 text-white-50" style="font-size: 10px"><i class="bi bi-disc"></i> EP III</p>
+                <div class="col-8 d-flex flex-column" style="font-size: 14px">
+                  <p class="m-0 fw-bold">Charlie hookham</p>
+                  <p class="m-0">In camera - Yumi Zouma</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> EP III</p>
                 </div>
                 <div class="col-2">
-                  <p class="text-white-50" style="font-size: 10px">4h</p>
+                  <p style="font-size: 0.8rem">4 ore</p>
                 </div>
               </div>
               <!-- END ACTIVITY -->
@@ -160,13 +165,13 @@
                 <div class="col-2">
                   <img src="./assets/imgs/search/image-14.jpg" alt="" class="img-fluid rounded-circle" />
                 </div>
-                <div class="col-8 d-flex flex-column ps-2">
-                  <p class="m-0 fw-bold text-white" style="font-size: 11px">lightdark02</p>
-                  <p class="m-0 text-white-50" style="font-size: 10px">Aimed to Kill - Jade LeMac</p>
-                  <p class="m-0 text-white-50" style="font-size: 10px"><i class="bi bi-disc"></i> Aimed to Kill</p>
+                <div class="col-8 d-flex flex-column" style="font-size: 14px">
+                  <p class="m-0 fw-bold">lightdark02</p>
+                  <p class="m-0">Aimed to Kill - Jade LeMac</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> Aimed to Kill</p>
                 </div>
                 <div class="col-2">
-                  <p class="text-white-50" style="font-size: 10px">8h</p>
+                  <p style="font-size: 0.8rem">4 ore</p>
                 </div>
               </div>
               <!-- END ACTIVITY -->
@@ -176,20 +181,22 @@
                 <div class="col-2">
                   <img src="./assets/imgs/search/image-8.jpg" alt="" class="img-fluid rounded-circle" />
                 </div>
-                <div class="col-8 d-flex flex-column ps-2">
-                  <p class="m-0 fw-bold text-white" style="font-size: 11px">Valeria Traverso</p>
-                  <p class="m-0 text-white-50" style="font-size: 10px">New Kings - Sleeping Wolf</p>
-                  <p class="m-0 text-white-50" style="font-size: 10px"><i class="bi bi-disc"></i> Twint Badass mood</p>
+                <div class="col-8 d-flex flex-column" style="font-size: 14px">
+                  <p class="m-0 fw-bold">Valeria Traverso</p>
+                  <p class="m-0">New Kings - Sleeping Wolf</p>
+                  <p class="m-0"><i class="bi bi-disc"></i> Twint Badass mood</p>
                 </div>
                 <div class="col-2">
-                  <p class="text-white-50" style="font-size: 10px">3d</p>
+                  <p style="font-size: 0.8rem">4 ore</p>
                 </div>
               </div>
               <!-- END ACTIVITY -->
             </div>
           </section>
         </aside>
+        <!-- FINE SIDEBAR DESTRA -->
       </div>
+      <i id="open-rightsidebar" class="bi bi-arrow-left-circle fs-3 position-fixed d-none pointer" style="left: 98%; top: 47%"></i>
     </main>
 
     <!-- MEDIA PLAYER -->
@@ -280,5 +287,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/storage.js"></script>
     <script src="./assets/js/artist.js"></script>
+    <script src="./assets/js/sidebar.js"></script>
   </body>
 </html>
