@@ -2,12 +2,13 @@
  * Get artist info from page URL and populate UI.
  */
 const onPageLoad = async () => {
-  loadArtistAndTopTracks();
+  await loadArtistAndTopTracks();
 };
 
 window.addEventListener("load", onPageLoad);
 
 let currentAudio = null;
+let currentTrack = null;
 
 // NUOVO: Funzione centralizzata per aggiornare la sezione "Brani che ti piacciono"
 const updateLikedSection = (artistName, artistImage) => {
@@ -48,8 +49,38 @@ const updateLikedSection = (artistName, artistImage) => {
   }
 };
 
+// Mostra spinner per Top Tracks e Altri Album
+const showLoadingState = () => {
+  const tracksContainer = document.getElementById("tracksContainer");
+  const moreAlbumsRow = document.querySelector("#moreAlbums .row");
+
+  tracksContainer.innerHTML = `
+    <div class="d-flex justify-content-center p-4">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  `;
+
+  moreAlbumsRow.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    moreAlbumsRow.innerHTML += `
+      <div class="col">
+        <div class="card bg-dark border-0">
+          <div class="placeholder-glow">
+            <div class="placeholder col-12 mb-2" style="height:160px;"></div>
+            <div class="placeholder col-8"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+};
+
 const loadArtistAndTopTracks = async () => {
   try {
+    showLoadingState(); // Mostra spinner
+
     // artist info only
     const artistRaw = await getRemoteArtist(getArtistIdFromUrl());
     const artist = getSimplerArtistInfo(artistRaw);
@@ -61,6 +92,11 @@ const loadArtistAndTopTracks = async () => {
 
     // NUOVO: Passiamo anche l'immagine piccola dell'artista per la sezione Like
     populateUITopTracks(getSimplerTopTracksInfo(filteredTracks), artist.picture.small);
+
+    // Carica altri album
+    const artistAlbums = await getArtistAlbums(artistRaw.id);
+    populateMoreAlbums(artistAlbums);
+    document.getElementById("moreAlbumsArtist").innerText = `Altri album di ${artist.name}`;
   } catch (err) {
     console.error(err);
     document.getElementById("tracksContainer").innerHTML = `<div class="text-danger p-4">Errore: ${err.message}</div>`;
@@ -134,8 +170,6 @@ const populateUIArtist = (artist) => {
   // 4. Inizializza la sezione "Mi piace"
   updateLikedSection(artist.name, artist.picture.small);
 };
-
-let currentTrack = null;
 
 const populateUITopTracks = (topTracks, artistSmallImage) => {
   const container = document.getElementById("tracksContainer");
@@ -401,7 +435,51 @@ const getArtistIdFromUrl = () => {
   return params.get("artist_id");
 };
 
-
 const getRankForUI = function (rankNum) {
-  return rankNum.toLocaleString('it-IT')
-}
+  return rankNum.toLocaleString("it-IT");
+};
+
+// Recupera tutti gli album di un artista
+const getArtistAlbums = async (artistId) => {
+  try {
+    const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/albums`;
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error("Errore fetch artist albums. Status: " + resp.status);
+    const data = await resp.json();
+    return data.data; // Restituisce solo l'array di album
+  } catch (err) {
+    console.error(err);
+    return []; // Fallback vuoto
+  }
+};
+
+// Popola la sezione "Altri album" di un artista
+const populateMoreAlbums = (albums) => {
+  const row = document.querySelector("#moreAlbums .row");
+  row.innerHTML = "";
+
+  // Prendiamo solo i primi 5 album per evitare troppi elementi
+  const albumsToShow = albums.slice(0, 5);
+
+  albumsToShow.forEach((album) => {
+    row.innerHTML += `
+      <div class="col">
+        <a href="./album.html?album_id=${album.id}" class="text-decoration-none">
+          <div class="card bg-dark border-0 h-100 album-card-hover">
+            <img 
+              src="${album.cover_medium}" 
+              class="card-img-top" 
+              alt="${album.title}"
+            >
+            <div class="card-body px-0">
+              <p class="card-title text-white small fw-bold mb-0 text-truncate">
+                ${album.title}
+              </p>
+              <p class="text-secondary small text-center">Album</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    `;
+  });
+};

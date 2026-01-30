@@ -76,7 +76,7 @@
                   >Artista verificato</span
                 >
               </p>
-              <h1 id="artistName" class="artist-name mb-2 fs-1 fw-bold text-white lh-sm">Caricamento...</h1>
+              <h1 id="artistName" class="artist-name mb-2 fs-1 fw-bold text-white lh-sm"></h1>
               <p id="fansCount" class="listeners mb-4 text-white fs-6 fw-normal d-none d-md-block">0 ascoltatori mensili</p>
             </div>
           </div>
@@ -112,19 +112,27 @@
           </section>
           <!-- BRANI PIÙ POPOLARI -->
           <div class="d-md-flex flex-md-row d-flex flex-column-reverse">
-            <section id="popularTracks" class="mb-5 pb-5 px-lg-4 px-4">
+            <section id="popularTracks" class="mb-3 pb-5 px-lg-4 px-4">
               <h5 class="text-white fw-bold mb-4">Brani più popolari</h5>
               <div id="tracksContainer" class="tracklist">
-                <div class="text-white-50 p-3">Caricamento brani...</div>
+                <div class="text-white-50 p-3"></div>
               </div>
             </section>
             <!-- BRANI CHE TI PIACCIONO -->
             <section id="likedTracks" class="ps-4 ps-md-0 d-md-none">
               <h5 class="text-white fw-bold mb-4">Brani che ti piacciono</h5>
               <div id="likedTracksContainer" class="tracklist">
-                <div class="text-white-50 p-3">Caricamento brani...</div>
+                <div class="text-white-50 p-3"></div>
               </div>
             </section>
+          </div>
+
+          <!-- Altri Brani Artista -->
+          <div class="mb-5 pb-5">
+            <h3 class="text-light py-2" id="moreAlbumsArtist"></h3>
+            <div class="container" id="moreAlbums">
+              <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-2 mb-5"></div>
+            </div>
           </div>
         </section>
         <!-- SIDEBAR DESTRA -->
