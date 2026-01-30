@@ -1,45 +1,45 @@
 const populateUITracks = (tracks) => {
-    const tracksContainer = getUITracks();
-    tracksContainer.innerHTML = "";
-    tracks.forEach(track => {
-      tracksContainer.innerHTML += createUITrack(track);  
-    })
-}
+  const tracksContainer = getUITracks();
+  tracksContainer.innerHTML = "";
+  tracks.forEach((track) => {
+    tracksContainer.innerHTML += createUITrack(track);
+  });
+};
 
-const createUITrack = (track) => {  
+const createUITrack = (track) => {
   return `
-      <div class="col-6 col-md-4 col-lg-2">
-        <div class="genre-card">
-          <span class="genre-title">${track.title}</span>
-          <div class="">
-            <!-- continue here -->
-          </div>
+      <!-- START SEARCH CARD -->
+      <div class="card search-card text-white" style="width: 18rem; background-color: #181818;">
+        <!-- track artist cover -->
+        <a href="./artist.html?artist_id=${track.artist.id}"><img src="${track.album.cover_medium}" class="card-img-top" alt="..." style="height: 200px; object-fit: contain" /></a>
+        <div class="card-body">
+          <!-- track title -->
+          <h5 class="card-title text-center"><a href="./album.html?album_id=${track.album.id}">${track.title}</a></h5>
         </div>
       </div>
-  `
-}
-
+      <!-- END SEARCH CARD -->
+  `;
+};
 
 const getSimplerTracksInfo = (tracksData) => {
-  const tracks = tracksData.data; 
-  return tracks.map(track => {
+  const tracks = tracksData.data;
+  return tracks.map((track) => {
     return {
       title: track.title,
       artist: track.artist,
       album: track.album,
-      preview: track.preview
-    }
-  })
-}
-
+      preview: track.preview,
+    };
+  });
+};
 
 const onSearchInputTypingStopped = async (userSearch, moreInfo) => {
   try {
     const tracksData = await searchRemoteTracks(userSearch);
-    console.log("search result: ", getSimplerTracksInfo(tracksData))
-    populateUITracks(getSimplerTracksInfo(tracksData))
+    console.log("search result: ", getSimplerTracksInfo(tracksData));
+    populateUITracks(getSimplerTracksInfo(tracksData));
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
 };
 
@@ -63,7 +63,6 @@ new TypingDelayer({
   minChars: 3,
 });
 
-
 const getUITracks = () => {
   return document.querySelector("#tracks");
-} 
+};
